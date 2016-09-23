@@ -37,68 +37,16 @@ href="https://fonts.googleapis.com/css?family=Inconsolata:400,700">
     	<p></p>
     </div>
     <div class="post__content"?>
-        <p><strong>TL;DR</strong> I’m making a web app using Node.js, Express 4, and MongoDB. All the code is on my Github: <a href="https://github.com/getmicah/myapp-app">Frontend</a> <a href="https://github.com/getmicah/myapp-api">Server</a>.</p>
+        <p><strong>TL;DR</strong> this is my first blog . i allways wanted to blog but could not start it . this wil be a place were i will share the things which have insprired and helped me . jekyll got my attention and i liked the tecnology.</p>
+<h1 id="jekyll">Jekyll</h1>
+<p>Jekyll is site generator . we will give a template and them the data and jekyll will process this and make a html by putting required data in the template the adwantage of jekyll is that it is a static webpage ie , no server side processing is required when the user request the webpage the pre-generated page is served rather than the dynamic creating of webpage at users request . The posts are written in markdown language and liquid templating engine is used by jekyll.</p>
+<h1 id="hosting">Hosting</h1>
+<p>This can be hosted with just Apache or Nginix server and the best part is we could host our jekyll site in github which make it more aawsome this is page is hosted under github .</p>
+<h1 id="requirement">Requirement</h1>
+<p>Jekyll only require Ruby to to work and setting up in linux was very simple after installing ruby just gem install jekyll .</p>
+<h1 id="conclusion">Conclusion</h1>
+<p>Jekyll is a simple blog-aware static webpage genarator which helped me to setup the blog in just 1 hr due to the availability of thousands of templates and themes just saved the day .</p>
 
-<h1 id="introduction">Introduction</h1>
-<p>For the past couple weeks I have been taking my first steps in “full-stack” web development. Though there has been the usual road blocks when learning a new concept I have been impressed by just how simple it is to get a basic web app up and running.</p>
-
-<p>This will be a three part guide where I go in depth about what I did to make a web app in 2016. This is intended for people like me when I started who have zero prior experience in building web applications.</p>
-
-<h2 id="what-is-a-web-app">What is a “Web App”?</h2>
-<p>This question has managed to puzzle the internet (even <a href="http://stackoverflow.com/questions/8694922/whats-the-difference-between-a-web-site-and-a-web-application">Stackoverflow</a>). In my opinion a web app differentiates itself from a website if it has at least one of the following:</p>
-
-<ul>
-  <li>Allows the user to interact with it</li>
-  <li>Talks to a database or server</li>
-  <li>Costs a lot more to build</li>
-</ul>
-
-<p>I wanted to build a social network which would have a frontend sever that would talk to a backend server (api) through GET and POST requests. That backend server would take in request and store it in a database that way not everything is being done on one server, saving me system resources and making for cleaner code.</p>
-
-<h1 id="the-backend">The Backend</h1>
-<p>In my search for a server side scripting language I found that there were a lot of options. Ruby on Rails seemed like a good option at first but I hadn’t any experience in Ruby and I didn’t care for the file structure. The Python alternative, Flask, was very cool and more what I was looking for but Python’s less verbose nature felt awkward for web development so I decided to look elsewhere. I then decided to look at the technology behind all those “npm install”s I do.</p>
-
-<p>Node.js was a pleasant first experience seeing as though it was the same code I was writing in the frontend. It also didn’t require much work to get running, just a simple <code class="highlighter-rouge">node server.js</code> and I was off to the races. The plethora of packages available through the node package manager is what really made me go with Node.js, especially once I found Express. With Express I was easilly able to get a simple API with routing and models with very little work.</p>
-
-<p>This would also be my first working with a true database. Before I would just use a simple json file to store data, but this was in small Python projects and didn’t seem like a viable option for the web. I decided to go with MongoDB, mainly because MySQL was pain to install and SQLite had an unappealing name. Not suprisingly there was also an excellent Node.js package called mongoose (I’m a sucker for good names). With mongoose I was able to connect my Node.js server to a Mongo database with ease.</p>
-
-<h1 id="the-frontend">The Frontend</h1>
-<p>Once I had a solid backend api it was time for the frontend. Now I could just use basic HTML and use basic xmlhttprequest with client-side Javascript, but I had really enjoyed working with Node.js and Express in the backend so I decided to give it a go on the frontend server. The npm had lots of awesome templating engines, such as <a href="https://github.com/ericf/express-handlebars">express-handlebars</a>, which allowed me to easily render data in my Express routes.</p>
-
-<p>At the moment I won’t be using any sort of Javascript library but I will more than likely use React at some point. The frontend mainly consists of handlebar templates rendering as html and good old <a href="https://www.youtube.com/watch?v=HkFlM73G-hk&amp;list=PLoYCgNOIyGABs-wDaaxChu82q_xQgUb4f">modular Javascript</a> for any user interaction that can’t be done through Express routing. I plan to include some sort of Sass plugin for the templates but that shouldn’t be a problem.</p>
-
-<p>For authentication, <a href="http://passportjs.org/">passport</a> in the frontend and <a href="https://github.com/ncb000gt/node.bcrypt.js/">bcrypt</a> in the backend was the way to go. Passport made local and social logins very easy because of its login “Strategies”, all of which are easily accessible through npm. Though when using this setup you really need to have SSL encryption between the two servers and a proper firewall setup.</p>
-
-<h1 id="recap">Recap</h1>
-<p>Now that I have explained in detail all of the technologies I will be using to construct a web application I wanted to give a quick over view of what we will be running on both the server and client machines.</p>
-
-<p>You may notice that this is very similair to a <a href="http://mean.io/">MEAN</a> stack but I recomend that you just install whatever you need to as you go instead of being stuck with a “stack”. You might want to use a different database or even use a different routing framework such as <a href="http://koajs.com">Koa</a>.</p>
-
-<p><em>Server</em>:</p>
-
-<ul>
-  <li>Node.js - main scripting language</li>
-  <li>Express - routing http requests</li>
-  <li>MongoDB - document database</li>
-  <li>Mongoose - mongodb modeling for node</li>
-  <li>bcrypt - password hashing and authentication</li>
-</ul>
-
-<p><em>Client</em>:</p>
-
-<ul>
-  <li>Node.js - main scripting language</li>
-  <li>Express - routing users based on url</li>
-  <li>Passport - local and social authentication</li>
-  <li>request.js - simple http requests to server</li>
-  <li>Handlebars - rendering data from express</li>
-</ul>
-
-<p>All the code is on my Github so check it out if you’re intrested in building a similair</p>
-
-<p>Server: <a href="https://github.com/getmicah/myapp-api">https://github.com/getmicah/myapp-api</a></p>
-
-<p>Client: <a href="https://github.com/getmicah/myapp-app">https://github.com/getmicah/myapp-app</a></p>
 
     </div>
 </div>
