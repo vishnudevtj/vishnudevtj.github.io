@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Switching from Ghost to Jekyll
+title: My First Blog
 ---
 
 this is my first blog . i allways wanted to blog but could not start it . this wil be a place were i will share the things which have insprired and helped me . jekyll got my attention and i liked the tecnology.
