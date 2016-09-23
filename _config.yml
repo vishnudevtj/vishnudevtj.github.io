@@ -1,6 +1,6 @@
 # Site settings
 name: 'Vishnu Dev TJ'
-description: "echo \"Hello World\" "
+description: "echo \"Hello World ! \" "
 url: ""
 
 
@@ -15,7 +15,7 @@ blog_url: /blog
 
 
 avatar: yes
-avatar_img_path: "assets/img/avatar.png"
+avatar_img_path: "assets/img/avatar.jpg"
 # You can link to your GitHub image. That way it will get updated
 # automatically whenever you change your GitHub profile picture
 #avatar_img_path: "https://avatars2.githubusercontent.com/u/17301305"
