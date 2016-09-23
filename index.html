@@ -1,0 +1,67 @@
+---
+permalink: /
+---
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>{% if page.title %}{{ page.title }}{% else %}{{ site.title }}{% endif %}</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="{{ site.description }}">
+        <link rel="canonical" href="{{ page.url | replace:'index.html','' | prepend: site.baseurl | prepend: site.url }}">
+        {% if site.favicon_img %}
+        <link rel="shortcut icon" href="{{ site.favicon_img_path }}" />
+        {% endif %}
+        <link rel="stylesheet" href="{{ "css/front.css" | prepend: site.baseurl }}">
+        <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700&subset=latin' rel='stylesheet' type='text/css'>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+    </head>
+    <body>
+        <div class="content">
+            {% if site.front_img %}
+            <img src="{{ site.front_img_path }}" id="fullscreen">
+            {% endif %}
+
+            {% if site.avatar %}
+                <img src="{{ site.avatar_img_path }}" id="avatar">
+            {% endif %}
+
+            <h1>{{ site.name }}</h1>
+            <h3>{{ site.description }}</h3>
+
+                <ul>
+                    
+
+
+                    {% if site.blog_url %}
+                    <li><a class="fa fa-2x fa-tags" href="{{ site.baseurl }}{{ site.blog_url }}"><span class="description">Blog</span></a></li>
+                    {% endif %}
+
+ 		    {% if site.github_username %}
+                    <li><a class="fa fa-2x fa-github" href="https://github.com/{{ site.github_username }}"><span class="description">GitHub</span></a></li>
+                    {% endif %}
+
+          
+		     {% if site.google_plus_username %}
+                    <li><a class="fa fa-2x fa-google-plus" href="https://plus.google.com/+{{ site.google_plus_username }}"><span class="description">Google +</span></a></li>
+                    {% endif %}
+                   {% if site.facebook_username %}
+                    <li><a class="fa fa-2x fa-facebook" href="https://facebook.com/{{ site.facebook_username }}"><span class="description">Facebook</span></a></li>
+                    {% endif %}
+
+  
+                   
+
+                    {% if site.email %}
+                    <li><a class="fa fa-2x fa-envelope" href="mailto:{{ site.email }}"><span class="description">Email</span></a></li>
+                    {% endif %}
+
+                    {% if site.public_key_url %}
+                    <li><a class="fa fa-2x fa-key" href="{{ site.public_key_url }}"><span class="description">PGP Key</span></a></li>
+                    {% endif %}
+                </ul>
+        </div>
+
+    </body>
+</html>
