@@ -2,10 +2,8 @@
 layout: about
 ---
 
-Hello, my name is Micah Cowell. I am a self proclaimed web developer who likes the internet, hip hop, and fancy yo-yos.
-
+my name is vishnu dev tj . i am just a crazy person how likes tecnology and to play with it , and i <3 linux and messing with it untill i break the system .exploring new things , reading , cycling are by hobbies and i am a perfectionist and  i belive that simplicity is perfection
 # What do you do?
-I make website and stuff. All the code I write is on my [Github](https://github.com/getmicah).
-
+i am a neebie who is desperatly tring to learn the world around him which seems to be complex but is rather beautifull by it's simplicity
 # What programming languages do you use?
-When making websites I like using Javascript and Sass. I also like Python and making linux scripts.
+i use python and bash for linux scripting 
