@@ -126,7 +126,8 @@ for i in links_unique[:]:
 print("Done ...")
 ```
 made a file with all the links. 
-```
+
+```line_numbers=false
 
 ./tamilbeats.py http://www.tamilabeat.com/tamilsongs/movies%20a%20to%20z/ >> links
 #extracted dir name and makes them 
