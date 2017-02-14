@@ -9,7 +9,8 @@ This is what happens when a lazy  person wants to listen to music and does not l
 # Mango 
 [mango](http://www.maango.info/ "Mango") is a new site with modern look and contains songs from 2015 only . I used to download new songs fom here so it was my first choice scrap .
 
-{% highlight python %}
+```
+
 #!/usr/bin/python3
 
 import bs4,requests,os
@@ -62,8 +63,7 @@ while True :
     except IndexError:
         print("Done ...")
         exit()
-{% endhighlight %}
-
+```
 After downloading all the songs from HINDI TAMIL and MALAYALAM section i wrote a shell script that invoke this script and update my local files .
 Next task was to find good site to get old songs.
 
@@ -124,7 +124,8 @@ for i in links_unique[:]:
 print("Done ...")
 ```
 made a file with all the links. 
-```
+```bash
+
 ./tamilbeats.py http://www.tamilabeat.com/tamilsongs/movies%20a%20to%20z/ >> links
 #extracted dir name and makes them 
 cat links  | grep wget | cut -d "/" -f 7 |sort | uniq |  xargs -n 1 mkdir
