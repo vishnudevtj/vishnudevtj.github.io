@@ -8,7 +8,8 @@ This is what happens when a lazy  person wants to listen to music and does not l
 
 # Mango 
 [mango](http://www.maango.info/ "Mango") is a new site with modern look and contains songs from 2015 only . I used to download new songs fom here so it was my first choice scrap .
-```line_numbers=false
+
+```python?line_numbers=false
 #!/usr/bin/python3
 
 import bs4,requests,os
