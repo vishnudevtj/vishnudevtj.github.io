@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+
+	<title>Music Download · The Plain Text</title>
+
+
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:site" content="@vishnudevtj" />
+<meta name="twitter:title" content="Music Download" />
+<meta name="twitter:description" content="  Music India Online Download script          List of All Movies in That catagory      New Release From Hindi Malayalam and Tamil catagory      Download Movie Songs      ">
+
+<meta name="description" content="  Music India Online Download script          List of All Movies in That catagory      New Release From Hindi Malayalam and Tamil catagory      Download Movi...">
+
+
+
+<link rel="icon" href="/assets/favicon.png">
+<link rel="apple-touch-icon" href="/assets/touch-icon.png">
+<link rel="stylesheet" href="/assets/core.css">
+<link rel="canonical" href="/notes/download-this-theme">
+<link rel="alternate" type="application/atom+xml" title="The Plain Text" href="/feed.xml" />
+
+
+
+
+
+	</head>
+
+	<body>
+
+		<aside class="logo">
+
+	
+
+	<a href="/">
+		  <img src="/assets/vinix.svg" class="gravatar" height="92" width="92">
+	</a>
+	<span class="logo-prompt">Back to Home</span>
+
+</aside>
+
+
+		<main>
+			<article>
+
+	<div class="center">
+		<h1>Music Download</h1>
+		<time>September 9, 2015</time>
+	</div>
+
+	<div class="divider"></div>
+
+	<ul>
+  <li><a href="#orgc5e9eb4">Music India Online Download script</a>
+    <ul>
+      <li><a href="#orgb34a79f">List of All Movies in That catagory</a></li>
+      <li><a href="#orgffedb06">New Release From Hindi Malayalam and Tamil catagory</a></li>
+      <li><a href="#orga8cacd9">Download Movie Songs</a></li>
+    </ul>
+  </li>
+</ul>
+
+<p><a id="orgc5e9eb4"></a></p>
+
+<h1 id="music-india-online-download-script">Music India Online Download script</h1>
+
+<p><a id="orgb34a79f"></a></p>
+
+<h2 id="list-of-all-movies-in-that-catagory">List of All Movies in That catagory</h2>
+
+<div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">requests</span><span class="o">,</span><span class="nn">bs4</span><span class="o">,</span><span class="nn">sys</span>
+<span class="n">url</span> <span class="o">=</span>  <span class="s">"http://www.mio.to/Hindi/Movie+Songs/albums/decade/2010"</span>
+<span class="k">print</span><span class="p">(</span><span class="s">"| Movie Name | Link |"</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s">"|-------------------|"</span><span class="p">)</span>
+<span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
+      <span class="n">mio</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+      <span class="n">mio_soup</span> <span class="o">=</span> <span class="n">bs4</span><span class="o">.</span><span class="n">BeautifulSoup</span><span class="p">(</span><span class="n">mio</span><span class="o">.</span><span class="n">text</span><span class="p">,</span><span class="s">'html.parser'</span><span class="p">)</span>
+      <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">mio_soup</span><span class="o">.</span><span class="n">find_all</span><span class="p">(</span><span class="s">"a"</span> <span class="p">,</span> <span class="p">{</span><span class="s">"class"</span> <span class="p">:</span> <span class="s">"img-cover-175"</span><span class="p">}):</span>
+            <span class="k">print</span><span class="p">(</span><span class="s">"| "</span><span class="o">+</span><span class="n">i</span><span class="o">.</span><span class="n">text</span><span class="o">+</span><span class="s">"| http://mio.to"</span><span class="o">+</span><span class="n">i</span><span class="p">[</span><span class="s">"href"</span><span class="p">]</span><span class="o">+</span><span class="s">"|"</span><span class="p">)</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="n">url</span> <span class="o">=</span> <span class="s">"http://mio.to"</span> <span class="o">+</span> <span class="n">mio_soup</span><span class="o">.</span><span class="n">find_all</span><span class="p">(</span><span class="s">"a"</span> <span class="p">,</span> <span class="p">{</span><span class="s">"class"</span> <span class="p">:</span> <span class="s">"next-page"</span><span class="p">})[</span><span class="mi">0</span><span class="p">][</span><span class="s">"href"</span><span class="p">]</span>
+            <span class="k">except</span> <span class="nb">IndexError</span><span class="p">:</span>
+                <span class="nb">exit</span><span class="p">()</span>
+</code></pre>
+</div>
+
+<p><a id="orgffedb06"></a></p>
+
+<h2 id="new-release-from-hindi-malayalam-and-tamil-catagory">New Release From Hindi Malayalam and Tamil catagory</h2>
+
+<div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">bs4</span><span class="o">,</span><span class="nn">requests</span>
+
+
+<span class="n">url</span> <span class="o">=</span> <span class="p">[</span><span class="s">"http://mio.to/Malayalam/Movie+Songs"</span><span class="p">,</span> <span class="s">"http://mio.to/Hindi/Movie+Songs"</span><span class="p">,</span><span class="s">"http://mio.to/Tamil/Movie+Songs"</span><span class="p">]</span>
+
+<span class="k">print</span><span class="p">(</span><span class="s">"| Movie Name | Links |"</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s">"|--------------------|"</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">url</span><span class="p">:</span>
+    <span class="n">mio</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+    <span class="n">mio_soup</span> <span class="o">=</span> <span class="n">bs4</span><span class="o">.</span><span class="n">BeautifulSoup</span><span class="p">(</span><span class="n">mio</span><span class="o">.</span><span class="n">text</span><span class="p">,</span><span class="s">"html.parser"</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">mio_soup</span><span class="o">.</span><span class="n">find_all</span><span class="p">(</span><span class="s">'div'</span><span class="p">,</span> <span class="p">{</span><span class="s">'id'</span> <span class="p">:</span> <span class="s">'#trending-now'</span><span class="p">}):</span>
+        <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="n">i</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="s">"a"</span><span class="p">):</span>
+             <span class="k">print</span><span class="p">(</span><span class="s">"| "</span><span class="o">+</span><span class="n">j</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s">"h2"</span><span class="p">)</span><span class="o">.</span><span class="n">text</span><span class="o">+</span><span class="s">"| http://mio.to"</span> <span class="o">+</span> <span class="n">j</span><span class="p">[</span><span class="s">"href"</span><span class="p">]</span><span class="o">+</span><span class="s">"|"</span><span class="p">)</span>
+</code></pre>
+</div>
+
+<p><a id="orga8cacd9"></a></p>
+
+<h2 id="download-movie-songs">Download Movie Songs</h2>
+
+<p>Dowload Movie songs into the directory</p>
+
+<div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="c"># Made by :  Nemesis</span>
+<span class="c"># Discription :This downloads The songs from site named mio.to</span>
+<span class="c"># syantax : python3 mio.py &lt;link&gt;</span>
+<span class="c"># Requirements : python modules bs4,taglib</span>
+<span class="c"># System Package : eyed3 [User for insterting artwork]</span>
+
+<span class="kn">import</span> <span class="nn">bs4</span><span class="o">,</span><span class="nn">requests</span><span class="o">,</span><span class="nn">sys</span><span class="o">,</span><span class="nn">re</span><span class="o">,</span><span class="nn">taglib</span><span class="o">,</span><span class="nn">subprocess</span><span class="o">,</span><span class="nn">os</span>
+
+<span class="c">#Downloads the webpage and create a Beautifull Soup Object</span>
+<span class="c"># url=sys.argv [1]</span>
+<span class="c"># url = "http://mio.to/album/Aashiqui+2+%282013%29"</span>
+<span class="n">mio</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+<span class="n">mio_soup</span> <span class="o">=</span> <span class="n">bs4</span><span class="o">.</span><span class="n">BeautifulSoup</span><span class="p">(</span><span class="n">mio</span><span class="o">.</span><span class="n">text</span><span class="p">,</span><span class="s">'html.parser'</span><span class="p">)</span>
+
+<span class="c"># try:</span>
+<span class="c">#     music_director = mio_soup.select('div.details  &gt; dl &gt; dd &gt; a ')[0].text</span>
+<span class="c"># except IndexError:</span>
+<span class="c">#     music_director = ""</span>
+
+<span class="c">#Extracts some informations :</span>
+
+<span class="n">movie_name</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="s">r".*?</span><span class="err">\</span><span class="s">([0-9]+</span><span class="err">\</span><span class="s">)"</span><span class="p">,</span><span class="n">mio_soup</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="s">'div.heading'</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">text</span><span class="p">)</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">art_work</span> <span class="o">=</span> <span class="n">mio_soup</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="s">'div.group.info &gt; img["src"]'</span><span class="p">)[</span><span class="mi">0</span><span class="p">][</span><span class="s">"src"</span><span class="p">]</span>
+<span class="n">year</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="s">r'</span><span class="err">\</span><span class="s">(([0-9][0-9]+)</span><span class="err">\</span><span class="s">)'</span><span class="p">,</span><span class="n">movie_name</span><span class="p">)</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+
+
+<span class="k">print</span><span class="p">(</span><span class="s">"</span><span class="se">\n</span><span class="s">Movie Name : "</span><span class="o">+</span><span class="n">movie_name</span> <span class="p">)</span>
+<span class="c"># print("Music Director : "+music_director)</span>
+
+<span class="n">link</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="s">r'http://media-images.mio.to/(.*?)/(.*)/Art-350.jpg'</span><span class="p">,</span><span class="n">art_work</span><span class="p">)</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+
+
+<span class="n">subprocess</span><span class="o">.</span><span class="n">call</span><span class="p">([</span><span class="s">"mkdir"</span> <span class="p">,</span><span class="n">movie_name</span><span class="p">])</span>
+<span class="n">artwork_path</span> <span class="o">=</span> <span class="n">movie_name</span><span class="o">+</span><span class="s">"/artwork.jpg"</span>
+
+<span class="c">#Downloading the artwork</span>
+<span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">artwork_path</span><span class="p">):</span>
+    <span class="n">subprocess</span><span class="o">.</span><span class="n">call</span><span class="p">([</span><span class="s">"wget"</span><span class="p">,</span><span class="s">"-q"</span><span class="p">,</span><span class="s">"-c"</span><span class="p">,</span><span class="n">art_work</span><span class="p">,</span><span class="s">"-O"</span><span class="p">,</span><span class="n">artwork_path</span><span class="p">])</span>
+
+<span class="c">#Finds all the songs links and downloads the and inserts the tags</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">mio_soup</span><span class="o">.</span><span class="n">find_all</span><span class="p">(</span><span class="s">"tr"</span> <span class="p">,{</span><span class="s">"class"</span> <span class="p">:</span> <span class="s">"song-link"</span><span class="p">}):</span>
+    <span class="n">artist</span> <span class="o">=</span> <span class="s">","</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">re</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="s">'"(.*?)"'</span><span class="p">,</span><span class="n">i</span><span class="p">[</span><span class="s">'track_artist'</span><span class="p">]))</span>
+    <span class="n">album_name</span> <span class="o">=</span> <span class="n">movie_name</span>
+    <span class="n">track_number</span> <span class="o">=</span> <span class="n">i</span><span class="p">[</span><span class="s">"track_number"</span><span class="p">]</span>
+    <span class="n">disk_number</span> <span class="o">=</span> <span class="n">i</span><span class="p">[</span><span class="s">"disc_number"</span><span class="p">]</span>
+    <span class="n">track_name</span> <span class="o">=</span> <span class="n">i</span><span class="p">[</span><span class="s">"track_name"</span><span class="p">]</span>
+    <span class="n">path</span> <span class="o">=</span> <span class="n">album_name</span><span class="o">+</span><span class="s">"/"</span><span class="o">+</span><span class="n">track_name</span><span class="o">+</span><span class="s">".mp3"</span>
+
+    <span class="c">#Create the download links of the mp3</span>
+    <span class="n">mp3_link</span> <span class="o">=</span> <span class="s">"http://media-audio.mio.to/"</span><span class="o">+</span><span class="n">link</span><span class="o">+</span><span class="s">"/"</span><span class="o">+</span><span class="n">i</span><span class="p">[</span><span class="s">"album_id"</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span><span class="o">+</span><span class="s">"/"</span><span class="o">+</span><span class="n">i</span><span class="p">[</span><span class="s">"album_id"</span><span class="p">]</span><span class="o">+</span><span class="s">"/"</span><span class="o">+</span><span class="n">disk_number</span><span class="o">+</span><span class="s">"_"</span><span class="o">+</span><span class="n">track_number</span><span class="o">+</span><span class="s">" - "</span><span class="o">+</span><span class="n">track_name</span><span class="o">+</span><span class="s">"-vbr-V5.mp3"</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">"Downloading "</span><span class="p">,</span><span class="n">track_name</span><span class="p">,</span><span class="s">"  ..."</span><span class="p">)</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">path</span><span class="p">):</span>
+        <span class="n">subprocess</span><span class="o">.</span><span class="n">call</span><span class="p">([</span><span class="s">"wget"</span><span class="p">,</span><span class="s">"-q"</span><span class="p">,</span><span class="s">"-c"</span><span class="p">,</span><span class="n">mp3_link</span><span class="p">,</span><span class="s">"-O"</span><span class="p">,</span><span class="n">path</span><span class="p">])</span>
+
+        <span class="c"># Inserting the tag details</span>
+        <span class="n">song</span> <span class="o">=</span> <span class="n">taglib</span><span class="o">.</span><span class="n">File</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
+        <span class="n">song</span><span class="o">.</span><span class="n">tags</span><span class="p">[</span><span class="s">'ARTIST'</span><span class="p">]</span><span class="o">=</span><span class="p">[</span><span class="n">artist</span><span class="p">]</span>
+        <span class="n">song</span><span class="o">.</span><span class="n">tags</span><span class="p">[</span><span class="s">'ALBUM'</span><span class="p">]</span><span class="o">=</span><span class="p">[</span><span class="n">album_name</span><span class="p">]</span>
+        <span class="n">song</span><span class="o">.</span><span class="n">tags</span><span class="p">[</span><span class="s">'TITLE'</span><span class="p">]</span><span class="o">=</span><span class="p">[</span><span class="n">track_name</span><span class="p">]</span>
+        <span class="n">song</span><span class="o">.</span><span class="n">tags</span><span class="p">[</span><span class="s">'DATE'</span><span class="p">]</span><span class="o">=</span><span class="p">[</span><span class="n">year</span><span class="p">]</span>
+        <span class="n">song</span><span class="o">.</span><span class="n">tags</span><span class="p">[</span><span class="s">'TRACKNUMBER'</span><span class="p">]</span><span class="o">=</span><span class="p">[</span><span class="n">track_number</span><span class="p">]</span>
+        <span class="n">song</span><span class="o">.</span><span class="n">tags</span><span class="p">[</span><span class="s">'GENRE'</span><span class="p">]</span><span class="o">=</span><span class="p">[]</span>
+        <span class="n">song</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+        <span class="n">subprocess</span><span class="o">.</span><span class="n">call</span><span class="p">([</span><span class="s">"eyeD3"</span><span class="p">,</span><span class="s">"--quiet"</span><span class="p">,</span><span class="s">"--add-image"</span><span class="p">,</span><span class="n">artwork_path</span><span class="o">+</span><span class="s">":FRONT_COVER"</span><span class="p">,</span><span class="n">path</span><span class="p">])</span>
+</code></pre>
+</div>
+
+<table>
+  <thead>
+    <tr>
+      <th>Movie Name</th>
+      <th>Links</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Avarude Ravukal</td>
+      <td>http://mio.to/album/Shankar+Sharma/Avarude+Ravukal+%282017%29</td>
+    </tr>
+    <tr>
+      <td>Alamara</td>
+      <td>http://mio.to/album/Sooraj+S.+Kurup/Alamara+%282017%29</td>
+    </tr>
+    <tr>
+      <td>C/O Saira Banu</td>
+      <td>http://mio.to/album/Mejjo+Josseph/C+O+Saira+Banu+%282017%29</td>
+    </tr>
+    <tr>
+      <td>The Great Father</td>
+      <td>http://mio.to/album/Prarthana%2C+Pratheeksha/The+Great+Father+%282017%29</td>
+    </tr>
+    <tr>
+      <td>Ezra</td>
+      <td>http://mio.to/album/Sushin+Shyam/Ezra+%282017%29</td>
+    </tr>
+    <tr>
+      <td>Dry</td>
+      <td>http://mio.to/album/M.T.+Vikranth/Dry+%282017%29</td>
+    </tr>
+    <tr>
+      <td>Ayal Jeevichirippundu</td>
+      <td>http://mio.to/album/Ouseppachan/Ayal+Jeevichirippundu+%282017%29</td>
+    </tr>
+    <tr>
+      <td>Angamaly Diaries</td>
+      <td>http://mio.to/album/Prashant+Pillai/Angamaly+Diaries+%282017%29</td>
+    </tr>
+    <tr>
+      <td>Oru Mexican Aparatha</td>
+      <td>http://mio.to/album/Ranjith+Chittade/Oru+Mexican+Aparatha+%282017%29</td>
+    </tr>
+    <tr>
+      <td>Aby</td>
+      <td>http://mio.to/album/Jaison+J+Nair/Aby+%282017%29</td>
+    </tr>
+    <tr>
+      <td>Meri Pyaari Bindu</td>
+      <td>http://mio.to/album/Parineeti+Chopra/Meri+Pyaari+Bindu+%282017%29</td>
+    </tr>
+    <tr>
+      <td>Begum Jaan</td>
+      <td>http://mio.to/album/Asha+Bhosle/Begum+Jaan+%282017%29</td>
+    </tr>
+    <tr>
+      <td>Blue Mountains</td>
+      <td>http://mio.to/album/Sadhana+Sargam%2C+Suraj+Jagan%2C+Yatharth+Ratnum/Blue+Mountains+%282017%29</td>
+    </tr>
+    <tr>
+      <td>The Dream Job</td>
+      <td>http://mio.to/album/Kashi-Richard/The+Dream+Job+%282017%29</td>
+    </tr>
+    <tr>
+      <td>Romeo N Bullet</td>
+      <td>http://mio.to/album/Kashi-Kashyap/Romeo+N+Bullet+%282017%29</td>
+    </tr>
+    <tr>
+      <td>Noor</td>
+      <td>http://mio.to/album/Amaal+Mallik%2C+Armaan+Malik/Noor+%282017%29</td>
+    </tr>
+    <tr>
+      <td>Mukti Bhawan</td>
+      <td>http://mio.to/album/Tajdar+Junaid/Mukti+Bhawan+%282017%29</td>
+    </tr>
+    <tr>
+      <td>Mirza Juuliet</td>
+      <td>http://mio.to/album/Dj+Notorious/Mirza+Juuliet+%282017%29</td>
+    </tr>
+    <tr>
+      <td>Sarkar 3</td>
+      <td>http://mio.to/album/Mika+Singh%2C+Sukhwinder+Singh/Sarkar+3+%282017%29</td>
+    </tr>
+    <tr>
+      <td>Tu Sukoon Hai Mera</td>
+      <td>http://mio.to/album/Ashwani+Kumar%2C+Yogendra+Singh+Rathore/Tu+Sukoon+Hai+Mera+%282017%29</td>
+    </tr>
+    <tr>
+      <td>Saravanan Irukka Bayamaen</td>
+      <td>http://mio.to/album/D.+Imman/Saravanan+Irukka+Bayamaen+%282017%29</td>
+    </tr>
+    <tr>
+      <td>Kadamban</td>
+      <td>http://mio.to/album/Srimathumitha%2C+Yuvan+Shankar+Raja/Kadamban+%282017%29</td>
+    </tr>
+    <tr>
+      <td>Mohana</td>
+      <td>http://mio.to/album/L.G.+Bala/Mohana+%282017%29</td>
+    </tr>
+    <tr>
+      <td>Saavi</td>
+      <td>http://mio.to/album/Sathish+Thaianban/Saavi+%282017%29</td>
+    </tr>
+    <tr>
+      <td>Oru Kidayin Karunai Manu</td>
+      <td>http://mio.to/album/M.+Raghuraam/Oru+Kidayin+Karunai+Manu+%282017%29</td>
+    </tr>
+    <tr>
+      <td>Maragatha Naanayam</td>
+      <td>http://mio.to/album/Dhibu+Ninan+Thomas/Maragatha+Naanayam+%282017%29</td>
+    </tr>
+    <tr>
+      <td>Kadugu</td>
+      <td>http://mio.to/album/Kadugu+%282017%29</td>
+    </tr>
+    <tr>
+      <td>Odu Raja Odu</td>
+      <td>http://mio.to/album/Karthik%2C+Master+Abishek%2C+Shwetha+Mohan/Odu+Raja+Odu+%282017%29</td>
+    </tr>
+    <tr>
+      <td>Power Paandi</td>
+      <td>http://mio.to/album/Sean+Roldan/Power+Paandi+%282017%29</td>
+    </tr>
+    <tr>
+      <td>Inayathalam</td>
+      <td>http://mio.to/album/Arrol+Corelli/Inayathalam+%282017%29</td>
+    </tr>
+  </tbody>
+</table>
+
+
+
+</article>
+
+<div class="page-navigation">
+	
+    <a class="next" href="/notes/very-long-title-post" title="NEXT: For Example of very Long Title Would Be Typography Elements in One">&lt;&lt;</a>
+		<span> &middot; </span>
+  
+		<a class="home" href="/" title="Back to Homepage">Home</a>
+  
+		<span> &middot; </span>
+    <a class="prev" href="/notes/lorem-ipsum" title="PREV: Lorem Ipsum">&gt;&gt;</a>
+  
+</div>
+
+		</main>
+
+		<div class="footer">
+  <span class="block">&lt;/&gt; <a href="http://github.com/heiswayi/the-plain" title="a minimalist Jekyll theme for personal blog">The Plain theme</a> </span>
+  <span class="block">&copy; 2017 Vishnu Dev T J</span>
+</div>
+
+
+	</body>
+
+</html>

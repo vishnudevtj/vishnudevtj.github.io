@@ -1,57 +1,51 @@
-# Site settings
-name: 'Vishnu Dev TJ'
-description: "echo \"Hello World ! \" "
-url: ""
+# Site Info
+title:              "The Plain Text"
+description:        "Enther my World!"
+#google_verify:      epFgX0s_0RM3CdjwFcsewfXzPov2g8s9ZBOLyaIUH-o # Put your Google Verification here
+#google_analytics:   UA-XXXXXXX-X # Put your Google Analytics code
 
+# Author Info
+author_name:        "Vishnu Dev T J" # Your name here
+author_email:       vishnudevtj@gmail.com # Your email here
+author_gravatar:    2b38b1b0e7e08b69379bd61582adf0c8 # Your Gravatar md5 hash here for logo
+twitter_username:   vishnudevtj # Your Twitter username here
+github_username:    vishnudevtj # Your GitHub username here
 
-# Delete the lines you don't need
-# about 5 elements are recomended
-facebook_username: ThisIsTheLiFeILove
-github_username:  vishnudevtj
-google_plus_username: vishnudevtj
-email: vishnudevtj@gmail.com
-public_key_url: "https://raw.pastebin.com/LINK-TO-PUBLIC-KEY"
-blog_url: /blog
+# Site Settings
+baseurl:            "" # Base URL must end WITHOUT a slash, default: ""
+permalink:          /notes/:title # Post permalink
+timezone:           Asia/Calcutta # https://en.wikipedia.org/wiki/List_of_tz_database_time_zones
+mathjax:            false  # enables support for mathjax - set to false to disable
 
-
-avatar: yes
-avatar_img_path: "assets/img/avatar.jpg"
-# You can link to your GitHub image. That way it will get updated
-# automatically whenever you change your GitHub profile picture
-#avatar_img_path: "https://avatars2.githubusercontent.com/u/17301305"
-
-
-front_img: yes
-front_img_path: "assets/img/background.jpg"
-#front_img_path: "https://external.url/image.jpg"
-
-favicon_img: yes
-favicon_img_path: "assets/img/favicon.ico"
-#favicon_img_path: "https://external.url/favicon.ico"
-
-
-# Blog settings
-permalink: /blog/:title
-
-
-# My variables
-google_verification: null
-
-
-# File management
-include: [".htaccess"]
-
-
-
-# Sass
-sass:
-  style: :compressed
-  sass_dir: _sass
-
-
-# Markdown
-markdown: kramdown
+# Site Build
+highlighter:        rouge
+markdown:           kramdown
 kramdown:
-  input: GFM
-  hard_wrap: false
-highlighter: rouge
+    input:          GFM
+sass:
+    style:          :compressed
+
+# Other Params
+include:            [ "robots.txt" ]
+exclude:            [ "LICENSE", "README.md", "CNAME", "vendor", "Gemfile" ]
+gems:
+  - jekyll-sitemap
+
+
+
+defaults:
+  -
+    scope:
+      path:         ""
+    values:
+      layout:       "null"
+  -
+    scope:
+      type:         "pages"
+    values:
+      layout:       "page"
+  -
+    scope:
+      type:         "posts"
+    values:
+      layout:       "post"
