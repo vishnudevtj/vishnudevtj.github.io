@@ -8,7 +8,7 @@ updated: 2017-06-08 23:29:03
 
 <a id="org34fa60d"></a>
 
-# Org Search Engine     :org:agenda:
+# Org Search Engine
 
 Trying find a way to rapidly search my org notes and find what i want , i foundout that org agenda can be used as a search engine. setting `org-agenda-file` to a directory it searches throught the direcory to find all the org file and add's them , But my notes are scatters in different folders , found this piece of code which works wonderfully
 

@@ -39,4 +39,3 @@ There is a cool package for emacs called [Prodigy](https://github.com/rejeep/pro
 
 So prodigy is used to fire up the docker container . [Magit](https://magit.vc/) is used to upload the changes to github
 
-Entered on <span class="timestamp-wrapper"><span class="timestamp">&lt;2017-06-28 Wed&gt;</span></span>
