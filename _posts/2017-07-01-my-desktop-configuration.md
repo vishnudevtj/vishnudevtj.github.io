@@ -30,7 +30,7 @@ Additional Gnome Extention :
 [Dash To Dock](https://micheleg.github.io/dash-to-dock/)
 [Coverflow Alt-Tab](https://github.com/dmo60/CoverflowAltTab)
 
-![img](/assets/img/screenshot1.png)
-![img](/assets/img/screenshot2.png)
-![img](/assets/img/screenshot3.png)
+![img](/assets/img/my-configuration/screenshot1.jpg)
+![img](/assets/img/my-configuration/screenshot2.jpg)
+![img](/assets/img/my-configuration/screenshot3.jpg)
 
