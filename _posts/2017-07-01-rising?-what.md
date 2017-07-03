@@ -1,7 +1,8 @@
 ---
-title:  My Desktop Configuration
-updated: 2017-07-02 23:26:16
+title:  Rising? What
+updated: 2017-07-03 11:25:07
 ---
+
 
 - [My Current Dsktop Configuration](#orgcc9b678)
 
