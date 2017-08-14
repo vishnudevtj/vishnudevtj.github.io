@@ -10,7 +10,7 @@ updated: 2017-08-12 20:32:23
 
 # Making My Music Download interactive
 
-The python script i last made to download the music from mio.to was designed in such a way that it download songs when the album link was given . Because then it was to Download all the music from the site and an interactive interface was not required . The list.py created a list of all the movies in a perticular category and shell scripting was used to automatically download all the music from this list . Now I think that it should be made interactive , so I changed the script to and added the ebility to search from their site and crab the link of the search result . python have an -i option which executes all the code in the file and gives a interactive shell.
+The Python script i last made to download the music from mio.to was designed in such a way that it download songs when the album link was given . Because then it was to Download all the music from the site and an interactive interface was not required . The list.py created a list of all the movies in a perticular category and shell scripting was used to automatically download all the music from this list . Now I think that it should be made interactive , so I changed the script to and added the ebility to search from their site and crab the link of the search result . python have an -i option which executes all the code in the file and gives a interactive shell.
 
 there are three funtion new() , search_abum() , download()
 
