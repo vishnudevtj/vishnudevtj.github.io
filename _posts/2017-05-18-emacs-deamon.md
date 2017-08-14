@@ -9,7 +9,7 @@ updated: 2017-06-07 01:28:07
 
 # Making Emacs Super Fast
 
-Adding Large number of packages can make emacs load slowly . this can be frustrating . We can be brillient and fine tune the nifty details and make it fast load time , but i have not reached that level . This is emacs there is allways better way
+adding Large number of packages can make emacs load slowly . this can be frustrating . We can be brillient and fine tune the nifty details and make it fast load time , but i have not reached that level . This is emacs there is allways better way
 
 We can run emacs as a deamon and open file in it because it is already loaded it is superfast Using Systemd to start a emacs deamon
 
