@@ -1,0 +1,527 @@
+#+TITLE: PicoCTF 2017
+#+OPTIONS:  toc:4
+* Level 1 
+** Forensics
+*** Digital Camouflage
+Link : [[https://2017game.picoctf.com/game/level-1/challenge/Digital-Camouflage][Digital Camouflage]]
+
+We need to gain access to some routers. Let's try and see if we can find the password in the captured network data : [[file:./data.pcap][data.pcap]]
+
+Hint :
+#+BEGIN_QUOTE
+It looks like someone logged in with their password earlier. Where would log in data be located in a n etwork capture?
+If you think you found the flag, but it doesn't work, consider that the data may be encrypted.
+#+END_QUOTE
+
+Solution : 
+ 
+This Problem gives us a network capture and we need to analyse the files to get the password of a login.
+Using Wireshark we can export all the files from the pcap file . 
+Files > Export Objects > HTTP 
+Gives a list of HTML which is present in the captured file . And one of the file contains the password which is is encrypted in base64.
+
+main.html
+#+BEGIN_EXAMPLE
+userid=spiveyp&pswrd=S04xWjZQWFZ5OQ%3D%3D
+#+END_EXAMPLE
+
+%3d represent = in url
+#+BEGIN_SRC shell
+echo S04xWjZQWFZ5OQ== | base64 -d
+#+END_SRC
+
+Gives the flag !
+#+BEGIN_EXAMPLE
+KN1Z6PXVy9
+#+END_EXAMPLE
+
+*** Special Agent User
+
+Link : [[https://2017game.picoctf.com/game/level-1/challenge/Special-Agent-User][Special Agent User]] 
+
+We can get into the Administrator's computer with a browser exploit. But first, we need to figure out what browser they're using.
+Perhaps this information is located in a network packet capture we took: [[file:./data1.pcap][data.pcap]]
+Enter the browser and version as "BrowserName BrowserVersion". NOTE: We're just looking for up to 3 levels of subversions for
+the browser version (ie. Version 1.2.3 for Version 1.2.3.4) and ignore any 0th subversions (ie. 1.2 for 1.2.0)
+
+Hint :
+#+BEGIN_QUOTE
+Where can we find information on the browser in networking data? Maybe [[http://www.useragentstring.com./][try reading up on user-agent strings]]
+#+END_QUOTE
+
+Solution :
+User agent tell the server the details of which broser and os is the user use
+Running xxd 
+#+BEGIN_SRC shell
+xxd data.pcap | grep -A 10 User
+#+END_SRC
+There was many wget entries and one was
+#+BEGIN_EXAMPLE
+--
+00003c90: 2f20 4854 5450 2f31 2e31 0d0a 5573 6572  / HTTP/1.1..User
+00003ca0: 2d41 6765 6e74 3a20 4d6f 7a69 6c6c 612f  -Agent: Mozilla/
+00003cb0: 352e 3020 2857 696e 646f 7773 204e 5420  5.0 (Windows NT 
+00003cc0: 352e 3129 2041 7070 6c65 5765 624b 6974  5.1) AppleWebKit
+00003cd0: 2f35 3337 2e33 3620 284b 4854 4d4c 2c20  /537.36 (KHTML, 
+00003ce0: 6c69 6b65 2047 6563 6b6f 2920 4368 726f  like Gecko) Chro
+00003cf0: 6d65 2f33 352e 302e 3231 3137 2e31 3537  me/35.0.2117.157
+00003d00: 2053 6166 6172 692f 3533 372e 3336 0d0a   Safari/537.36..
+00003d10: 4163 6365 7074 3a20 2a2f 2a0d 0a48 6f73  Accept: */*..Hos
+00003d20: 743a 2031 302e 302e 302e 310d 0a43 6f6e  t: 10.0.0.1..Con
+00003d30: 6e65 6374 696f 6e3a 204b 6565 702d 416c  nection: Keep-Al
+--
+#+END_EXAMPLE
+Which tells that the browser is Chrome version 35.0.2117
+
+** Binary Explitation
+*** Bash Loop
+Link:[[https://2017game.picoctf.com/game/level-1/challenge/Bash-Loop][bash loop]]
+
+We found a program that is hiding a flag but requires you to guess the number it is thinking of. Chances are Linux has an easy
+way to try all the numbers... Go to /problems/69a376443853a8d385877f60375188bf and try it out!
+
+Solution :
+
+The location contain two files .
+#+BEGIN_EXAMPLE
+-rwxr-sr-x 1 hacksports bash-loop_7 8216 Mar 31 08:01 bashloop
+-r--r----- 1 hacksports bash-loop_7   33 Mar 31 08:01 flag
+#+END_EXAMPLE
+
+bashloop has SUID bit set , Running bashloop ,gives
+#+BEGIN_EXAMPLE
+What number am I thinking of? It is between 0 and 4096
+#+END_EXAMPLE
+So it takes a number between 0 and 4096 as input .
+~./bashloop 0~
+#+BEGIN_EXAMPLE
+Nope. Pick another number between 0 and 4096
+#+END_EXAMPLE
+Scripting with bash
+#+BEGIN_SRC sh
+for i in {0..4096};do  ./bashloop $i ;done | grep -v Nope           
+#+END_SRC
+Gives the flag!
+#+BEGIN_EXAMPLE
+Yay! That's the number! Here be the flag: 249808e7eba907b7e323f4f2fff2406d
+#+END_EXAMPLE
+
+*** Just No
+Link : [[https://2017game.picoctf.com/game/level-1/challenge/Just-No][just no]]
+
+A program at /problems/276fc27f3ef921f0e2f0f75ba95c9e60 has access to a flag but refuses to share it. Can you convince it otherwise?
+
+Hint :
+#+BEGIN_QUOTE
+Check out the difference between relative and absolute paths and see if you can figure out how to use them to solve this challenge.
+Could you possibly spoof another auth file it looks at instead...?
+#+END_QUOTE
+
+Soution:
+Listing the directory 
+#+BEGIN_EXAMPLE
+-rw-r--r-- 1 hacksports just-no_7    2 Mar 31 08:00 auth
+-r--r----- 1 hacksports just-no_7   33 Mar 31 08:00 flag
+-rwxr-sr-x 1 hacksports just-no_7 7800 Mar 31 08:00 justno
+-rw-r--r-- 1 hacksports just-no_7  838 Mar 31 08:00 justno.c
+#+END_EXAMPLE
+the file auth contains no and justno is suid executable which can open flag
+
+~justno.c~
+#+BEGIN_SRC c
+##include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <unistd.h>
+#include <sys/types.h>
+
+int main(int argc, char **argv){ 
+  FILE* authf = fopen("../../problems/276fc27f3ef921f0e2f0f75ba95c9e60/auth","r"); //access auth file in ../../../problems/276fc27f3ef921f0e2f0f75ba95c9e60
+  if(authf == NULL){
+    printf("could not find auth file in ../../problems/276fc27f3ef921f0e2f0f75ba95c9e60/\n");
+    return 0;
+  }
+  char auth[8];
+  fgets(auth,8,authf);
+  fclose(authf);
+  if  (strcmp(auth,"no")!=0){
+    FILE* flagf;
+    flagf = fopen("/problems/276fc27f3ef921f0e2f0f75ba95c9e60/flag","r");
+    char flag[64];
+    fgets(flag,64,flagf);
+    printf("Oh. Well the auth file doesn't say no anymore so... Here's the flag: %s",flag);
+    fclose(flagf);
+  }else{
+    printf("auth file says no. So no. Just... no.\n");
+  }
+  return 0;
+#+END_SRC
+
+As the hint suggest the prblem is based on the relative path ,
+vunarable code
+#+BEGIN_EXAMPLE
+FILE* authf = fopen("../../problems/276fc27f3ef921f0e2f0f75ba95c9e60/auth","r"); //access auth file in ../../../problems/276fc27f3ef921f0e2f0f75ba95c9e60
+#+END_EXAMPLE
+
+It opens the auth file relative to the position of execution, So we create the same directory structure in tmp and create a file auth with
+yes in it and run the program from that place , Since relative path is taken for auth file, the file which we have created will be taken
+and we will get the Flag !!
+
+#+BEGIN_EXAMPLE
+Oh. Well the auth file doesn't say no anymore so... Here's the flag: 8661ca23ef68adc41d407817b8656dd0
+#+END_EXAMPLE
+** Reverse Engineering
+*** Hex2Raw
+Link : [[https://2017game.picoctf.com/game/level-1/challenge/Hex2Raw][hex2raw]]
+
+This program requires some unprintable characters as input... But how do you print unprintable characters? CLI yourself to 
+/problems/c69bcda4ca5a28fd9d18790fc763db73 and turn that Hex2Raw!
+
+Running hex2raw program gives
+#+BEGIN_EXAMPLE
+Give me this in raw form (0x41 -> 'A'):
+416f1c7918f83a4f1922d86df5e78348
+
+You gave me:
+
+#+END_EXAMPLE
+and promt for input , we just need to print this hex as charecters
+#+BEGIN_SRC shell
+python -c 'print "\x41\x6f\x1c\x79\x18\xf8\x3a\x4f\x19\x22\xd8\x6d\xf5\xe7\x83\x48"' | ./hex2raw
+#+END_SRC
+
+Gives the Flag!
+#+BEGIN_EXAMPLE
+416f1c7918f83a4f1922d86df5e78348
+
+You gave me:
+416f1c7918f83a4f1922d86df5e78348
+Yay! That's what I wanted! Here be the flag:
+#+END_EXAMPLE
+*** Raw2Hex
+Link : [[https://2017game.picoctf.com/game/level-1/challenge/Raw2Hex][raw2hex]]
+
+This program just prints a flag in raw form. All we need to do is convert the output to hex and we have it! CLI yourself to 
+/problems/7ed72aec10a93d978ec3542055975d36 and turn that Raw2Hex!
+
+Solution :
+
+Running raw2hex give the flag we need to take the hex of it
+
+#+BEGIN_SRC shell
+./raw2hex  |  xxd
+#+END_SRC
+#+BEGIN_EXAMPLE
+0000000: 5468 6520 666c 6167 2069 733a 233a 338f  The flag is:#:3.
+0000010: 3052 fec7 5f00 9f24 85ac 5352            0R.._..$..SR
+#+END_EXAMPLE
+
+And the flag is the  ~233a338f3052fec75f009f2485ac5352~  hex
+
+** Web Exploitation
+*** What Is Web
+Link : [[https://2017game.picoctf.com/game/level-1/challenge/What-Is-Web][what is web]]
+Someone told me that some guy came up with the "World Wide Web", using "HTML" and "stuff". Can you help me figure out what that is?  [[http://shell2017.picoctf.com:4443/][webpage]]
+
+The flag is placed in the html , css and javascript files of the webpage
+html
+#+BEGIN_EXAMPLE
+ The first part of the flag (there are 3 parts) is 72b28b258d2 
+#+END_EXAMPLE
+css
+#+BEGIN_EXAMPLE
+The second part of the flag is b2ea021486f 
+#+END_EXAMPLE
+js 
+#+BEGIN_EXAMPLE
+The final part of the flag is ddd5020451d
+#+END_EXAMPLE
+
+flag : 72b28b258d2b2ea021486fddd5020451d
+* Level 2
+** Forensics
+*** Meta Find Me
+
+Link : [[https://2017game.picoctf.com/game/level-2/challenge/Meta-Find-Me][Meta-Find-Me]]
+
+Find the location of the flag in the image: [[file:./image.jpg][image.jpg]] Note: Latitude and longitude values are in degrees with no degree symbols,
+/direction letters, minutes, seconds, or periods. They should only be digits. The flag is not just a set of coordinates - if 
+you think that, keep looking!
+
+Hint : 
+#+BEGIN_QUOTE
+How can images store location data? Perhaps search for GPS info on photos.
+#+END_QUOTE
+
+Solution :
+
+Running exiftool on the image gives
+
+#+BEGIN_EXAMPLE
+Comment                         : "Your flag is flag_2_meta_4_me_<lat>_<lon>_1c1f. Now find the GPS coordinates of this image! (Degrees only please)"
+
+GPS Position                    : 7 deg 0' 0.00", 96 deg 0' 0.00"
+#+END_EXAMPLE
+
+The Comment and GPS Section gives the required flag
+
+#+BEGIN_QUOTE
+flag_2_meta_4_me_7_96_1c1f
+#+END_QUOTE
+*** Little School Bus
+Link : [[https://2017game.picoctf.com/game/level-2/challenge/Little-School-Bus][Little-School-Bus]] 
+
+Can you help me find the data in this [[file:./littleschoolbus.bmp][littleschoolbus.bmp]]
+
+Hint :
+#+BEGIN_QUOTE
+Look at least significant bit encoding!!
+#+END_QUOTE
+
+Solution :
+
+As the Hint Suggest the Probelem is related to LSB Encoding , The left most digit in binary is called the LSB digit 
+
+An image is constituent of pixel and each pixel contains 3 colors (RGB) with 8 bytes each so a color can have values from 0 - 256 , LSB
+encoding is done by changing the LSB bit of the color , this slight variation is not notisable . So by changing the LSB bit we can hide
+data inside a file .
+
+#+BEGIN_SRC shell
+xxd -b ./littleschoolbus.bmp | head -n 20
+#+END_SRC
+
+Gives ,
+
+#+BEGIN_EXAMPLE
+00000000: 01000010 01001101 11100010 01001011 00000010 00000000  BM.K..
+00000006: 00000000 00000000 00000000 00000000 00110110 00000000  ....6.
+0000000c: 00000000 00000000 00101000 00000000 00000000 00000000  ..(...
+00000012: 11111100 00000000 00000000 00000000 11000111 00000000  ......
+00000018: 00000000 00000000 00000001 00000000 00011000 00000000  ......
+0000001e: 00000000 00000000 00000000 00000000 10101100 01001011  .....K
+00000024: 00000010 00000000 00000000 00000000 00000000 00000000  ......
+0000002a: 00000000 00000000 00000000 00000000 00000000 00000000  ......
+00000030: 00000000 00000000 00000000 00000000 00000000 00000000  ......
+00000036: 11111110 11111111 11111111 11111110 11111110 11111111  ......
+0000003c: 11111111 11111110 11111110 11111111 11111111 11111110  ......
+00000042: 11111111 11111111 11111110 11111110 11111110 11111111  ......
+00000048: 11111111 11111110 11111110 11111110 11111110 11111111  ......
+0000004e: 11111110 11111111 11111111 11111110 11111110 11111111  ......
+00000054: 11111111 11111111 11111110 11111111 11111111 11111111  ......
+0000005a: 11111111 11111110 11111111 11111111 11111110 11111111  ......
+00000060: 11111111 11111111 11111110 11111110 11111111 11111110  ......
+00000066: 11111110 11111111 11111111 11111110 11111110 11111111  ......
+0000006c: 11111110 11111111 11111110 11111111 11111111 11111110  ......
+00000072: 11111111 11111111 11111110 11111111 11111110 11111111  ......
+#+END_EXAMPLE
+
+Taking the LSB bit after the many zero 
+#+BEGIN_EXAMPLE
+00000036: 11111110 11111111 11111111 11111110 11111110 11111111  ......
+0000003c: 11111111 11111110 11111110 11111111 11111111 11111110  ......
+00000042: 11111111 11111111 11111110 11111110 11111110 11111111  ......
+00000048: 11111111 11111110 11111110 11111110 11111110 11111111  ......
+#+END_EXAMPLE
+
+8 bit gives 
+#+BEGIN_EXAMPLE
+01100110 01101100
+#+END_EXAMPLE
+Which in ascii is ~fl~ ?
+
+Now we script . 
+#+BEGIN_SRC python :results output org drawer
+binary_data = open("littleschoolbus.bmp","rb") # Open the file binary mode
+binary_data.seek(54)  #seek to 54 bytes these bytes does not contain any data
+data = binary_data.read() # read the binary data
+l = [] 
+for i in data:
+    l.append(bin(i)[-1])  #make a list of LSB bit
+for i in range(0,500,8):
+    print(chr(int(''.join(l[i:i+8]),2)),end='') # print the charecter
+
+#+END_SRC
+
+#+RESULTS:
+
+Which gives the flag !! 
+
+#+BEGIN_QUOTE
+flag{remember_kids_protect_your_headers_afb3}
+#+END_QUOTE
+
+Footnote :
+
+1. [[http://www.aaronmiller.in/thesis/][LSB]]
+2. [[http://www.devdungeon.com/content/working-binary-data-python][Python Binay]]
+** Cryptography
+*** SoRandom
+:PROPERTIES:
+:ID:       fe8713e5-ea3b-4bcc-afd9-5f062b4673df
+:END:
+Link : [[https://2017game.picoctf.com/game/level-2/challenge/SoRandom][SoRandom]]
+
+We found [[file:./sorandom.py][sorandom.py]] running at shell2017.picoctf.com:27691. It seems to be outputting the flag but randomizing all the characters first. 
+Is there anyway to get back the original flag?
+
+Hint: 
+#+BEGIN_QUOTE
+How random can computers be?
+#+END_QUOTE
+
+Solution : 
+
+This Given Python script
+#+BEGIN_SRC python :results output org drawer
+#!/usr/bin/python -u
+import random,string
+
+flag = "FLAG:"+open("flag", "r").read()[:-1]
+encflag = ""
+random.seed("random")
+for c in flag:
+  if c.islower():
+    #rotate number around alphabet a random amount
+    encflag += chr((ord(c)-ord('a')+random.randrange(0,26))%26 + ord('a'))
+  elif c.isupper():
+    encflag += chr((ord(c)-ord('A')+random.randrange(0,26))%26 + ord('A'))
+  elif c.isdigit():
+    encflag += chr((ord(c)-ord('0')+random.randrange(0,10))%10 + ord('0'))
+  else:
+    encflag += c
+print "Unguessably Randomized Flag: "+encflag
+
+#+END_SRC
+
+Connecting to the server gives
+
+#+BEGIN_QUOTE
+Unguessably Randomized Flag: BNZQ:20380043pc5p8u861tcy650q8xn8mf5d
+#+END_QUOTE
+
+Analysing the python script tells us that it uses the random python module to generate random digit to rotate the input, the seed for the
+radom generator is "random" . But this random generator is not completly random decause with the knowlage of the seed we can predict the 
+radom number generated in i th iteration of the funtion .  
+
+Creating  a scipt to break this encryption 
+
+#+BEGIN_SRC python :results output org drawer
+#!/usr/bin/python -u
+import random
+import string
+
+flag = ""
+encflag = "BNZQ20380043pc5p8u861tcy650q8xn8mf5d"
+
+
+while len(flag) != len(encflag):
+    random.seed("random")
+    for i in range(len(flag)):
+        random.randrange(0, 6)
+    if encflag[len(flag)].isdigit():
+        random_digit = random.randrange(0, 10)
+    else:
+        random_digit = random.randrange(0, 26)
+
+    for c in list(string.ascii_letters) + list("0987654321"):
+        if c.islower():
+            # rotate number around alphabet a random amount
+            cypher = chr((ord(c) - ord('a') + random_digit) % 26 + ord('a'))
+        elif c.isupper():
+            cypher = chr((ord(c) - ord('A') + random_digit) % 26 + ord('A'))
+        elif c.isdigit():
+            cypher = chr((ord(c) - ord('0') + random_digit) % 10 + ord('0'))
+        else:
+            cypher = c
+        if cypher == encflag[len(flag)]:
+            flag = flag + c
+            break
+
+    print(flag)
+#+END_SRC
+
+Which gives the flag !
+#+BEGIN_QUOTE
+FLAG:96109120ba8d1c844afe294c3cd1eb4c
+#+END_QUOTE
+*** LeakedHashes
+Link : [[https://2017game.picoctf.com/game/level-2/challenge/LeakedHashes][LeakedHashes]]
+
+Someone got hacked! Check out some service's password hashes that were leaked at [[file:./hashdump.txt][hashdump.txt]] Do you think they chose strong passwords?  
+We should check... The service is running at shell2017.picoctf.com:3815!
+
+Hint :
+#+BEGIN_QUOTE
+See if you can crack any of the login credentials and then connect to the service as one of the users. What's the chance these hashes 
+have actually already been broken by someone else? Are there websites that host those cracked hashes? Connect from the shell with nc.
+#+END_QUOTE
+
+Solution : 
+
+We can crack this md5 hashes with online services  https://crackstation.net/ , This site allows of cracking of 20 entries 
+
+
+#+BEGIN_QUOTE
+christene:89689941d40794e311ef8bc7061b9944    : 7h1ck
+#+END_QUOTE
+
+After cracking the hash just login with the username and password to get the flag
+
+#+BEGIN_QUOTE
+flag is 4f36a002cc953e6567a878758abc8cf9
+#+END_QUOTE
+* Level 3
+** Reversing 
+*** Coffee
+Link : [[https://2017game.picoctf.com/game/level-3/challenge/Coffee][Coffee]]
+You found a suspicious USB drive in a jar of pickles. It contains this [[file:./freeThePickles.class][file]]
+
+Hint : 
+#+BEGIN_QUOTE
+Is there a way to get the source of the program?
+#+END_QUOTE
+
+Solution :
+
+This problem gives a java class file , by using a java decompiler we can get the source code
+[[http://www.javadecompilers.com/][Java decompiler online]]
+
+#+BEGIN_SRC java
+import java.util.Base64.Decoder;
+
+public class problem {
+  public problem() {}
+  
+  public static String get_flag() { String str1 = "Hint: Don't worry about the schematics";
+    String str2 = "eux_Z]\\ayiqlog`s^hvnmwr[cpftbkjd";
+    String str3 = "Zf91XhR7fa=ZVH2H=QlbvdHJx5omN2xc";
+    byte[] arrayOfByte1 = str2.getBytes();
+    byte[] arrayOfByte2 = str3.getBytes();
+    byte[] arrayOfByte3 = new byte[arrayOfByte2.length];
+    for (int i = 0; i < arrayOfByte2.length; i++)
+    {
+      arrayOfByte3[i] = arrayOfByte2[(arrayOfByte1[i] - 90)];
+    }
+    System.out.println(java.util.Arrays.toString(java.util.Base64.getDecoder().decode(arrayOfByte3)));
+    return new String(java.util.Base64.getDecoder().decode(arrayOfByte3));
+  }
+  
+  public static void main(String[] paramArrayOfString) {
+    System.out.println("Nothing to see here");
+  }
+}
+#+END_SRC
+
+Changed the source code to call get_flag funtion 
+
+#+BEGIN_SRC java
+    public static void main(String[] paramArrayOfString) {
+	System.out.println("Nothing to see here");
+	problem.get_flag();
+    }
+#+END_SRC
+
+Just Running this java code gives the flag
+#+BEGIN_EXAMPLE
+flag_{pretty_cool_huh}
+#+END_EXAMPLE
