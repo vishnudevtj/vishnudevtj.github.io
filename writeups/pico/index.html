@@ -1,0 +1,1084 @@
+<!doctype html>
+<html lang="en">
+<head>
+<title>PicoCTF 2017</title>
+<!-- 2017-09-01 Fri 23:02 -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="generator" content="Org-mode">
+<meta name="author" content="Vishnu Dev TJ">
+
+<link  href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.5/js/bootstrap.min.js"></script>
+<style type="text/css">
+/* org mode styles on top of twbs */
+
+html {
+    position: relative;
+    min-height: 100%;
+}
+
+body {
+    font-size: 18px;
+    margin-bottom: 105px;
+}
+
+footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 101px;
+    background-color: #f5f5f5;
+}
+
+footer > div {
+    padding: 10px;
+}
+
+footer p {
+    margin: 0 0 5px;
+    text-align: center;
+    font-size: 16px;
+}
+
+#table-of-contents {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+blockquote p {
+    font-size: 18px;
+}
+
+pre {
+    font-size: 16px;
+}
+
+.footpara {
+    display: inline-block;
+}
+
+figcaption {
+  font-size: 16px;
+  color: #666;
+  font-style: italic;
+  padding-bottom: 15px;
+}
+
+/* from twbs docs */
+
+.bs-docs-sidebar.affix {
+    position: static;
+}
+@media (min-width: 768px) {
+    .bs-docs-sidebar {
+        padding-left: 20px;
+    }
+}
+
+/* All levels of nav */
+.bs-docs-sidebar .nav > li > a {
+    display: block;
+    padding: 4px 20px;
+    font-size: 14px;
+    font-weight: 500;
+    color: #999;
+}
+.bs-docs-sidebar .nav > li > a:hover,
+.bs-docs-sidebar .nav > li > a:focus {
+    padding-left: 19px;
+    color: #A1283B;
+    text-decoration: none;
+    background-color: transparent;
+    border-left: 1px solid #A1283B;
+}
+.bs-docs-sidebar .nav > .active > a,
+.bs-docs-sidebar .nav > .active:hover > a,
+.bs-docs-sidebar .nav > .active:focus > a {
+    padding-left: 18px;
+    font-weight: bold;
+    color: #A1283B;
+    background-color: transparent;
+    border-left: 2px solid #A1283B;
+}
+
+/* Nav: second level (shown on .active) */
+.bs-docs-sidebar .nav .nav {
+    display: none; /* Hide by default, but at >768px, show it */
+    padding-bottom: 10px;
+}
+.bs-docs-sidebar .nav .nav > li > a {
+    padding-top: 1px;
+    padding-bottom: 1px;
+    padding-left: 30px;
+    font-size: 12px;
+    font-weight: normal;
+}
+.bs-docs-sidebar .nav .nav > li > a:hover,
+.bs-docs-sidebar .nav .nav > li > a:focus {
+    padding-left: 29px;
+}
+.bs-docs-sidebar .nav .nav > .active > a,
+.bs-docs-sidebar .nav .nav > .active:hover > a,
+.bs-docs-sidebar .nav .nav > .active:focus > a {
+    padding-left: 28px;
+    font-weight: 500;
+}
+
+/* Nav: third level (shown on .active) */
+.bs-docs-sidebar .nav .nav .nav {
+    padding-bottom: 10px;
+}
+.bs-docs-sidebar .nav .nav .nav > li > a {
+    padding-top: 1px;
+    padding-bottom: 1px;
+    padding-left: 40px;
+    font-size: 12px;
+    font-weight: normal;
+}
+.bs-docs-sidebar .nav .nav .nav > li > a:hover,
+.bs-docs-sidebar .nav .nav .nav > li > a:focus {
+    padding-left: 39px;
+}
+.bs-docs-sidebar .nav .nav .nav > .active > a,
+.bs-docs-sidebar .nav .nav .nav > .active:hover > a,
+.bs-docs-sidebar .nav .nav .nav > .active:focus > a {
+    padding-left: 38px;
+    font-weight: 500;
+}
+
+/* Show and affix the side nav when space allows it */
+@media (min-width: 992px) {
+    .bs-docs-sidebar .nav > .active > ul {
+        display: block;
+    }
+    /* Widen the fixed sidebar */
+    .bs-docs-sidebar.affix,
+    .bs-docs-sidebar.affix-bottom {
+        width: 213px;
+    }
+    .bs-docs-sidebar.affix {
+        position: fixed; /* Undo the static from mobile first approach */
+        top: 20px;
+    }
+    .bs-docs-sidebar.affix-bottom {
+        position: absolute; /* Undo the static from mobile first approach */
+    }
+    .bs-docs-sidebar.affix .bs-docs-sidenav,.bs-docs-sidebar.affix-bottom .bs-docs-sidenav {
+        margin-top: 0;
+        margin-bottom: 0
+    }
+}
+@media (min-width: 1200px) {
+    /* Widen the fixed sidebar again */
+    .bs-docs-sidebar.affix-bottom,
+    .bs-docs-sidebar.affix {
+        width: 263px;
+    }
+}
+</style>
+<script type="text/javascript">
+$(function() {
+    'use strict';
+
+    $('.bs-docs-sidebar li').first().addClass('active');
+
+    $(document.body).scrollspy({target: '.bs-docs-sidebar'});
+
+    $('.bs-docs-sidebar').affix();
+});
+</script>
+</head>
+<body>
+<div id="content" class="container">
+<div class="row"><div class="col-md-9"><h1 class="title">PicoCTF 2017</h1>
+<div id="outline-container-sec-1" class="outline-2">
+<h2 id="sec-1"><span class="section-number-2">1</span> Level 1</h2>
+<div class="outline-text-2" id="text-1">
+</div><div id="outline-container-sec-1-1" class="outline-3">
+<h3 id="sec-1-1"><span class="section-number-3">1.1</span> Forensics</h3>
+<div class="outline-text-3" id="text-1-1">
+</div><div id="outline-container-sec-1-1-1" class="outline-4">
+<h4 id="sec-1-1-1"><span class="section-number-4">1.1.1</span> Digital Camouflage</h4>
+<div class="outline-text-4" id="text-1-1-1">
+<p>
+Link : <a href="https://2017game.picoctf.com/game/level-1/challenge/Digital-Camouflage">Digital Camouflage</a>
+</p>
+
+<p>
+We need to gain access to some routers. Let's try and see if we can find the password in the captured network data : <a href="./data.pcap">data.pcap</a>
+</p>
+
+<p>
+Hint :
+</p>
+<blockquote>
+<p>
+It looks like someone logged in with their password earlier. Where would log in data be located in a n etwork capture?
+If you think you found the flag, but it doesn't work, consider that the data may be encrypted.
+</p>
+</blockquote>
+
+<p>
+Solution : 
+</p>
+
+<p>
+This Problem gives us a network capture and we need to analyse the files to get the password of a login.
+Using Wireshark we can export all the files from the pcap file . 
+Files &gt; Export Objects &gt; HTTP 
+Gives a list of HTML which is present in the captured file . And one of the file contains the password which is is encrypted in base64.
+</p>
+
+<p>
+main.html
+</p>
+<pre class="example">
+userid=spiveyp&amp;pswrd=S04xWjZQWFZ5OQ%3D%3D
+</pre>
+
+<p>
+%3d represent = in url
+</p>
+<div class="org-src-container">
+
+<pre class="src src-shell"><span style="color: #859900;">echo</span> <span style="color: #268bd2;">S04xWjZQWFZ5OQ</span>== | base64 -d
+</pre>
+</div>
+
+<p>
+Gives the flag !
+</p>
+<pre class="example">
+KN1Z6PXVy9
+</pre>
+</div>
+</div>
+
+<div id="outline-container-sec-1-1-2" class="outline-4">
+<h4 id="sec-1-1-2"><span class="section-number-4">1.1.2</span> Special Agent User</h4>
+<div class="outline-text-4" id="text-1-1-2">
+<p>
+Link : <a href="https://2017game.picoctf.com/game/level-1/challenge/Special-Agent-User">Special Agent User</a> 
+</p>
+
+<p>
+We can get into the Administrator's computer with a browser exploit. But first, we need to figure out what browser they're using.
+Perhaps this information is located in a network packet capture we took: <a href="./data1.pcap">data.pcap</a>
+Enter the browser and version as "BrowserName BrowserVersion". NOTE: We're just looking for up to 3 levels of subversions for
+the browser version (ie. Version 1.2.3 for Version 1.2.3.4) and ignore any 0th subversions (ie. 1.2 for 1.2.0)
+</p>
+
+<p>
+Hint :
+</p>
+<blockquote>
+<p>
+Where can we find information on the browser in networking data? Maybe <a href="http://www.useragentstring.com./">try reading up on user-agent strings</a>
+</p>
+</blockquote>
+
+<p>
+Solution :
+User agent tell the server the details of which broser and os is the user use
+Running xxd 
+</p>
+<div class="org-src-container">
+
+<pre class="src src-shell">xxd data.pcap | grep -A 10 User
+</pre>
+</div>
+<p>
+There was many wget entries and one was
+</p>
+<pre class="example">
+--
+00003c90: 2f20 4854 5450 2f31 2e31 0d0a 5573 6572  / HTTP/1.1..User
+00003ca0: 2d41 6765 6e74 3a20 4d6f 7a69 6c6c 612f  -Agent: Mozilla/
+00003cb0: 352e 3020 2857 696e 646f 7773 204e 5420  5.0 (Windows NT 
+00003cc0: 352e 3129 2041 7070 6c65 5765 624b 6974  5.1) AppleWebKit
+00003cd0: 2f35 3337 2e33 3620 284b 4854 4d4c 2c20  /537.36 (KHTML, 
+00003ce0: 6c69 6b65 2047 6563 6b6f 2920 4368 726f  like Gecko) Chro
+00003cf0: 6d65 2f33 352e 302e 3231 3137 2e31 3537  me/35.0.2117.157
+00003d00: 2053 6166 6172 692f 3533 372e 3336 0d0a   Safari/537.36..
+00003d10: 4163 6365 7074 3a20 2a2f 2a0d 0a48 6f73  Accept: */*..Hos
+00003d20: 743a 2031 302e 302e 302e 310d 0a43 6f6e  t: 10.0.0.1..Con
+00003d30: 6e65 6374 696f 6e3a 204b 6565 702d 416c  nection: Keep-Al
+--
+</pre>
+<p>
+Which tells that the browser is Chrome version 35.0.2117
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-1-2" class="outline-3">
+<h3 id="sec-1-2"><span class="section-number-3">1.2</span> Binary Explitation</h3>
+<div class="outline-text-3" id="text-1-2">
+</div><div id="outline-container-sec-1-2-1" class="outline-4">
+<h4 id="sec-1-2-1"><span class="section-number-4">1.2.1</span> Bash Loop</h4>
+<div class="outline-text-4" id="text-1-2-1">
+<p>
+Link:<a href="https://2017game.picoctf.com/game/level-1/challenge/Bash-Loop">bash loop</a>
+</p>
+
+<p>
+We found a program that is hiding a flag but requires you to guess the number it is thinking of. Chances are Linux has an easy
+way to try all the numbers&#x2026; Go to /problems/69a376443853a8d385877f60375188bf and try it out!
+</p>
+
+<p>
+Solution :
+</p>
+
+<p>
+The location contain two files .
+</p>
+<pre class="example">
+-rwxr-sr-x 1 hacksports bash-loop_7 8216 Mar 31 08:01 bashloop
+-r--r----- 1 hacksports bash-loop_7   33 Mar 31 08:01 flag
+</pre>
+
+<p>
+bashloop has SUID bit set , Running bashloop ,gives
+</p>
+<pre class="example">
+What number am I thinking of? It is between 0 and 4096
+</pre>
+<p>
+So it takes a number between 0 and 4096 as input .
+<code>./bashloop 0</code>
+</p>
+<pre class="example">
+Nope. Pick another number between 0 and 4096
+</pre>
+<p>
+Scripting with bash
+</p>
+<div class="org-src-container">
+
+<pre class="src src-sh"><span style="color: #859900;">for</span> i<span style="color: #859900;"> in</span> {0..4096};<span style="color: #859900;">do</span>  ./bashloop $<span style="color: #268bd2;">i</span> ;<span style="color: #859900;">done</span> | grep -v Nope           
+</pre>
+</div>
+<p>
+Gives the flag!
+</p>
+<pre class="example">
+Yay! That's the number! Here be the flag: 249808e7eba907b7e323f4f2fff2406d
+</pre>
+</div>
+</div>
+
+<div id="outline-container-sec-1-2-2" class="outline-4">
+<h4 id="sec-1-2-2"><span class="section-number-4">1.2.2</span> Just No</h4>
+<div class="outline-text-4" id="text-1-2-2">
+<p>
+Link : <a href="https://2017game.picoctf.com/game/level-1/challenge/Just-No">just no</a>
+</p>
+
+<p>
+A program at /problems/276fc27f3ef921f0e2f0f75ba95c9e60 has access to a flag but refuses to share it. Can you convince it otherwise?
+</p>
+
+<p>
+Hint :
+</p>
+<blockquote>
+<p>
+Check out the difference between relative and absolute paths and see if you can figure out how to use them to solve this challenge.
+Could you possibly spoof another auth file it looks at instead&#x2026;?
+</p>
+</blockquote>
+
+<p>
+Soution:
+Listing the directory 
+</p>
+<pre class="example">
+-rw-r--r-- 1 hacksports just-no_7    2 Mar 31 08:00 auth
+-r--r----- 1 hacksports just-no_7   33 Mar 31 08:00 flag
+-rwxr-sr-x 1 hacksports just-no_7 7800 Mar 31 08:00 justno
+-rw-r--r-- 1 hacksports just-no_7  838 Mar 31 08:00 justno.c
+</pre>
+<p>
+the file auth contains no and justno is suid executable which can open flag
+</p>
+
+<p>
+<code>justno.c</code>
+</p>
+<div class="org-src-container">
+
+<pre class="src src-c">##include &lt;stdio.h&gt;
+<span style="color: #cb4b16;">#include</span> <span style="color: #2aa198;">&lt;stdlib.h&gt;</span>
+<span style="color: #cb4b16;">#include</span> <span style="color: #2aa198;">&lt;string.h&gt;</span>
+<span style="color: #cb4b16;">#include</span> <span style="color: #2aa198;">&lt;unistd.h&gt;</span>
+<span style="color: #cb4b16;">#include</span> <span style="color: #2aa198;">&lt;sys/types.h&gt;</span>
+
+<span style="color: #b58900;">int</span> main(<span style="color: #b58900;">int</span> <span style="color: #268bd2;">argc</span>, <span style="color: #b58900;">char</span> **<span style="color: #268bd2;">argv</span>){ 
+  <span style="color: #b58900;">FILE</span>* <span style="color: #268bd2;">authf</span> = fopen(<span style="color: #2aa198;">"../../problems/276fc27f3ef921f0e2f0f75ba95c9e60/auth"</span>,<span style="color: #2aa198;">"r"</span>); <span style="color: #586e75; font-style: italic;">//</span><span style="color: #586e75; font-style: italic;">access auth file in ../../../problems/276fc27f3ef921f0e2f0f75ba95c9e60</span>
+  <span style="color: #859900;">if</span>(authf == <span style="color: #2aa198;">NULL</span>){
+    printf(<span style="color: #2aa198;">"could not find auth file in ../../problems/276fc27f3ef921f0e2f0f75ba95c9e60/\n"</span>);
+    <span style="color: #859900;">return</span> 0;
+  }
+  <span style="color: #b58900;">char</span> <span style="color: #268bd2;">auth</span>[8];
+  fgets(auth,8,authf);
+  fclose(authf);
+  <span style="color: #859900;">if</span>  (strcmp(auth,<span style="color: #2aa198;">"no"</span>)!=0){
+    <span style="color: #b58900;">FILE</span>* <span style="color: #268bd2;">flagf</span>;
+    flagf = fopen(<span style="color: #2aa198;">"/problems/276fc27f3ef921f0e2f0f75ba95c9e60/flag"</span>,<span style="color: #2aa198;">"r"</span>);
+    <span style="color: #b58900;">char</span> <span style="color: #268bd2;">flag</span>[64];
+    fgets(flag,64,flagf);
+    printf(<span style="color: #2aa198;">"Oh. Well the auth file doesn't say no anymore so... Here's the flag: %s"</span>,flag);
+    fclose(flagf);
+  }<span style="color: #859900;">else</span>{
+    printf(<span style="color: #2aa198;">"auth file says no. So no. Just... no.\n"</span>);
+  }
+  <span style="color: #859900;">return</span> 0;
+</pre>
+</div>
+
+<p>
+As the hint suggest the prblem is based on the relative path ,
+vunarable code
+</p>
+<pre class="example">
+FILE* authf = fopen("../../problems/276fc27f3ef921f0e2f0f75ba95c9e60/auth","r"); //access auth file in ../../../problems/276fc27f3ef921f0e2f0f75ba95c9e60
+</pre>
+
+<p>
+It opens the auth file relative to the position of execution, So we create the same directory structure in tmp and create a file auth with
+yes in it and run the program from that place , Since relative path is taken for auth file, the file which we have created will be taken
+and we will get the Flag !!
+</p>
+
+<pre class="example">
+Oh. Well the auth file doesn't say no anymore so... Here's the flag: 8661ca23ef68adc41d407817b8656dd0
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-1-3" class="outline-3">
+<h3 id="sec-1-3"><span class="section-number-3">1.3</span> Reverse Engineering</h3>
+<div class="outline-text-3" id="text-1-3">
+</div><div id="outline-container-sec-1-3-1" class="outline-4">
+<h4 id="sec-1-3-1"><span class="section-number-4">1.3.1</span> Hex2Raw</h4>
+<div class="outline-text-4" id="text-1-3-1">
+<p>
+Link : <a href="https://2017game.picoctf.com/game/level-1/challenge/Hex2Raw">hex2raw</a>
+</p>
+
+<p>
+This program requires some unprintable characters as input&#x2026; But how do you print unprintable characters? CLI yourself to 
+/problems/c69bcda4ca5a28fd9d18790fc763db73 and turn that Hex2Raw!
+</p>
+
+<p>
+Running hex2raw program gives
+</p>
+<pre class="example">
+Give me this in raw form (0x41 -&gt; 'A'):
+416f1c7918f83a4f1922d86df5e78348
+
+You gave me:
+
+</pre>
+<p>
+and promt for input , we just need to print this hex as charecters
+</p>
+<div class="org-src-container">
+
+<pre class="src src-shell">python -c <span style="color: #2aa198;">'print "\x41\x6f\x1c\x79\x18\xf8\x3a\x4f\x19\x22\xd8\x6d\xf5\xe7\x83\x48"'</span> | ./hex2raw
+</pre>
+</div>
+
+<p>
+Gives the Flag!
+</p>
+<pre class="example">
+416f1c7918f83a4f1922d86df5e78348
+
+You gave me:
+416f1c7918f83a4f1922d86df5e78348
+Yay! That's what I wanted! Here be the flag:
+</pre>
+</div>
+</div>
+<div id="outline-container-sec-1-3-2" class="outline-4">
+<h4 id="sec-1-3-2"><span class="section-number-4">1.3.2</span> Raw2Hex</h4>
+<div class="outline-text-4" id="text-1-3-2">
+<p>
+Link : <a href="https://2017game.picoctf.com/game/level-1/challenge/Raw2Hex">raw2hex</a>
+</p>
+
+<p>
+This program just prints a flag in raw form. All we need to do is convert the output to hex and we have it! CLI yourself to 
+/problems/7ed72aec10a93d978ec3542055975d36 and turn that Raw2Hex!
+</p>
+
+<p>
+Solution :
+</p>
+
+<p>
+Running raw2hex give the flag we need to take the hex of it
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-shell">./raw2hex  |  xxd
+</pre>
+</div>
+<pre class="example">
+0000000: 5468 6520 666c 6167 2069 733a 233a 338f  The flag is:#:3.
+0000010: 3052 fec7 5f00 9f24 85ac 5352            0R.._..$..SR
+</pre>
+
+<p>
+And the flag is the  <code>233a338f3052fec75f009f2485ac5352</code>  hex
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-1-4" class="outline-3">
+<h3 id="sec-1-4"><span class="section-number-3">1.4</span> Web Exploitation</h3>
+<div class="outline-text-3" id="text-1-4">
+</div><div id="outline-container-sec-1-4-1" class="outline-4">
+<h4 id="sec-1-4-1"><span class="section-number-4">1.4.1</span> What Is Web</h4>
+<div class="outline-text-4" id="text-1-4-1">
+<p>
+Link : <a href="https://2017game.picoctf.com/game/level-1/challenge/What-Is-Web">what is web</a>
+Someone told me that some guy came up with the "World Wide Web", using "HTML" and "stuff". Can you help me figure out what that is?  <a href="http://shell2017.picoctf.com:4443/">webpage</a>
+</p>
+
+<p>
+The flag is placed in the html , css and javascript files of the webpage
+html
+</p>
+<pre class="example">
+ The first part of the flag (there are 3 parts) is 72b28b258d2 
+</pre>
+<p>
+css
+</p>
+<pre class="example">
+The second part of the flag is b2ea021486f 
+</pre>
+<p>
+js 
+</p>
+<pre class="example">
+The final part of the flag is ddd5020451d
+</pre>
+
+<p>
+flag : 72b28b258d2b2ea021486fddd5020451d
+</p>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-2" class="outline-2">
+<h2 id="sec-2"><span class="section-number-2">2</span> Level 2</h2>
+<div class="outline-text-2" id="text-2">
+</div><div id="outline-container-sec-2-1" class="outline-3">
+<h3 id="sec-2-1"><span class="section-number-3">2.1</span> Forensics</h3>
+<div class="outline-text-3" id="text-2-1">
+</div><div id="outline-container-sec-2-1-1" class="outline-4">
+<h4 id="sec-2-1-1"><span class="section-number-4">2.1.1</span> Meta Find Me</h4>
+<div class="outline-text-4" id="text-2-1-1">
+<p>
+Link : <a href="https://2017game.picoctf.com/game/level-2/challenge/Meta-Find-Me">Meta-Find-Me</a>
+</p>
+
+<p>
+Find the location of the flag in the image: <a href="./image.jpg">image.jpg</a> Note: Latitude and longitude values are in degrees with no degree symbols,
+/direction letters, minutes, seconds, or periods. They should only be digits. The flag is not just a set of coordinates - if 
+you think that, keep looking!
+</p>
+
+<p>
+Hint : 
+</p>
+<blockquote>
+<p>
+How can images store location data? Perhaps search for GPS info on photos.
+</p>
+</blockquote>
+
+<p>
+Solution :
+</p>
+
+<p>
+Running exiftool on the image gives
+</p>
+
+<pre class="example">
+Comment                         : "Your flag is flag_2_meta_4_me_&lt;lat&gt;_&lt;lon&gt;_1c1f. Now find the GPS coordinates of this image! (Degrees only please)"
+
+GPS Position                    : 7 deg 0' 0.00", 96 deg 0' 0.00"
+</pre>
+
+<p>
+The Comment and GPS Section gives the required flag
+</p>
+
+<blockquote>
+<p>
+flag_2_meta_4_me_7_96_1c1f
+</p>
+</blockquote>
+</div>
+</div>
+<div id="outline-container-sec-2-1-2" class="outline-4">
+<h4 id="sec-2-1-2"><span class="section-number-4">2.1.2</span> Little School Bus</h4>
+<div class="outline-text-4" id="text-2-1-2">
+<p>
+Link : <a href="https://2017game.picoctf.com/game/level-2/challenge/Little-School-Bus">Little-School-Bus</a> 
+</p>
+
+<p>
+Can you help me find the data in this <a href="./littleschoolbus.bmp">littleschoolbus.bmp</a>
+</p>
+
+<p>
+Hint :
+</p>
+<blockquote>
+<p>
+Look at least significant bit encoding!!
+</p>
+</blockquote>
+
+<p>
+Solution :
+</p>
+
+<p>
+As the Hint Suggest the Probelem is related to LSB Encoding , The left most digit in binary is called the LSB digit 
+</p>
+
+<p>
+An image is constituent of pixel and each pixel contains 3 colors (RGB) with 8 bytes each so a color can have values from 0 - 256 , LSB
+encoding is done by changing the LSB bit of the color , this slight variation is not notisable . So by changing the LSB bit we can hide
+data inside a file .
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-shell">xxd -b ./littleschoolbus.bmp | head -n 20
+</pre>
+</div>
+
+<p>
+Gives ,
+</p>
+
+<pre class="example">
+00000000: 01000010 01001101 11100010 01001011 00000010 00000000  BM.K..
+00000006: 00000000 00000000 00000000 00000000 00110110 00000000  ....6.
+0000000c: 00000000 00000000 00101000 00000000 00000000 00000000  ..(...
+00000012: 11111100 00000000 00000000 00000000 11000111 00000000  ......
+00000018: 00000000 00000000 00000001 00000000 00011000 00000000  ......
+0000001e: 00000000 00000000 00000000 00000000 10101100 01001011  .....K
+00000024: 00000010 00000000 00000000 00000000 00000000 00000000  ......
+0000002a: 00000000 00000000 00000000 00000000 00000000 00000000  ......
+00000030: 00000000 00000000 00000000 00000000 00000000 00000000  ......
+00000036: 11111110 11111111 11111111 11111110 11111110 11111111  ......
+0000003c: 11111111 11111110 11111110 11111111 11111111 11111110  ......
+00000042: 11111111 11111111 11111110 11111110 11111110 11111111  ......
+00000048: 11111111 11111110 11111110 11111110 11111110 11111111  ......
+0000004e: 11111110 11111111 11111111 11111110 11111110 11111111  ......
+00000054: 11111111 11111111 11111110 11111111 11111111 11111111  ......
+0000005a: 11111111 11111110 11111111 11111111 11111110 11111111  ......
+00000060: 11111111 11111111 11111110 11111110 11111111 11111110  ......
+00000066: 11111110 11111111 11111111 11111110 11111110 11111111  ......
+0000006c: 11111110 11111111 11111110 11111111 11111111 11111110  ......
+00000072: 11111111 11111111 11111110 11111111 11111110 11111111  ......
+</pre>
+
+<p>
+Taking the LSB bit after the many zero 
+</p>
+<pre class="example">
+00000036: 11111110 11111111 11111111 11111110 11111110 11111111  ......
+0000003c: 11111111 11111110 11111110 11111111 11111111 11111110  ......
+00000042: 11111111 11111111 11111110 11111110 11111110 11111111  ......
+00000048: 11111111 11111110 11111110 11111110 11111110 11111111  ......
+</pre>
+
+<p>
+8 bit gives 
+</p>
+<pre class="example">
+01100110 01101100
+</pre>
+<p>
+Which in ascii is <code>fl</code> ?
+</p>
+
+<p>
+Now we script . 
+</p>
+<div class="org-src-container">
+
+<pre class="src src-python"><span style="color: #268bd2;">binary_data</span> = <span style="color: #859900;">open</span>(<span style="color: #2aa198;">"littleschoolbus.bmp"</span>,<span style="color: #2aa198;">"rb"</span>) <span style="color: #586e75; font-style: italic;"># </span><span style="color: #586e75; font-style: italic;">Open the file binary mode</span>
+binary_data.seek(54)  <span style="color: #586e75; font-style: italic;">#</span><span style="color: #586e75; font-style: italic;">seek to 54 bytes these bytes does not contain any data</span>
+<span style="color: #268bd2;">data</span> = binary_data.read() <span style="color: #586e75; font-style: italic;"># </span><span style="color: #586e75; font-style: italic;">read the binary data</span>
+<span style="color: #268bd2;">l</span> = [] 
+<span style="color: #859900;">for</span> i <span style="color: #859900;">in</span> data:
+    l.append(<span style="color: #859900;">bin</span>(i)[-1])  <span style="color: #586e75; font-style: italic;">#</span><span style="color: #586e75; font-style: italic;">make a list of LSB bit</span>
+<span style="color: #859900;">for</span> i <span style="color: #859900;">in</span> <span style="color: #859900;">range</span>(0,500,8):
+    <span style="color: #859900;">print</span>(<span style="color: #859900;">chr</span>(<span style="color: #859900;">int</span>(<span style="color: #2aa198;">''</span>.join(l[i:i+8]),2)),end=<span style="color: #2aa198;">''</span>) <span style="color: #586e75; font-style: italic;"># </span><span style="color: #586e75; font-style: italic;">print the charecter</span>
+
+</pre>
+</div>
+
+<p>
+Which gives the flag !! 
+</p>
+
+<blockquote>
+<p>
+flag{remember_kids_protect_your_headers_afb3}
+</p>
+</blockquote>
+
+<p>
+Footnote :
+</p>
+
+<ol class="org-ol">
+<li><a href="http://www.aaronmiller.in/thesis/">LSB</a>
+</li>
+<li><a href="http://www.devdungeon.com/content/working-binary-data-python">Python Binay</a>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-2-2" class="outline-3">
+<h3 id="sec-2-2"><span class="section-number-3">2.2</span> Cryptography</h3>
+<div class="outline-text-3" id="text-2-2">
+</div><div id="outline-container-sec-2-2-1" class="outline-4">
+<h4 id="sec-2-2-1"><a id="ID-fe8713e5-ea3b-4bcc-afd9-5f062b4673df" name="ID-fe8713e5-ea3b-4bcc-afd9-5f062b4673df"></a><span class="section-number-4">2.2.1</span> SoRandom</h4>
+<div class="outline-text-4" id="text-2-2-1">
+<p>
+Link : <a href="https://2017game.picoctf.com/game/level-2/challenge/SoRandom">SoRandom</a>
+</p>
+
+<p>
+We found <a href="./sorandom.py">sorandom.py</a> running at shell2017.picoctf.com:27691. It seems to be outputting the flag but randomizing all the characters first. 
+Is there anyway to get back the original flag?
+</p>
+
+<p>
+Hint: 
+</p>
+<blockquote>
+<p>
+How random can computers be?
+</p>
+</blockquote>
+
+<p>
+Solution : 
+</p>
+
+<p>
+This Given Python script
+</p>
+<div class="org-src-container">
+
+<pre class="src src-python"><span style="color: #586e75; font-style: italic;">#</span><span style="color: #586e75; font-style: italic;">!/usr/bin/python -u</span>
+<span style="color: #859900;">import</span> random,string
+
+<span style="color: #268bd2;">flag</span> = <span style="color: #2aa198;">"FLAG:"</span>+<span style="color: #859900;">open</span>(<span style="color: #2aa198;">"flag"</span>, <span style="color: #2aa198;">"r"</span>).read()[:-1]
+<span style="color: #268bd2;">encflag</span> = <span style="color: #2aa198;">""</span>
+random.seed(<span style="color: #2aa198;">"random"</span>)
+<span style="color: #859900;">for</span> c <span style="color: #859900;">in</span> flag:
+  <span style="color: #859900;">if</span> c.islower():
+    <span style="color: #586e75; font-style: italic;">#</span><span style="color: #586e75; font-style: italic;">rotate number around alphabet a random amount</span>
+    <span style="color: #268bd2;">encflag</span> += <span style="color: #859900;">chr</span>((<span style="color: #859900;">ord</span>(c)-<span style="color: #859900;">ord</span>(<span style="color: #2aa198;">'a'</span>)+random.randrange(0,26))%26 + <span style="color: #859900;">ord</span>(<span style="color: #2aa198;">'a'</span>))
+  <span style="color: #859900;">elif</span> c.isupper():
+    <span style="color: #268bd2;">encflag</span> += <span style="color: #859900;">chr</span>((<span style="color: #859900;">ord</span>(c)-<span style="color: #859900;">ord</span>(<span style="color: #2aa198;">'A'</span>)+random.randrange(0,26))%26 + <span style="color: #859900;">ord</span>(<span style="color: #2aa198;">'A'</span>))
+  <span style="color: #859900;">elif</span> c.isdigit():
+    <span style="color: #268bd2;">encflag</span> += <span style="color: #859900;">chr</span>((<span style="color: #859900;">ord</span>(c)-<span style="color: #859900;">ord</span>(<span style="color: #2aa198;">'0'</span>)+random.randrange(0,10))%10 + <span style="color: #859900;">ord</span>(<span style="color: #2aa198;">'0'</span>))
+  <span style="color: #859900;">else</span>:
+    <span style="color: #268bd2;">encflag</span> += c
+<span style="color: #859900;">print</span> <span style="color: #2aa198;">"Unguessably Randomized Flag: "</span>+encflag
+
+</pre>
+</div>
+
+<p>
+Connecting to the server gives
+</p>
+
+<blockquote>
+<p>
+Unguessably Randomized Flag: BNZQ:20380043pc5p8u861tcy650q8xn8mf5d
+</p>
+</blockquote>
+
+<p>
+Analysing the python script tells us that it uses the random python module to generate random digit to rotate the input, the seed for the
+radom generator is "random" . But this random generator is not completly random decause with the knowlage of the seed we can predict the 
+radom number generated in i th iteration of the funtion .  
+</p>
+
+<p>
+Creating  a scipt to break this encryption 
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-python"><span style="color: #586e75; font-style: italic;">#</span><span style="color: #586e75; font-style: italic;">!/usr/bin/python -u</span>
+<span style="color: #859900;">import</span> random
+<span style="color: #859900;">import</span> string
+
+<span style="color: #268bd2;">flag</span> = <span style="color: #2aa198;">""</span>
+<span style="color: #268bd2;">encflag</span> = <span style="color: #2aa198;">"BNZQ20380043pc5p8u861tcy650q8xn8mf5d"</span>
+
+
+<span style="color: #859900;">while</span> <span style="color: #859900;">len</span>(flag) != <span style="color: #859900;">len</span>(encflag):
+    random.seed(<span style="color: #2aa198;">"random"</span>)
+    <span style="color: #859900;">for</span> i <span style="color: #859900;">in</span> <span style="color: #859900;">range</span>(<span style="color: #859900;">len</span>(flag)):
+        random.randrange(0, 6)
+    <span style="color: #859900;">if</span> encflag[<span style="color: #859900;">len</span>(flag)].isdigit():
+        <span style="color: #268bd2;">random_digit</span> = random.randrange(0, 10)
+    <span style="color: #859900;">else</span>:
+        <span style="color: #268bd2;">random_digit</span> = random.randrange(0, 26)
+
+    <span style="color: #859900;">for</span> c <span style="color: #859900;">in</span> <span style="color: #859900;">list</span>(string.ascii_letters) + <span style="color: #859900;">list</span>(<span style="color: #2aa198;">"0987654321"</span>):
+        <span style="color: #859900;">if</span> c.islower():
+            <span style="color: #586e75; font-style: italic;"># </span><span style="color: #586e75; font-style: italic;">rotate number around alphabet a random amount</span>
+            <span style="color: #268bd2;">cypher</span> = <span style="color: #859900;">chr</span>((<span style="color: #859900;">ord</span>(c) - <span style="color: #859900;">ord</span>(<span style="color: #2aa198;">'a'</span>) + random_digit) % 26 + <span style="color: #859900;">ord</span>(<span style="color: #2aa198;">'a'</span>))
+        <span style="color: #859900;">elif</span> c.isupper():
+            <span style="color: #268bd2;">cypher</span> = <span style="color: #859900;">chr</span>((<span style="color: #859900;">ord</span>(c) - <span style="color: #859900;">ord</span>(<span style="color: #2aa198;">'A'</span>) + random_digit) % 26 + <span style="color: #859900;">ord</span>(<span style="color: #2aa198;">'A'</span>))
+        <span style="color: #859900;">elif</span> c.isdigit():
+            <span style="color: #268bd2;">cypher</span> = <span style="color: #859900;">chr</span>((<span style="color: #859900;">ord</span>(c) - <span style="color: #859900;">ord</span>(<span style="color: #2aa198;">'0'</span>) + random_digit) % 10 + <span style="color: #859900;">ord</span>(<span style="color: #2aa198;">'0'</span>))
+        <span style="color: #859900;">else</span>:
+            <span style="color: #268bd2;">cypher</span> = c
+        <span style="color: #859900;">if</span> cypher == encflag[<span style="color: #859900;">len</span>(flag)]:
+            <span style="color: #268bd2;">flag</span> = flag + c
+            <span style="color: #859900;">break</span>
+
+    <span style="color: #859900;">print</span>(flag)
+</pre>
+</div>
+
+<p>
+Which gives the flag !
+</p>
+<blockquote>
+<p>
+FLAG:96109120ba8d1c844afe294c3cd1eb4c
+</p>
+</blockquote>
+</div>
+</div>
+<div id="outline-container-sec-2-2-2" class="outline-4">
+<h4 id="sec-2-2-2"><span class="section-number-4">2.2.2</span> LeakedHashes</h4>
+<div class="outline-text-4" id="text-2-2-2">
+<p>
+Link : <a href="https://2017game.picoctf.com/game/level-2/challenge/LeakedHashes">LeakedHashes</a>
+</p>
+
+<p>
+Someone got hacked! Check out some service's password hashes that were leaked at <a href="./hashdump.txt">hashdump.txt</a> Do you think they chose strong passwords?  
+We should check&#x2026; The service is running at shell2017.picoctf.com:3815!
+</p>
+
+<p>
+Hint :
+</p>
+<blockquote>
+<p>
+See if you can crack any of the login credentials and then connect to the service as one of the users. What's the chance these hashes 
+have actually already been broken by someone else? Are there websites that host those cracked hashes? Connect from the shell with nc.
+</p>
+</blockquote>
+
+<p>
+Solution : 
+</p>
+
+<p>
+We can crack this md5 hashes with online services  <a href="https://crackstation.net/">https://crackstation.net/</a> , This site allows of cracking of 20 entries 
+</p>
+
+
+<blockquote>
+<p>
+christene:89689941d40794e311ef8bc7061b9944    : 7h1ck
+</p>
+</blockquote>
+
+<p>
+After cracking the hash just login with the username and password to get the flag
+</p>
+
+<blockquote>
+<p>
+flag is 4f36a002cc953e6567a878758abc8cf9
+</p>
+</blockquote>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-3" class="outline-2">
+<h2 id="sec-3"><span class="section-number-2">3</span> Level 3</h2>
+<div class="outline-text-2" id="text-3">
+</div><div id="outline-container-sec-3-1" class="outline-3">
+<h3 id="sec-3-1"><span class="section-number-3">3.1</span> Reversing</h3>
+<div class="outline-text-3" id="text-3-1">
+</div><div id="outline-container-sec-3-1-1" class="outline-4">
+<h4 id="sec-3-1-1"><span class="section-number-4">3.1.1</span> Coffee</h4>
+<div class="outline-text-4" id="text-3-1-1">
+<p>
+Link : <a href="https://2017game.picoctf.com/game/level-3/challenge/Coffee">Coffee</a>
+You found a suspicious USB drive in a jar of pickles. It contains this <a href="./freeThePickles.class">file</a>
+</p>
+
+<p>
+Hint : 
+</p>
+<blockquote>
+<p>
+Is there a way to get the source of the program?
+</p>
+</blockquote>
+
+<p>
+Solution :
+</p>
+
+<p>
+This problem gives a java class file , by using a java decompiler we can get the source code
+<a href="http://www.javadecompilers.com/">Java decompiler online</a>
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-java"><span style="color: #859900;">import</span> <span style="color: #2aa198;">java</span>.<span style="color: #2aa198;">util</span>.<span style="color: #2aa198;">Base64</span>.<span style="color: #b58900;">Decoder</span>;
+
+<span style="color: #859900;">public</span> <span style="color: #859900;">class</span> <span style="color: #b58900;">problem</span> {
+  <span style="color: #859900;">public</span> <span style="color: #268bd2;">problem</span>() {}
+  
+  <span style="color: #859900;">public</span> <span style="color: #859900;">static</span> <span style="color: #b58900;">String</span> <span style="color: #268bd2;">get_flag</span>() { <span style="color: #b58900;">String</span> <span style="color: #268bd2;">str1</span> = <span style="color: #2aa198;">"Hint: Don't worry about the schematics"</span>;
+    <span style="color: #b58900;">String</span> <span style="color: #268bd2;">str2</span> = <span style="color: #2aa198;">"eux_Z]\\ayiqlog`s^hvnmwr[cpftbkjd"</span>;
+    <span style="color: #b58900;">String</span> <span style="color: #268bd2;">str3</span> = <span style="color: #2aa198;">"Zf91XhR7fa=ZVH2H=QlbvdHJx5omN2xc"</span>;
+    <span style="color: #b58900;">byte</span>[] <span style="color: #268bd2;">arrayOfByte1</span> = str2.getBytes();
+    <span style="color: #b58900;">byte</span>[] <span style="color: #268bd2;">arrayOfByte2</span> = str3.getBytes();
+    <span style="color: #b58900;">byte</span>[] <span style="color: #268bd2;">arrayOfByte3</span> = <span style="color: #859900;">new</span> <span style="color: #b58900;">byte</span>[arrayOfByte2.length];
+    <span style="color: #859900;">for</span> (<span style="color: #b58900;">int</span> <span style="color: #268bd2;">i</span> = 0; i &lt; arrayOfByte2.<span style="color: #b58900;">length</span>; i++)
+    {
+      arrayOfByte3[i] = arrayOfByte2[(arrayOfByte1[i] - 90)];
+    }
+    System.out.println(<span style="color: #2aa198;">java</span>.<span style="color: #2aa198;">util</span>.Arrays.toString(<span style="color: #2aa198;">java</span>.<span style="color: #2aa198;">util</span>.Base64.getDecoder().decode(arrayOfByte3)));
+    <span style="color: #859900;">return</span> <span style="color: #859900;">new</span> <span style="color: #b58900;">String</span>(<span style="color: #2aa198;">java</span>.<span style="color: #2aa198;">util</span>.Base64.getDecoder().decode(arrayOfByte3));
+  }
+  
+  <span style="color: #859900;">public</span> <span style="color: #859900;">static</span> <span style="color: #b58900;">void</span> <span style="color: #268bd2;">main</span>(<span style="color: #b58900;">String</span>[] <span style="color: #268bd2;">paramArrayOfString</span>) {
+    System.out.println(<span style="color: #2aa198;">"Nothing to see here"</span>);
+  }
+}
+</pre>
+</div>
+
+<p>
+Changed the source code to call get_flag funtion 
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-java">    <span style="color: #859900;">public</span> <span style="color: #859900;">static</span> <span style="color: #b58900;">void</span> <span style="color: #268bd2;">main</span>(<span style="color: #b58900;">String</span>[] <span style="color: #268bd2;">paramArrayOfString</span>) {
+        System.out.println(<span style="color: #2aa198;">"Nothing to see here"</span>);
+        problem.get_flag();
+    }
+</pre>
+</div>
+
+<p>
+Just Running this java code gives the flag
+</p>
+<pre class="example">
+flag_{pretty_cool_huh}
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div><div class="col-md-3"><nav id="table-of-contents">
+<div id="text-table-of-contents" class="bs-docs-sidebar">
+<ul class="nav">
+<li><a href="#sec-1">1. Level 1</a>
+<ul class="nav">
+<li><a href="#sec-1-1">1.1. Forensics</a>
+<ul class="nav">
+<li><a href="#sec-1-1-1">1.1.1. Digital Camouflage</a></li>
+<li><a href="#sec-1-1-2">1.1.2. Special Agent User</a></li>
+</ul>
+</li>
+<li><a href="#sec-1-2">1.2. Binary Explitation</a>
+<ul class="nav">
+<li><a href="#sec-1-2-1">1.2.1. Bash Loop</a></li>
+<li><a href="#sec-1-2-2">1.2.2. Just No</a></li>
+</ul>
+</li>
+<li><a href="#sec-1-3">1.3. Reverse Engineering</a>
+<ul class="nav">
+<li><a href="#sec-1-3-1">1.3.1. Hex2Raw</a></li>
+<li><a href="#sec-1-3-2">1.3.2. Raw2Hex</a></li>
+</ul>
+</li>
+<li><a href="#sec-1-4">1.4. Web Exploitation</a>
+<ul class="nav">
+<li><a href="#sec-1-4-1">1.4.1. What Is Web</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#sec-2">2. Level 2</a>
+<ul class="nav">
+<li><a href="#sec-2-1">2.1. Forensics</a>
+<ul class="nav">
+<li><a href="#sec-2-1-1">2.1.1. Meta Find Me</a></li>
+<li><a href="#sec-2-1-2">2.1.2. Little School Bus</a></li>
+</ul>
+</li>
+<li><a href="#sec-2-2">2.2. Cryptography</a>
+<ul class="nav">
+<li><a href="#sec-2-2-1">2.2.1. SoRandom</a></li>
+<li><a href="#sec-2-2-2">2.2.2. LeakedHashes</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#sec-3">3. Level 3</a>
+<ul class="nav">
+<li><a href="#sec-3-1">3.1. Reversing</a>
+<ul class="nav">
+<li><a href="#sec-3-1-1">3.1.1. Coffee</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</nav>
+</div></div></div>
+<footer id="postamble" class="">
+<div><p class="author">Author: Vishnu Dev TJ</p>
+<p class="date">Created: 2017-09-01 Fri 23:02</p>
+<p class="creator"><a href="http://www.gnu.org/software/emacs/">Emacs</a> 25.1.1 (<a href="http://orgmode.org">Org-mode</a> 9.0.9)</p>
+</div>
+</footer>
+</body>
+</html>
