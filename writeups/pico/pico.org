@@ -1,3 +1,5 @@
+-*- mode: Org; org-download-image-dir: "~/Dropbox/bi0s/pico2017/screenshoot"; -*-
+
 #+TITLE: PicoCTF 2017
 #+OPTIONS:  toc:4 
 
@@ -326,6 +328,85 @@ The final part of the flag is ddd5020451d
 #+END_EXAMPLE
 
 flag : 72b28b258d2b2ea021486fddd5020451d
+*** Lazy Dev
+Link : [[https://2017game.picoctf.com/game/level-1/challenge/Lazy-Dev][Lazy-Dev]] 
+
+#+BEGIN_QUOTE
+I really need to login to this [[http://shell2017.picoctf.com:37907/][website]], but the developer hasn't implemented login yet. Can you help?
+#+END_QUOTE
+
+
+
+Hint : 
+
+#+BEGIN_QUOTE
+Where does the password check actually occur?
+Can you interact with the javascript directly?
+#+END_QUOTE
+
+Solution : 
+
+the webpage  
+
+#+DOWNLOADED: /tmp/screenshot.png @ 2017-09-04 15:48:56
+[[file:screenshoot/Level 1/screenshot_2017-09-04_15-48-56.png]]
+
+
+source 
+
+#+BEGIN_SRC html
+<!DOCTYPE html>
+<html lang="en">
+<body>
+    <h1>Enter the password</h1>
+    <input id="password">
+    <button type="button" onclick="process_password()">Submit</button>
+    <p id="res"></p>
+
+</body>
+<script type="text/javascript" src="/static/client.js"></script>
+</html>
+#+END_SRC
+
+JavaScript
+
+#+BEGIN_SRC java
+//Validate the password. TBD!
+function validate(pword){
+  //TODO: Implement me
+  return false;
+}
+
+//Make an ajax request to the server
+function make_ajax_req(input){
+  var text_response;
+  var http_req = new XMLHttpRequest();
+  var params = "pword_valid=" + input.toString();
+  http_req.open("POST", "login", true);
+  http_req.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+  http_req.onreadystatechange = function() {//Call a function when the state changes.
+  	if(http_req.readyState == 4 && http_req.status == 200) {
+      document.getElementById("res").innerHTML = http_req.responseText;
+    }
+  }
+  http_req.send(params);
+}
+
+//Called when the user submits the password
+function process_password(){
+  var pword = document.getElementById("password").value;
+  var res = validate(pword);
+  var server_res = make_ajax_req(res);
+}
+#+END_SRC
+
+The funtion which validate the password is not implemented and it allways return zero . Using the console in Firefox we can sent js requests
+. sending ~make_ajax_req()~ with true gives the flag 
+
+
+#+DOWNLOADED: /tmp/screenshot.png @ 2017-09-04 16:10:28
+[[file:screenshoot/Level 1/screenshot_2017-09-04_16-10-28.png]]
+
 * Level 2
 ** Forensics
 *** Meta Find Me
@@ -446,6 +527,106 @@ Footnote :
 
 1. [[http://www.aaronmiller.in/thesis/][LSB]]
 2. [[http://www.devdungeon.com/content/working-binary-data-python][Python Binay]]
+*** Missing Identity
+
+Link : [[https://2017game.picoctf.com/game/level-2/challenge/Missing-Identity][Missing-Identity]]
+
+#+BEGIN_QUOTE
+Turns out, some of the files back from Master Challenge 1 were corrupted. Restore this one [[file:./file/file][file]]  and find the flag 
+Update 16:26 EST 1 Apr If you feel that you are close, make a private piazza post with what you have, and an admin will help out. 
+The flag starts with the character z.
+#+END_QUOTE
+
+Hint : 
+
+#+BEGIN_QUOTE
+What file is this?
+What do you expect to find in the file structure?
+All characters in the file are lower case or numberical. There will not be any zeros.
+#+END_QUOTE
+
+Solution :
+
+Running file command gives it is data ,
+#+BEGIN_SRC 
+xxd file 
+#+END_SRC
+
+#+BEGIN_EXAMPLE
+00000000: 5858 5858 5858 0000 0800 2344 7f4a 6a58  XXXXXX....#D.JjX
+00000010: bd98 b48c 0000 a58c 0000 0800 0000 666c  ..............fl
+00000020: 6167 2e70 6e67 004e 40b1 bf89 504e 470d  ag.png.N@...PNG.
+00000030: 0a1a 0a00 0000 0d49 4844 5200 0002 7300  .......IHDR...s.
+00000040: 0000 3c08 0200 0000 8243 abc9 0000 8c6c  ..<......C.....l
+00000050: 4944 4154 789c dcfd 5793 ad5b 771e 868d  IDATx...W..[w...
+00000060: 31d3 1b56 eab8 e3d9 277e 1120 1820 4022  1..V....'~. . @"
+00000070: 4c52 8698 4452 b264 89a6 252b dcb8 5c2e  LR..DR.d..%+..\.
+00000080: 5fb9 6cdf e80f f846 572e 5fd8 55ae 7239  _.l....FW._.U.r9
+00000090: 48b6 cb14 254b b224 a254 2241 db22 0951  H...%K.$.T"A.".Q
+
+....
+
+00068ec0: 00a4 8100 0000 0066 6c61 672e 706e 6750  .......flag.pngP
+00068ed0: 4b01 0214 0314 0000 0008 0023 447f 4a50  K..........#D.JP
+00068ee0: 9769 035a ed00 0058 ed00 000f 0000 0000  .i.Z...X........
+00068ef0: 0000 0000 0000 00a4 81da 8c00 006e 6f74  .............not
+00068f00: 7468 6566 6c61 6731 2e70 6e67 504b 0102  theflag1.pngPK..
+00068f10: 1403 1400 0000 0800 2344 7f4a 4773 f028  ........#D.JGs.(
+00068f20: cfd4 0000 bbd4 0000 0f00 0000 0000 0000  ................
+00068f30: 0000 0000 a481 617a 0100 6e6f 7474 6865  ......az..notthe
+00068f40: 666c 6167 322e 706e 6750 4b01 0214 0314  flag2.pngPK.....
+00068f50: 0000 0008 0023 447f 4a51 a5e2 980d ea00  .....#D.JQ......
+00068f60: 00fd e900 000f 0000 0000 0000 0000 0000  ................
+00068f70: 00a4 815d 4f02 006e 6f74 7468 6566 6c61  ...]O..notthefla
+00068f80: 6733 2e70 6e67 504b 0102 1403 1400 0000  g3.pngPK........
+00068f90: 0800 2344 7f4a e1ca f91d 72ba 0000 63ba  ..#D.J....r...c.
+00068fa0: 0000 0f00 0000 0000 0000 0000 0000 a481  ................
+00068fb0: 9739 0300 6e6f 7474 6865 666c 6167 342e  .9..nottheflag4.
+00068fc0: 706e 6750 4b01 0214 0314 0000 0008 0023  pngPK..........#
+00068fd0: 447f 4a6c fcad 133b e600 0027 e600 000f  D.Jl...;...'....
+00068fe0: 0000 0000 0000 0000 0000 00a4 8136 f403  .............6..
+00068ff0: 006e 6f74 7468 6566 6c61 6735 2e70 6e67  .nottheflag5.png
+00069000: 504b 0102 1403 1400 0000 0800 2344 7f4a  PK..........#D.J
+00069010: 7663 94c0 f5c1 0000 19c2 0000 0f00 0000  vc..............
+00069020: 0000 0000 0000 0000 a481 9eda 0400 6e6f  ..............no
+00069030: 7474 6865 666c 6167 362e 706e 6750 4b01  ttheflag6.pngPK.
+00069040: 0214 0314 0000 0008 0023 447f 4aa7 207a  .........#D.J. z
+00069050: 1eac f100 0098 f100 000f 0000 0000 0000  ................
+00069060: 0000 0000 00a4 81c0 9c05 006e 6f74 7468  ...........notth
+00069070: 6566 6c61 6737 2e70 6e67 504b 0506 0000  eflag7.pngPK....
+00069080: 0000 0800 0800 e101 0000 998e 0600 0000  ................
+#+END_EXAMPLE
+
+The intersting part is in the begenning XXXXXX  suggest that it is related to magic bit . these bytes specifies what format the file is . 
+Every file format has a uniq bit which specifes that file format , program use there to identify file format . the end of xxd output 
+shows many file name which gives a hint that is a compressed file . ZIP has a four byte magic bit 
+
+#+BEGIN_QUOTE
+Zip Archive   "PK.."    0x50 0x4B 0x03 0x04
+#+END_QUOTE
+
+Changing the hex with hex editor 
+
+#+BEGIN_EXAMPLE
+00000000: 504b 0304 0000 0000 0800 2344 7f4a 6a58  PK........#D.JjX
+00000010: bd98 b48c 0000 a58c 0000 0800 0000 666c  ..............fl
+00000020: 6167 2e70 6e67 004e 40b1 bf89 504e 470d  ag.png.N@...PNG.
+00000030: 0a1a 0a00 0000 0d49 4844 5200 0002 7300  .......IHDR...s.
+00000040: 0000 3c08 0200 0000 8243 abc9 0000 8c6c  ..<......C.....l
+00000050: 4944 4154 789c dcfd 5793 ad5b 771e 868d  IDATx...W..[w...
+00000060: 31d3 1b56 eab8 e3d9 277e 1120 1820 4022  1..V....'~. . @"
+00000070: 4c52 8698 4452 b264 89a6 252b dcb8 5c2e  LR..DR.d..%+..\.
+00000080: 5fb9 6cdf e80f f846 572e 5fd8 55ae 7239  _.l....FW._.U.r9
+00000090: 48b6 cb14 254b b224 a254 2241 db22 0951  H...%K.$.T"A.".Q
+#+END_EXAMPLE
+
+unzip the file the flag.png gives the flag 
+
+[[file:./file/flag.png]]
+
+
+Footnote :
+https://blog.netspi.com/magic-bytes-identifying-common-file-formats-at-a-glance/
 ** Cryptography
 *** SoRandom
 :PROPERTIES:
@@ -1152,3 +1333,109 @@ Just Running this java code gives the flag
 #+BEGIN_EXAMPLE
 flag_{pretty_cool_huh}
 #+END_EXAMPLE
+
+** Cryptography
+*** HashChain
+
+Link: [[https://2017game.picoctf.com/game/level-3/challenge/HashChain][HashChain]] 
+
+#+BEGIN_QUOTE
+We found a service hiding a flag! It seems to be using some kind of MD5 Hash Chain authentication to identify who is allowed to see the 
+flag. Maybe there is a flaw you can exploit? hcexample.py has some example code on how to calculate iterations of the MD5 hash chain. 
+Connect to it at shell2017.picoctf.com:2412!
+#+END_QUOTE
+
+Hint :
+#+BEGIN_QUOTE
+Connect from the shell with nc. Read up on how Hash Chains work and try to identify what could make this cryptosystem weak.
+#+END_QUOTE
+
+Solution :
+
+The given python script
+
+#+BEGIN_SRC python :results output org drawer
+import md5 #Must be run in python 2.7.x
+
+#code used to calculate successive hashes in a hashchain. 
+seed = "seedhash"
+
+#this will find the 5th hash in the hashchain. This would be the correct response if prompted with the 6th hash in the hashchain
+hashc = seed
+for _ in xrange(5):
+  hashc = md5.new(hashc).hexdigest()
+ 
+print hashc
+#+END_SRC
+
+running the remote program
+#+BEGIN_EXAMPLE
+
+,*******************************************
+,***            FlagKeeper 1.1           ***
+,*  now with HASHCHAIN AUTHENTICATION! XD  *
+,*******************************************
+
+Would you like to register(r) or get flag(f)?
+
+r/f?
+
+r
+Hello new user! Your ID is now 4893 and your assigned hashchain seed is 68d3743587f71fbaa5062152985aff40
+Please validate your new ID by sending the hash before this one in your hashchain (it will hash to the one I give you):
+55f7eb629ebe76812d5a2c565067e311
+
+#+END_EXAMPLE
+
+it is asking to find the hash before the given hash in the hashchain , 
+
+#+BEGIN_SRC python :results output org drawer :tangle /tmp/test.py
+
+import md5 
+
+seed = ""
+last_hash = ""
+
+hashc = seed
+while True:
+  hashc = md5.new(hashc).hexdigest()
+  print hashc
+  if hashc == last_hash:
+    break
+
+#+END_SRC
+
+This script gives the required hash , Other thing is that the seed id the md5 hash of the user id 
+
+let's give f as input 
+#+BEGIN_EXAMPLE
+,,*******************************************
+,,***            FlagKeeper 1.1           ***
+,,*  now with HASHCHAIN AUTHENTICATION! XD  *
+,,*******************************************
+
+Would you like to register(r) or get flag(f)?
+
+r/f?
+
+f
+This flag only for user 8111
+Please authenticate as user 8111
+1ac73c7e8ab28db1e48377f985bf4dab
+Next token?
+
+#+END_EXAMPLE
+
+we need to give the previous hash in the user's hash chain , and the seed is the md5 of the user id
+
+#+BEGIN_EXAMPLE
+This flag only for user 8111
+Please authenticate as user 8111
+1ac73c7e8ab28db1e48377f985bf4dab
+Next token?
+1beeffb8e649bc7efe80c706e7f562e3
+Hello user 8111! Here's the flag: 232360dd1aa3dd2f25c6c4ffe1893a06
+
+
+#+END_EXAMPLE
+
