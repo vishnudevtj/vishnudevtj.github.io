@@ -10,7 +10,7 @@ updated: 2017-06-07 01:19:17
 
 # Dired Shell Command Wizadry
 
-Once again Dired , `dired-do-shell-command` ! Runs shell COMMAND on all the marked files parallel , if no marked file current file is used To run the COMMAND Asyncronously we can do `dired-do-async-shell-command` & or end the ! promt with & If there is a ‘\*’ in COMMAND, surrounded by whitespace, this runs COMMAND just once with the entire file list substituted there.
+Once again Dired , `dired-do-shell-command` ! Runs shell COMMAND on all the marked files parallel , if no marked file current file is used To run the COMMAND Asynchronously we can do `dired-do-async-shell-command` & or end the ! prompt with & If there is a ‘\*’ in COMMAND, surrounded by whitespace, this runs COMMAND just once with the entire file list substituted there.
 
 If there is no ‘\*’, but there is a ‘?’ in COMMAND, surrounded by whitespace, this runs COMMAND on each file individually with the file name substituted for ‘?’.
 

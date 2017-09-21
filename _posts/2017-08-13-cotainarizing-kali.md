@@ -11,9 +11,9 @@ updated: 2017-08-13 21:13:34
 
 # Kali Docker Image
 
-I require all the tools in Kali but could not intall Kali as my Default os , There are two option one is Vertual Box running Kali another is Docker , I Like Docker because it uses less CPU Usage and it is more fun
+I require all the tools in Kali but could not install Kali as my Default os , There are two option one is Virtual Box running Kali another is Docker , I Like Docker because it uses less CPU Usage and it is more fun
 
-Kali has provided a Official Docke image which can be pulled from dockerhub
+Kali has provided a Official Docker image which can be pulled from docker hub
 
 ```sh
 docker pull kalilinux/kali-linux-docker
@@ -67,7 +67,7 @@ This gives you another shell
     Unable to init server: Could not connect: Connection refused
     Error: cannot open display: :0
 
-If this error occures add root to the Xserver Acess Control List
+If this error occurs add root to the Xserver Access Control List
 
 ```sh
 xhost +SI:localuser:root

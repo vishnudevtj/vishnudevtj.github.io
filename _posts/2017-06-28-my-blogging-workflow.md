@@ -16,7 +16,7 @@ Blogging with jekyll and org mode cloning the repo
 git clone https://github.com/vishnudevtj/vishnudevtj.github.io.git
 ```
 
-I keep a note.org file which contains all my notes , also have a org capute for note which inserts the notes . When i need to post my note as a blog . The required region is selected , and it is exported with [ox-gfm](https://github.com/larstvei/ox-gfm) exporter , since jekyll uses the github flavoured Markdown . Using the [Yasnippet](http://github.com/joaotavora/yasnippet) , the frontmatter of the post is inserted
+I keep a note.org file which contains all my notes , also have a org capture for note which inserts the notes . When i need to post my note as a blog . The required region is selected , and it is exported with [ox-gfm](https://github.com/larstvei/ox-gfm) exporter , since jekyll uses the github flavoured Markdown . Using the [Yasnippet](http://github.com/joaotavora/yasnippet) , the front matter of the post is inserted
 
     # -*- mode: snippet -*-
     # name: Jekyll FrontMatter

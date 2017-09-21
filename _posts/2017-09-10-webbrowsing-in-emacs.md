@@ -12,9 +12,9 @@ updated: 2017-09-18 15:54:21
 
 # Compiling Emacs With Xwidget Support
 
-Only time i need to get away from my Emacs is to browse , and now Emacs support to render Webpage with GTK Webkit ! , For that we need to compile emacs from souce with this feature enabled
+Only time i need to get away from my Emacs is to browse , and now Emacs support to render Web page with GTK Webkit ! , For that we need to compile emacs from source with this feature enabled
 
-Download the souce and Unzip
+Download the source and Unzip
 
 Dependencies :
 

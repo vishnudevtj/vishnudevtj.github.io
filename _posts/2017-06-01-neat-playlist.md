@@ -71,7 +71,7 @@ ls -la /proc/`pgrep mplayer`
 
 pgrep is the grep for process returns the pid id of the process
 
-top and other monitoring tool use this folder to get information about a process the fd folder conatins the links to the file discriptors
+top and other monitoring tool use this folder to get information about a process the fd folder contains the links to the file descriptors
 
 ```shell
 ls -la /proc/`pgrep mplayer`/fd
@@ -91,7 +91,7 @@ ls -la /proc/`pgrep mplayer`/fd
     lrwx------ 1 root root 64 Jun  6 23:51 8 -> socket:[301487]
     lrwx------ 1 root root 64 Jun  6 23:51 9 -> anon_inode:[eventfd]
 
-The 4th file discriptor contains the link to the current playing files
+The 4 Th file descriptor contains the link to the current playing files
 
 ```shell
 readlink /proc/`pgrep mplayer`/fd/4
@@ -105,5 +105,5 @@ Now Just remove the file
 rm "`readlink /proc/$(pgrep mplayer)/fd/4`"
 ```
 
-We can put this code in a shell script file wich is located in the PATH and assign a keyboard shortcut to remove the current music mplayer is is playing.
+We can put this code in a shell script file which is located in the PATH and assign a keyboard shortcut to remove the current music mplayer is is playing.
 

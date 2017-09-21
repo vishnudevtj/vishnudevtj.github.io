@@ -10,7 +10,7 @@ updated: 2017-06-08 23:29:03
 
 # Org Search Engine
 
-Trying find a way to rapidly search my org notes and find what i want , i foundout that org agenda can be used as a search engine. setting `org-agenda-file` to a directory it searches throught the direcory to find all the org file and add's them , But my notes are scatters in different folders , found this piece of code which works wonderfully
+Trying find a way to rapidly search my org notes and find what i want , i found out that org agenda can be used as a search engine. setting `org-agenda-file` to a directory it searches thought the directory to find all the org file and adds them , But my notes are scatters in different folders , found this piece of code which works wonderfully
 
 ```emacs-lisp
 (add-hook 'org-agenda-mode-hook (lambda ()

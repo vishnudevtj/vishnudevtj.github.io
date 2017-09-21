@@ -9,20 +9,20 @@ updated: 2017-06-07 01:12:52
 
 # Emacs Secracy !
 
-Making emacs secret keper : emacs have EasyPG which is a emacs interface for managing GnuPG .
+Making emacs secret keeper : emacs have EasyPG which is a emacs interface for managing GnuPG .
 
 ```emacs-lisp
 (require 'epa-file)
 (epa-file-enable)
 ```
 
-Now Emacs encrypt and decrypt all files with extention .gpg When you save the encrypted file it asks for the key , this can be avoided by setting a local variable for file
+Now Emacs encrypt and decrypt all files with extension .gpg When you save the encrypted file it asks for the key , this can be avoided by setting a local variable for file
 
 ```emacs-lisp
 -*- epa-file-encrypt-to: ("your@email.address") -*-
 ```
 
-Now we just add this to our journal and change the journal.org to journal.org.gpg , That makes our jounal encrypted for good reasons. To encrypt a file add the above line and save the file as a .gpg and you are good to go We can also encrypt a region with `epa-encrypt-region`
+Now we just add this to our journal and change the journal.org to journal.org.gpg , That makes our journal encrypted for good reasons. To encrypt a file add the above line and save the file as a .gpg and you are good to go We can also encrypt a region with `epa-encrypt-region`
 
     
     -----BEGIN PGP MESSAGE-----
@@ -47,7 +47,7 @@ to decrypt select the region and call `epa-decrypt-region` it replaces the plain
 
 Mark all the files in dired and call `epa-dired-do-encrypt` to encrypt all the files
 
-There is also a Org-Crypt This enable to encrypt all the org having a specific tag such as `crypt` to automaticaly encrypt
+There is also a Org-Crypt This enable to encrypt all the org having a specific tag such as `crypt` to automatically encrypt
 
 ```emacs-lisp
 (require 'org-crypt)
@@ -61,7 +61,7 @@ There is also a Org-Crypt This enable to encrypt all the org having a specific t
 (setq auto-save-default nil)
 ```
 
-This sets up org-crypt with tag crypt This is very convinient if we only weant to encrypt only a section of a org file
+This sets up org-crypt with tag crypt This is very convenient if we only want to encrypt only a section of a org file
 
-Encrypt Eveything!! Emacs Rocks!!
+Encrypt Everything!! Emacs Rocks!!
 
