@@ -18,6 +18,7 @@ Writing blogs and other documents i make spelling mistakes , one thing i am not 
   :ensure t
   :config
   (define-key flyspell-mode-map (kbd "C-c C-;") 'flyspell-correct-previous-word-generic)
+  (add-hook 'flyspell-mode-hook 'flyspell-buffer )
   )
 ```
 
