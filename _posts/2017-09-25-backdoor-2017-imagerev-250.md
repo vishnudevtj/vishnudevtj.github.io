@@ -11,6 +11,12 @@ updated: 2017-09-25 19:03:10
 
 # Solved Backdoor 2017 image rev 250
 
+[Imagerev 200](https://backdoor.sdslabs.co/challenges/IMAGEREV) Backdoor CTF 2017
+
+> Reverse the encrypted file and recover the flag.
+> [encrypted.txt](http://hack.bckdr.in/IMAGEREV/encrypted.txt) 
+> [encrypt.py](http://hack.bckdr.in/IMAGEREV/encrypt.py)
+
 The challenge gives you two files One `encrypt.py` and `enctrypted.txt`
 
 ```python
