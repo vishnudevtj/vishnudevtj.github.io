@@ -252,7 +252,7 @@ encrypted.txt contains the hashed output
     709e80c88487a2411e1ee4dfb9f22a861492d20c4765150c0c794abd70f8147c709e80c88487a2 ......
 
 
-First I tried to Reverse the Code and it was booting , Got some ideas about the script that it takes the tuple of the pixel values and convert it to a hash of 64 length
+First I tried to Reverse the Code and it was boring , Got some ideas about the script that it takes the tuple of the pixel values and convert it to a hash of 64 length
 
 So I Taught of Brute forcing the entire space , which is `256x256x256`
 
