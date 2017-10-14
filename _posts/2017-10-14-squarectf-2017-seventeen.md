@@ -1,9 +1,10 @@
 ---
 title:  Squarectf 2017 Seventeen
-updated: 2017-10-13 22:04:12
+updated: 2017-10-14 16:03:45
 ---
 
-- [[seventeen](https://squarectf.com/challenges/seventeen) - 1000 from Squatted 2017](#orgfdcc81f)
+
+- [seventeen](https://squarectf.com/challenges/seventeen) - 1000 from Squatted 2017](#orgfdcc81f)
 
 
 <a id="orgfdcc81f"></a>
