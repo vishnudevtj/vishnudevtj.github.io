@@ -15,10 +15,33 @@ layout: default
 
 </article>
 
+
+
+{% if page.comments != false %}
+<div id="disqus_thread"></div>
+<script>
+ var disqus_config = function () {
+     this.page.url = '{{ page.url | absolute_url }}'; 
+     this.page.identifier = '{{ page.url | absolute_url }}';
+ };
+ */
+ (function() { // DON'T EDIT BELOW THIS LINE
+     var d = document, s = d.createElement('script');
+     s.src = 'https://vishnudevtj.disqus.com/embed.js';
+     s.setAttribute('data-timestamp', +new Date());
+     (d.head || d.body).appendChild(s);
+ })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+{% endif %}
+
+
+
 <div class="page-navigation">
-	{% if page.next.url %}
+    {% if page.next.url %}
     <a class="next" href="{{page.next.url}}" title="NEXT: {{page.next.title}}">&lt;&lt;</a>
-		<span> &middot; </span>
+    <span> &middot; </span>
   {% endif %}
 		<a class="home" href="{{site.baseurl}}/" title="Back to Homepage">Home</a>
   {% if page.previous.url %}
