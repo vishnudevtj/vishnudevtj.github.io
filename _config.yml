@@ -17,6 +17,15 @@ permalink:          /notes/:title # Post permalink
 timezone:           Asia/Calcutta # https://en.wikipedia.org/wiki/List_of_tz_database_time_zones
 mathjax:            false  # enables support for mathjax - set to false to disable
 
+# Disqus Comments
+disqus:
+    # Leave shortname blank to disable comments site-wide.
+    # Disable comments for any post by adding `comments: false` to that post's YAML Front Matter.
+    shortname: vishnudevtj
+
+
+
+
 # Site Build
 highlighter:        rouge
 markdown:           kramdown
