@@ -257,4 +257,4 @@ $$ means current seek `@@` is the iterator , it iterates command on specified lo
 Running the Binary now gives the flag!
 
     $ ./optimize_me  | grep CTF
-    CTF{n0w_w4snt_th4t_some_qu1ck_th1nking_eh}
+    CTF{....}

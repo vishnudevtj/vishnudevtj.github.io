@@ -574,7 +574,7 @@ For the last Check the a value at the memory address `0x00603150` is checked and
     [Thread 0x7ffff6018700 (LWP 21142) exited]
     Entering the last check:
     [*] Key x is correct
-    flag{w3aring_7ides_5leeping_nigh75}
+    flag{...}
     [Inferior 1 (process 15580) exited normally]
     (gdb) 
 
