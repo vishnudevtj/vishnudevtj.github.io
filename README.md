@@ -1,3 +1,3 @@
-# My jekyll blog
+# My jekyll blog.
 
 [vishnudevtj.github.io](vishnudevtj.github.io)
