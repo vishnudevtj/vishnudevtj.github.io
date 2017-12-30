@@ -29,7 +29,6 @@ img {
 a {
     color: inherit;
     text-decoration: none;
-    border-bottom: 1px solid #555;
     &.image {
 	display: block;
 	text-align: center;
@@ -356,4 +355,42 @@ section {
   100% {
     -webkit-transform: none;
   }
+}
+.post-tag {
+    display: inline-block;
+    background: rgba(#c9cacc, 0.15);
+    padding: 0 .5rem;
+    margin-right: .5rem;
+    border-radius: 4px;
+    color:#1d1f21;
+    font-family: "Source Code Pro" , "Menlo", "Meslo LG", monospace;
+    font-size: 90%;
+    &:before {
+	content: "\f02b";
+	font-family: "FontAwesome";
+	padding-right: .5em;
+    }
+    &:hover {
+	text-decoration: none;
+	background: #1d1f21;
+	color: #c9cacc;
+    }
+}
+
+.tags-expo {
+    :target:before {
+	content:"";
+	display:block;
+	height:72px; /* fixed header height*/
+	margin:-72px 0 0; /* negative fixed header height */
+    }
+    .tags-expo-list {
+	@media (min-width: 38em) {
+	    font-size: 0.9rem;
+	    text-align: center;
+	    .post-tag {
+		margin: .2em .3em;
+	    }
+	}
+    }
 }

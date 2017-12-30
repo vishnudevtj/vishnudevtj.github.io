@@ -1,6 +1,7 @@
 ---
 title: Emacs Deamon
 updated: 2017-06-07 01:28:07
+tags: emacs
 ---
 [Making Emacs Super Fast](#orgddba24d)
 - [Footnote:](#org5a895e1)

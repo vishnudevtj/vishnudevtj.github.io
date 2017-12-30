@@ -1,6 +1,7 @@
 ---
 title: Emacs Secracy
 updated: 2017-06-07 01:12:52
+tags: [emacs , org-mode]
 ---
 - [Emacs Secracy !](#org919e458)
 

@@ -1,6 +1,7 @@
 ---
 title:  Emacs Spelling
 updated: 2017-09-21 14:42:59
+tags: emacs
 ---
 
 

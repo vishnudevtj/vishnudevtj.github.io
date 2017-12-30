@@ -1,6 +1,7 @@
 ---
 title: Org Search Engine
 updated: 2017-06-08 23:29:03
+tags: [emacs, org-mode]
 ---
 
 - [Org Search Engine](#org34fa60d)

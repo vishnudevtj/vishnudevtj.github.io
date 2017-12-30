@@ -1,6 +1,7 @@
 ---
 title:  Web Browsing In Emacs
 updated: 2017-09-18 15:54:21
+tags: emacs
 ---
 
 

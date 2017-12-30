@@ -1,6 +1,7 @@
 ---
 title:  Backdoor 2017 Imagerev 250
 updated: 2017-09-25 19:03:10
+tags: [writeup,reversing]
 ---
 
 

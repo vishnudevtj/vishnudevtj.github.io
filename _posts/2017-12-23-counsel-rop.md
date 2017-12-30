@@ -1,6 +1,8 @@
 ---
 title:  Counsel Rop
 updated: 2017-12-23 23:11:45
+category: emacs
+tags: [emacs , binary , pwn]
 ---
 
 

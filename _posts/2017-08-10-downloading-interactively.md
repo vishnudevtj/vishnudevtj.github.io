@@ -1,6 +1,7 @@
 ---
 title:  Downloading Interactively
 updated: 2017-08-12 20:32:23
+tags: python
 ---
 
 - [Making My Music Download interactive](#org8dd8feb)

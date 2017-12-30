@@ -1,6 +1,7 @@
 ---
 title: Dired Find
 updated: 2017-06-07 01:22:50
+tags: emacs
 ---
 - [find dired](#org14f9434)
 

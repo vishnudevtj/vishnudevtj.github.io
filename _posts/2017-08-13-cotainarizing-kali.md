@@ -1,6 +1,7 @@
 ---
 title:  Cotainarizing Kali
 updated: 2017-08-13 21:13:34
+tags: [note,linux]
 ---
 
 

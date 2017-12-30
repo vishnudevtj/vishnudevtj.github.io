@@ -1,6 +1,7 @@
 ---
 title:  Scythe17 Crackheads 150
 updated: 2017-10-17 19:03:06
+tags: [reversing,writeup]
 ---
 
 - [crackheads scythe17 - 150](#org815fc38)

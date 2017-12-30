@@ -1,6 +1,7 @@
 ---
 title: Dired shell Wizadry 
 updated: 2017-06-07 01:19:17
+tags: emacs
 ---
 
 - [Dired Shell Command Wizadry](#org705d59e)

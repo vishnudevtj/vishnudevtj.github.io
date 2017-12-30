@@ -1,6 +1,7 @@
 ---
 title:  My Blogging Workflow
 updated: 2017-06-30 14:46:28
+tags: emacs
 ---
 
 - [Emacs Blog Workflow](#org0c0398f)

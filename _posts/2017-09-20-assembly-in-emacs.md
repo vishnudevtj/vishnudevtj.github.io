@@ -1,6 +1,7 @@
 ---
 title:  Assembly In Emacs
 updated: 2017-09-20 14:41:10
+tags: [emacs,reversing]
 ---
 
 - [Assembly in Emacs](#org64830af)
