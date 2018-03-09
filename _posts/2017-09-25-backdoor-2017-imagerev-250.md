@@ -255,7 +255,7 @@ encrypted.txt contains the hashed output
 
 First I tried to Reverse the Code and it was boring , Got some ideas about the script that it takes the tuple of the pixel values and convert it to a hash of 64 length
 
-So I Taught of Brute forcing the entire space , which is `256x256x256`
+So I tought of Brute forcing the entire space , which is `256x256x256`
 
 The only Problem is that it takes time, it takes 1sec in my pc to calculate 10 hashes and the whole will take 2 days ,which is not possible
 
