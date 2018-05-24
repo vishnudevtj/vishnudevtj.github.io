@@ -1,6 +1,7 @@
 ---
 title: Asis Quals 2018 Tinypwn
 updated: 2018-05-01 10:57:13
+tags: [pwn,writeup]
 ---
 
 - [tiny_pwn](#orgfec5732)

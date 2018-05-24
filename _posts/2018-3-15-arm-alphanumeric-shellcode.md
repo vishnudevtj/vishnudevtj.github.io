@@ -1,6 +1,7 @@
 ---
 title: Arm Alphanumeric Shellcode
 updated: 2018-03-15 19:11:19
+tags: [pwn,binary]
 ---
 
 - [Alphanumeric ARM Shellcode](#org3909a5f)

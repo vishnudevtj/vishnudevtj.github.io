@@ -1,6 +1,7 @@
 ---
 title:  Asis Quals 2018 Message
 updated: 2018-05-01 14:24:55
+tags: [pwn,writeup]
 ---
 
 - [message_me](#orga6a7613)
