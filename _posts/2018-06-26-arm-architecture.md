@@ -1,0 +1,492 @@
+---
+title:  Arm Architecture
+updated: 2018-06-26 23:02:40
+---
+
+- [Introduction](#org213ac67)
+  - [About ARM Architecture](#org58c0dac)
+  - [Registers](#org6af58c3)
+  - [Different State](#orgcfee01b)
+    - [ARM State](#org951ce34)
+    - [Thumb State](#orge4c29a5)
+    - [Jazzele](#org08d4187)
+  - [PC Relative Addressing](#org3a8385a)
+  - [Instructions Set](#org9d184ab)
+    - [Instruction Format](#org72b6726)
+    - [Barrel Shifter](#org8586761)
+    - [Load / Store](#org6c3ca6b)
+    - [Bit wise Instruction](#orgcd38828)
+    - [Arithmetic](#org56c868a)
+    - [Branches](#orgcecb749)
+    - [Conditional Execution](#org42a358b)
+  - [Calling Convention](#org6f539a0)
+    - [Calling Function](#orga305a62)
+    - [Calling System Call](#org8ec7c42)
+  - [Stack Frame](#orgd9c8f16)
+    - [Function Prologue](#org004b77b)
+    - [Function Epilogue](#org2c46a86)
+  - [Reference](#orgdb05a37)
+
+
+<a id="org213ac67"></a>
+
+# Introduction
+
+
+<a id="org58c0dac"></a>
+
+## About ARM Architecture
+
+-   RISC Architecture
+    -   Load / Store Architecture
+    -   Uniform and Fixed Length instructions
+-   Control over both ALU and shifter in most data processing instruction .
+-   Auto increment and auto decrement addressing mode to optimize loop .
+-   Conditional execution on almost all instruction
+-   Endianness ( Bi-Endian )
+
+
+<a id="org6af58c3"></a>
+
+## Registers
+
+-   Total 37 register
+    -   15 General Purpose Registers
+    -   1 PC
+    -   Other status Register's ( 1.CPSR : Current Program Status Register) ( 5 . SPSR : Saved Program Status Register)
+-   r0..r3 : holds argument to a subrutine.
+-   r4..r10 : general purpose register
+-   r11 : Frame Pointer
+-   r12 : Intra procedure call
+-   r13 : Stack Pointer
+-   r14 : Link Register
+-   r15 : Program Counter
+
+-   CPSR : Status Register
+    
+    ```nasm
+      31 30 29 28 27 26 25 24 23 22 21 20 19 18 17 18 16 15 14 13 12 11 10  9  8  7  6  5  4  3  2  1  0
+      +--+--+--+--+--+-----+--+-----------+--------------+-----------------+--+--+--+--+--+--------------+
+      |N |Z |C |V |Q | RES |J | Reserved  |  GR [ 3:0 ]  |      Reserved   |E |A |I |F |T |  M [ 4 : 0 ] |
+      +--+--+--+--+--+--+--+--+--+--+--+--+--------------+-----------------+--+--+--+--+--+--------------+
+    ```
+
+-   N : N = 1 if the result is negative ; N = 0 if result is Positive
+-   Z : Z = 0 if result is Zero
+-   C :
+    -   C = 1 if addition produces a carry , 0 otherwise
+    -   C = 0 if subtraction produced a borrow , 1 otherwise
+    -   For non-addition/subtraction instruction with shift operation , C is set to the last bit shifted out of the value by the shifter
+-   V : For Addition and subtraction , V = 1 if signed overflow occurred
+
+-   GE : Greater than or Equal Flag
+-   E : Endianness
+
+-   T & J : select the current instruction set
+    
+    | J | T | Instruction Set |
+    |--- |--- |--------------- |
+    | 0 | 0 | ARM             |
+    | 0 | 1 | Thumb           |
+    | 1 | 0 | Jezelle         |
+    | 1 | 1 | Reserved        |
+
+
+<a id="orgcfee01b"></a>
+
+## Different State
+
+
+<a id="org951ce34"></a>
+
+### ARM State
+
+-   Default State
+-   r0 .. r15 can be changed
+-   Instruction Size 32 bit ( 4 byte )
+
+
+<a id="orge4c29a5"></a>
+
+### Thumb State
+
+-   Instruction Size 16 bit ( 2 byte ) / 32 bit ( 4 byte )
+-   pc can only be modified by specific instruction
+-   Thumb-2 state
+    -   Extended Thumb state with 32 bit instruction
+
+
+<a id="org08d4187"></a>
+
+### Jazzele
+
+-   Allows equipped ARM - Processor to execute Java - Bytecode in hardware
+
+
+<a id="org3a8385a"></a>
+
+## PC Relative Addressing
+
+-   Is used to address constants in text region
+-   CPU loads two instruction in advance
+
+```nasm
++-----------+
+|  execute  | pc - 8 
++-----------+
+     ^	 
+     |	 
++-----------+
+|  decode   | pc - 4
++-----------+
+     ^
+     |
++-----------+
+|   fetcha  |  pc
++-----------+
+```
+
+Therefore , the real `pc` value is higher because while executing an instruction it will have decoded the next instruction and fetched the next to next instruction , thus `pc` value will be the address of two instruction ahead .
+
+-   8 Bytes in ARM state
+    -   `pc` = address of current instruction + 8
+-   4 bytes in Thumb Mode
+    -   `pc` = address of current instruction + 4
+    -   address is 4 bytes Aligned
+
+
+<a id="org9d184ab"></a>
+
+## Instructions Set
+
+
+<a id="org72b6726"></a>
+
+### Instruction Format
+
+    [ instruction ] [ condition ] [s] [ destination ] , [ source ] , [ other operands ... ]
+
+-   s : update status register
+-   Every instruction can be made conditional
+
+```nasm
+add   r1 , r2 , #2   :  r1 = r2 + 2
+suble r1 , r2 , #3   :  if less than : r1 = r2 + 3
+movs  r1 , r2        :  r1 = r2 , Update Status register
+```
+
+
+<a id="org8586761"></a>
+
+### Barrel Shifter
+
+-   Hardware optimization , inline allows for a multiplication of intermediate ( with power of 2 ) within same instruction cycle
+-   LSL : Logical shift Left
+-   LSR : Logical shift right
+
+```nasm
+mov r7 ,r5 ,LSL #2       :  r7 = r5 << 2 
+add r0 ,r1 ,r1 ,LSL #1   :  r0 = r1 + ( r1 << 1 )
+```
+
+-   ROR : Rotate Right , bits popped off the right end , is directly pushed into left , last off fright Carry )
+
+
+<a id="org6c3ca6b"></a>
+
+### Load / Store
+
+Like x86 direct manipulation of memory is not possible in ARM , Here one need to load the data onto the register , manipulate it and then store it back to memory .
+
+```nasm
+ldr r2 , [r1]  : value @ r1 is loaded to r2
+add r2 , #1    : value is incremented
+str r2 , [r1]  : value in r2 is strored @ r1
+```
+
+1.  Different Addressing mode
+
+    There instruction have three primary addressing mode which use a `base_register` and a `offset` specified by the instruction
+    
+    1.  Offset Addressing  [ Rn , offset ]
+    
+        The memory address is formed by adding or subtraction an offset to or from the base register
+        
+        ```nasm
+        ldr r2 , [r0, #8]   : load value from r0+8
+        str r2 , [r0, r1]   : value in r2 is stored in r0 + r1
+        ```
+    
+    2.  Pre-indexed Addressing [ Rn , offset ]!
+    
+        The memory address is formed in the same way as the offset addressing. As a side effect the memory address is also written back to the base register
+        
+        ```nasm
+        ldr r2 , [r0, #8]!   : load value from r0 + 8  and  r0 = r0 + 8  ( r0 is updated )
+        str r2 , [r0, r1]!   : value in r2 is stored in r0 + r1 and  r0 = r0 + r1 ( r0 is updated )
+        ```
+    
+    3.  Post-indexed Addressing [ Rn ] , offset
+    
+        The address is the base register value , As a side effect , an offset is added to or subtracted from the base register value and the result is written back to the base register
+        
+        ```nasm
+        ldr r2, [r0], #8     : load value from r0 then set r0 = r0 + 8 ( r0 is updated after the operation )
+        str r2 ,[r0], r1     : value in r2 is stored in r0 then r0 = r0 + r1 
+        ```
+
+2.  Load / Store Multiple
+
+    `ldm` and `stm` can be used to store multiple register .
+    
+    ```nasm
+    ldm r0, {r1,r2,r3}   : [r0] = r1 , [r0+4] = r2 , [r4+8] = r3
+    
+    ldm r0!, {r1,r2,r3}  : [r0] = r1 , [r0+4] = r2 , [r4+8] = r3  , r0 = r0 + 8
+    
+    str r0, {r1-r3}      : r1 = [r0] , r2 = [r0+4] , r3 = [r0+8]
+    
+    str r0!, {r1-r3}     : r1 = [r0] , r2 = [r0+4] , r3 = [r0+8] , r0 = r0 + 8
+    ```
+    
+    There are 4 Addressing modes which decides how the address shall be incremented or decremented
+    
+    | Mode | Description               |
+    |---- |------------------------- |
+    | IA   | Increment After (default) |
+    | IB   | Increment Before          |
+    | DA   | Decrements After          |
+    | DB   | Decrements Before         |
+    |      |                           |
+    
+    -   `push` and `pop` are aliases for `stmdb` amd `ldmia`
+    
+    ```nasm
+    ldmib r0 , {r1,r2,r3}  : [r0+4] = r1 , [r4+8] = r2 , [r4+12] = r3
+    ```
+
+3.  Load Immediate value
+
+    -   ARM has a fixed instruction length of 32 bit
+        -   Including opcode and operands
+    -   Only 12 bits are left for immediate values
+    
+    -   if bit 25 is set to 1 the last 12 bit are handled as immediate
+    
+    ```nasm
+     31 30 29 28 27 26 25 24 23 22 21 20 19 18 17 18 16 15 14 13 12 11 10  9  8  7  6  5  4  3  2  1  0
+    +--+--+--+--+--+--+--+--+--+--+--+--+--------------+-----------+-----------------------------------+
+    |   Cond    |0 |0 |1 |0 |0 |0 |0 |S |  Rn          |   Rd      |                immediate          |
+    +--+--+--+--+--+--+--+--+--+--+--+--+--------------+-----------+-----------+-----------------------+
+    ```
+    
+    -   if bit 25 is set to 0 the last 12 bit are handled as 2nd operand
+        -   In order to make it possible to load bigger value than 4096 ( 12bit ), the value is split
+        -   a = 8 bit value ( 0 to 255 )
+        -   b = 4 bit value ( used for rotate right )
+            -   immediate = a ror ( b << 1 )
+    
+    ```nasm
+     31 30 29 28 27 26 25 24 23 22 21 20 19 18 17 18 16 15 14 13 12 11 10  9  8  7  6  5  4  3  2  1  0
+    +--+--+--+--+--+--+--+--+--+--+--+--+--------------+-----------+-----+--+--+-----------------------+
+    |   Cond    |0 |0 |0 |0 |0 |0 |0 |S |  Rn          |   Rd      |  Rotate   |    immediate          |
+    +--+--+--+--+--+--+--+--+--+--+--+--+--------------+-----------+-----------+-----------------------+
+    ```
+    
+    Often other method are used to dodge big intermediate values
+    
+    ```nasm
+    ldr r1 , =0x11223344   : most likely substituted by pc + relative address
+    
+    movw r1, #0x3344       : load the value in two step r1 = 0x3344
+    movt r1, #0x1122       : r1 = 0x11223344
+    
+    mov r2, #0x2e00        : assemble first part of 0x2ee0
+    orr r2, #0xe0          : assemble second part of 0x2ee0
+    ```
+
+
+<a id="orgcd38828"></a>
+
+### Bit wise Instruction
+
+| Operation    | Assembly       | Simplified    |
+|------------ |-------------- |------------- |
+| bitwise AND  | and r0, r1, #2 | r0 = r1 & 2   |
+| bitwise OR   | orr r0, r1, r2 | r0 = r1 or r2 |
+| bitwise XOR  | eor r0, r1, r2 | r0 = r1 ^ r2  |
+| negation NOT | mvn r0, r2     | r0 = !r2      |
+
+
+<a id="org56c868a"></a>
+
+### Arithmetic
+
+| Operation      | Assembly        | Simplified       |
+|-------------- |--------------- |---------------- |
+| Add            | add r0, r1 , #2 | r0 = r1 + 2      |
+| Add with carry | adc r0, r1 , r2 | r0 = r1 + r2 + 1 |
+| Substract      | sub r0, r1 , #2 | r0 = r1 - 2      |
+| Reverse Sub    | rsb r0, r1 , #2 | r0 = 2 - r1      |
+| Multiply       | mul r0, r1 , r2 | r0 = r1 \* r2    |
+|                |                 |                  |
+
+
+<a id="orgcecb749"></a>
+
+### Branches
+
+-   Jump to different location in code
+-   Function are called by branches
+    -   `bl[x]` : branch and link
+        -   link means the return address is stored in `lr` register
+
+```nasm
+:branch
+b #0x137       : branch to current address + 0x137
+bx r1           : branch to address in r1
+
+:branch and link
+bl #0x137      : branch to current address + 0x137
+blx r1          : branch to address in r1
+```
+
+1.  Branches with ARM / Thumb States
+
+    In order to set the CPU in thumb state , the least significant bit has to be set to 1 , if it has bot been set , the CPU switches to ARM state .
+    
+    To jump to Thumb code at `0x40000`
+    
+    ```nasm
+    : r1 contains the address ( 0x40000 )
+    add r1,r1, #1        :  The least signeficant bit is set to 1
+    bx r1                :  CPU will change to Thumb mode
+    ```
+
+
+<a id="org42a358b"></a>
+
+### Conditional Execution
+
+-   Two letter suffix appended to mnemonic
+-   Condition is tested to current state register flags
+
+```nasm
+subs r0, r0, #1       : s means that the flag register should be updated
+subne r0, r0, #2      : sub not equal , substract if zeor flag is set
+adde  r1, r1, #2      : add not equal , add if zero flag is set
+```
+
+| Opcode [31:28] | Suffix | Descripton                   | Flag              |
+|-------------- |------ |---------------------------- |----------------- |
+| 0000           | EQ     | Equal                        | Z==1              |
+| 0001           | NE     | Not Equal                    | Z==0              |
+| 0010           | CS/HS  | Carry Set  / unsigned high   | C==1              |
+| 0011           | CC/LO  | Carry clear / unsigned low   | C==0              |
+| 0100           | MI     | Minus / Negative             | N==1              |
+| 0101           | Pl     | Plus / Positive / Zero       | N==0              |
+| 0110           | VS     | Overflow                     | V==1              |
+| 0111           | HI     | Undigned High                | ( C==1 && Z==0 )  |
+| 1000           | LS     | Unsigned Low                 | ( C==0 && Z==1 )  |
+| 1001           | GE     | Signed greater than or equal | N==V              |
+| 1011           | LT     | Signed less than             | ( N!=V)           |
+| 1100           | GT     | Signed greater than          | ( Z==0 && N==V )  |
+| 1101           | LE     | Signed less than             | ( Z===1 or N!=V ) |
+
+
+<a id="org6f539a0"></a>
+
+## Calling Convention
+
+
+<a id="orga305a62"></a>
+
+### Calling Function
+
+-   First Four arguments are passed in registers ( r0 - r3 )
+-   More arguments on the stack
+-   Return value will be stored in r0
+-   r4 .. r11 preserved by subroutine
+
+
+<a id="org8ec7c42"></a>
+
+### Calling System Call
+
+-   Arguments in r0 .. r5
+-   Syscall no in r7
+-   `swi` / `svc` #0 to make a system call
+
+Syscall Reference : [syscall](https://w3challs.com/syscalls/)
+
+
+<a id="orgd9c8f16"></a>
+
+## Stack Frame
+
+```nasm
+ +-----------------+
+ |  Return Addr    | <- r11 ( fp ) 
+ +-----------------+
+ | Saved Frame ptr |
+ +-----------------+
+ |      ...        |
+ |                 |
+ |    Local Var    | 
+ |                 |
+ |      ...        | <- sp
+ +-----------------+ 
+```
+
+
+<a id="org004b77b"></a>
+
+### Function Prologue
+
+-   Functions are called through `bl` and `blx`
+    -   Return address is stored in `lr` / `r14`
+-   Link register is stored in the function prologue if the function is not a leaf function
+
+```nasm
+push {fp , lr}
+add fp, sp, #4
+sub sp, sp, #0x20
+```
+
+
+<a id="org2c46a86"></a>
+
+### Function Epilogue
+
+-   Preserved Register are restored
+-   `pc` is restored in different method
+    -   restore `lr` and branch to `lr`
+    -   pop `pc` from the stack
+
+```nasm
+sub sp, fp, #4
+pop {fp, pc}
+```
+
+```nasm
+sub sp, fp, #4S
+pop {fp, lr}
+bx lr
+```
+
+
+<a id="orgdb05a37"></a>
+
+## Reference
+
+[1]. [infocenter](http://infocenter.arm.com/help/index.jsp?topic=/com.arm.doc.subset.architecture.reference/index.html) : Best Source
+
+[2]. [Azeria-Labs](http://azeria-labs.com/)
+
+[3]. [OpenSecurityTraining Intro to ARM](http://www.opensecuritytraining.info/IntroARM.html)
+
+[4]. [http://www.davespace.co.uk/arm/introduction-to-arm/](http://www.davespace.co.uk/arm/introduction-to-arm/)
+
+[5]. [cross debugging for arm mips elf with QEMU toolchain](https://reverseengineering.stackexchange.com/questions/8829/cross-debugging-for-arm-mips-elf-with-qemu-toolchain)
+
+[6]. [Shellcode On ARM Architecture](http://www.shell-storm.org/blog/Shellcode-On-ARM-Architecture/)

@@ -11,11 +11,11 @@ tags: [emacs,binary]
 
 # Org babel interface for rasm2
 
-rasm2 comes with the r2 and is used as assembler and disassembler . It support many architecture and provided a simple api . While developing exploit and writing shellcode a tool to assemble instruction is very use full . There are many online tools which provide a interface to assemble instruction but we need a offline solution . We can use rasm2 directly but there is no fun in it . It would be awesome if we can interface with the tool within emacs .
+rasm2 comes with the r2 and is used as assembler and disassembler . It support many architecture and provided a simple api . While developing exploit and writing shellcode a tool to assemble instruction is very use full . There are many online tools which provide a interface to assemble instruction but we need a offline solution . We can use rasm2 directly but there is no fun in it . It would be awesome if we can interact with the tool within emacs .
 
-Org mode have a feature called [babel](https://orgmode.org/worg/org-contrib/babel/intro.html) , using this feature we can embed code blocks in org files . It is very power full feature and is used to write literate programs . Since this is emacs we can make it do anything we want .
+Org mode has a feature called [babel](https://orgmode.org/worg/org-contrib/babel/intro.html) , using this feature we can embed code blocks in org files . It is a very power full feature and is used to write literate programs . Since this is emacs we can make it do anything we want .
 
-examining ob-sed.el file which contains all the function used for the execution of `sed` source block gives .
+examining ob-sed.el file which contains all the function used for the execution of `sed` source block , yields
 
 ```emacs-lisp
 (defun org-babel-execute:sed (body params)
