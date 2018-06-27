@@ -1,6 +1,7 @@
 ---
 title:  Arm Architecture
 updated: 2018-06-26 23:02:40
+tags: [reversing,note]
 ---
 
 - [Introduction](#org213ac67)
@@ -26,7 +27,7 @@ updated: 2018-06-26 23:02:40
     - [Function Prologue](#org004b77b)
     - [Function Epilogue](#org2c46a86)
   - [Reference](#orgdb05a37)
-
+  - [Setting Up the Lab](#orga3248a2)
 
 <a id="org213ac67"></a>
 
@@ -490,3 +491,60 @@ bx lr
 [5]. [cross debugging for arm mips elf with QEMU toolchain](https://reverseengineering.stackexchange.com/questions/8829/cross-debugging-for-arm-mips-elf-with-qemu-toolchain)
 
 [6]. [Shellcode On ARM Architecture](http://www.shell-storm.org/blog/Shellcode-On-ARM-Architecture/)
+
+
+
+
+<a id="orga3248a2"></a>
+
+## Setting Up the Lab
+
+-   Qemu
+
+```sh
+sudo apt-get install qemu qemu-user qemu-user-static
+```
+
+-   GDB
+
+The defult GDB does not know anything about other architecture , but `gdb-multiarch` adds support for other architecture.
+
+```sh
+sudo apt-get install gdb-multiarch
+```
+
+-   GCC-ARM toolchain for cross-compiling
+
+```sh
+$ sudo apt-get install gcc-arm-linux-gnueabihf libc6-dev-armhf-cross  binfmtc binfmt-support
+$ sudo mkdir /etc/qemu-binfmt
+$ sudo ln -s /usr/arm-linux-gnueabihf /etc/qemu-binfmt/arm 
+```
+
+Now you can compile ARM binary in your system with
+
+```sh
+arm-linux-gnueabihf-gcc -ohello hello.c
+```
+
+Now onto debugging ARM binaries , with QEMU and GDB .
+
+```sh
+qemu-arm -g 1337  hello
+```
+
+Now we can connect gdb to port `1337` and debug the program `hello`
+
+```sh
+$   gdb-multiarch -q hello
+Reading symbols from hello...(no debugging symbols found)...done.
+(gdb) set architecture arm
+The target architecture is assumed to be arm
+(gdb) target remote localhost:1337
+Remote debugging using localhost:1337
+(gdb) 
+```
+
+GEF is an extention for gdb which really plays well with non-x86 debugging : [link](https://github.com/hugsy/gef)
+
+Also the creator of the same project has created many qemu image on different architecture to play around , It contains ARM image which is based on Raspberri pi , With this there is no need for remote debuggeing since it emulates the whole operating system, you can run the binary directly and debug it inside the qemu session . [link to his blog](https://blahcat.github.io/2017/06/25/qemu-images-to-play-with/)
