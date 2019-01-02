@@ -1,7 +1,6 @@
 ---
 title: 35c3 collection write up
 updated: 2019-01-02 19:54:37
-layout: default
 tags: [writeup,reversing,pwn]
 ---
 
