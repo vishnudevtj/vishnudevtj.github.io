@@ -12,7 +12,7 @@ tags: emacs
 
 # Spell check in Emacs
 
-Writing blogs and other documents i make spelling mistakes , one thing i am not that good at spelling and other they are due to my typing , to rectify this i use emacs flyspell mode with flyspell-correct-ivy . flyspell underlines all the wrong entries and i use the ivy to correct it . It is a smooth workflow
+Writing blogs and other documents i make spelling mistakes , one thing is I am not that good at spelling and other are due to my typing , to rectify this i use emacs flyspell mode with flyspell-correct-ivy . flyspell underlines all the wrong entries and i use the ivy to correct it . It is a smooth workflow
 
 ```emacs-lisp
 (use-package flyspell-correct-ivy

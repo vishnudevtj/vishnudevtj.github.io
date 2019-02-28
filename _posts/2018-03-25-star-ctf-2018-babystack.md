@@ -1,7 +1,7 @@
 ---
 title:  Star Ctf 2018 Babystack
 updated: 2018-05-01 16:10:33
-tags: pwn
+tags: pwn,writeup
 ---
 
 
@@ -20,7 +20,7 @@ tags: pwn
     NX:       NX enabled
     PIE:      No PIE (0x400000)
 
-The challenge creates a thread and calls a function start<sub>routine</sub>
+The challenge creates a thread and calls a function start_routine
 
 ```c
 void *__fastcall start_routine(void *a1)

@@ -26,9 +26,9 @@ layout: default
 
     {% capture nmonth %}{{ post.next.date | date: '%b' }}{% endcapture %}
     {% capture month %}{{ post.date | date: '%b' }}{% endcapture %}
-    {% if month != nmonth %}
-    <h3>{{ month }}&#172;</h3>
-    {% endif %}
+    <!-- {% if month != nmonth %}
+         <h3>{{ month }}&#172;</h3>
+         {% endif %} -->
 
     <ul>
 	<li>
