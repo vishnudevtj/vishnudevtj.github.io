@@ -1,7 +1,7 @@
 ---
 title:  Star Ctf 2018 Babystack
 updated: 2018-05-01 16:10:33
-tags: pwn,writeup
+tags: [pwn,writeup]
 ---
 
 
