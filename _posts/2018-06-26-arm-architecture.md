@@ -241,13 +241,13 @@ str r2 , [r1]  : value in r2 is strored @ r1
     `ldm` and `stm` can be used to store multiple register .
     
     ```nasm
-    ldm r0, {r1,r2,r3}   : [r0] = r1 , [r0+4] = r2 , [r4+8] = r3
+    ldm r0, {r1,r2,r3}   : r1 = [r0] , r2 = [r0+4] , r3 = [r0+8] 
     
-    ldm r0!, {r1,r2,r3}  : [r0] = r1 , [r0+4] = r2 , [r4+8] = r3  , r0 = r0 + 8
+    ldm r0!, {r1,r2,r3}  : r1 = [r0] , r2 = [r0+4] , r3 = [r0+8] , r0 = r0 + 8
     
-    str r0, {r1-r3}      : r1 = [r0] , r2 = [r0+4] , r3 = [r0+8]
+    str r0, {r1-r3}      : [r0] = r1 , [r0+4] = r2 , [r0+8] = r3
     
-    str r0!, {r1-r3}     : r1 = [r0] , r2 = [r0+4] , r3 = [r0+8] , r0 = r0 + 8
+    str r0!, {r1-r3}     : [r0] = r1 , [r0+4] = r2,  [r0+8] = r3 , r0 = r0 + 8
     ```
     
     There are 4 Addressing modes which decides how the address shall be incremented or decremented
@@ -263,7 +263,7 @@ str r2 , [r1]  : value in r2 is strored @ r1
     -   `push` and `pop` are aliases for `stmdb` amd `ldmia`
     
     ```nasm
-    ldmib r0 , {r1,r2,r3}  : [r0+4] = r1 , [r4+8] = r2 , [r4+12] = r3
+    ldmib r0 , {r1,r2,r3}  : r1 = [r0+4] , r2 = [r4+8] , r3 = [r4+12]
     ```
 
 3.  Load Immediate value
