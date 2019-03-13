@@ -18,6 +18,7 @@ tags: [reversing,note]
     - [Load / Store](#org6c3ca6b)
     - [Bit wise Instruction](#orgcd38828)
     - [Arithmetic](#org56c868a)
+    - [Compare](#org74f09c2)
     - [Branches](#orgcecb749)
     - [Conditional Execution](#org42a358b)
   - [Calling Convention](#org6f539a0)
@@ -332,6 +333,21 @@ str r2 , [r1]  : value in r2 is strored @ r1
 | Multiply       | mul r0, r1 , r2 | r0 = r1 \* r2    |
 |                |                 |                  |
 
+
+
+<a id="org74f09c2"></a>
+
+### Compare
+
+Comparisons produce no results – they just set condition codes. Ordinary instructions will also set condition codes if the “S” bit is set. The “S” bit is implied for comparison instructions.
+
+```nasm
+cmp r0, #42 : compare R0 to 42.
+cmn r2, #42 : compare R2 to -42.
+tst r11, #1 : test bit zero.
+teq r8, r9  : test R8 equals R9.
+subs r1, r0, #42 : compare R0 to 42, with result.
+```
 
 <a id="orgcecb749"></a>
 
