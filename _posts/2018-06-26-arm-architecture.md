@@ -245,9 +245,9 @@ str r2 , [r1]  : value in r2 is strored @ r1
     
     ldm r0!, {r1,r2,r3}  : r1 = [r0] , r2 = [r0+4] , r3 = [r0+8] , r0 = r0 + 8
     
-    str r0, {r1-r3}      : [r0] = r1 , [r0+4] = r2 , [r0+8] = r3
+    stm r0, {r1-r3}      : [r0] = r1 , [r0+4] = r2 , [r0+8] = r3
     
-    str r0!, {r1-r3}     : [r0] = r1 , [r0+4] = r2,  [r0+8] = r3 , r0 = r0 + 8
+    stm r0!, {r1-r3}     : [r0] = r1 , [r0+4] = r2,  [r0+8] = r3 , r0 = r0 + 8
     ```
     
     There are 4 Addressing modes which decides how the address shall be incremented or decremented
