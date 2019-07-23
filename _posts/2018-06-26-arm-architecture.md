@@ -496,17 +496,17 @@ bx lr
 
 ## Reference
 
-[1]. [infocenter](http://infocenter.arm.com/help/index.jsp?topic=/com.arm.doc.subset.architecture.reference/index.html) : Best Source
+* [infocenter](http://infocenter.arm.com/help/index.jsp?topic=/com.arm.doc.subset.architecture.reference/index.html) : Best Source
 
-[2]. [Azeria-Labs](http://azeria-labs.com/)
+* [Azeria-Labs](http://azeria-labs.com/)
 
-[3]. [OpenSecurityTraining Intro to ARM](http://www.opensecuritytraining.info/IntroARM.html)
+* [OpenSecurityTraining Intro to ARM](http://www.opensecuritytraining.info/IntroARM.html)
 
-[4]. [http://www.davespace.co.uk/arm/introduction-to-arm/](http://www.davespace.co.uk/arm/introduction-to-arm/)
+* [http://www.davespace.co.uk/arm/introduction-to-arm/](http://www.davespace.co.uk/arm/introduction-to-arm/)
 
-[5]. [cross debugging for arm mips elf with QEMU toolchain](https://reverseengineering.stackexchange.com/questions/8829/cross-debugging-for-arm-mips-elf-with-qemu-toolchain)
+* [cross debugging for arm mips elf with QEMU toolchain](https://reverseengineering.stackexchange.com/questions/8829/cross-debugging-for-arm-mips-elf-with-qemu-toolchain)
 
-[6]. [Shellcode On ARM Architecture](http://www.shell-storm.org/blog/Shellcode-On-ARM-Architecture/)
+* [Shellcode On ARM Architecture](http://www.shell-storm.org/blog/Shellcode-On-ARM-Architecture/)
 
 
 

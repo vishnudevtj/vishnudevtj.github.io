@@ -76,5 +76,6 @@ xhost +SI:localuser:root
 
 Reference
 
-1.  [Jessie Frazelle's Blog: Docker Containers on the Desktop](https://blog.jessfraz.com/post/docker-containers-on-the-desktop/)
-2.  [Granting access to X server with xhost – /dev/blog](http://possiblelossofprecision.net/?p=896)
+*  [Jessie Frazelle's Blog: Docker Containers on the Desktop](https://blog.jessfraz.com/post/docker-containers-on-the-desktop/)
+
+*  [Granting access to X server with xhost – /dev/blog](http://possiblelossofprecision.net/?p=896)
