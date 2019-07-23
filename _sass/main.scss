@@ -21,6 +21,7 @@ h2,
 h3,
 h4,
 h5 {
+    
     margin: 45px 0 25px;
 }
 img {
@@ -108,8 +109,8 @@ iframe {
 }
 ul,
 ol {
-  margin: 40px 0;
-  padding-left: 50px;
+  margin: 20px 0;
+  padding-left: 40px;
   li {
     word-wrap: break-word;
   }
@@ -201,10 +202,37 @@ article {
 	border-bottom: 1px solid #000;
 	margin: 30px 0;
     }
+
+
+    h1{
+	margin-top: 50px;
+	margin-bottom: 30px;
+    }
+    h2{
+        display: inline-flex;}
+        border-bottom-style: solid;
+        border-bottom-width: 3px;
+        padding-bottom: 10px;
+        margin: 30px 0 20px;
+    }
+    h3,
+    h4,
+    h5 {
+        border-bottom-style: solid;
+        border-bottom-width: 2px;
+        padding-bottom: 10px;
+        margin: 60px 0 40px;
+    }
     p {
 	font-size: 18px;
 	line-height: 1.5em;
 	word-wrap: break-word;
+
+        a{
+            padding-bottom: 2px;
+            border-bottom-width: 1px;
+            border-bottom-style: solid;
+        }
     }
     .footnote {
 	border: 0;
@@ -236,6 +264,10 @@ article {
 
 	border-color: #2bbc8a;
 	color: #2bbc8a;
+    }
+    .highlight {
+        scrollbar-color: #586e75 #212326;
+        scrollbar-width: thin;
     }
 }
 .back {
